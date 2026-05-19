@@ -28,6 +28,14 @@ export const nav = [
 		slug: '/company/about',
 	},
 	{
+		title: 'FAQ',
+		slug: '/faq',
+	},
+	{
+		title: 'Community',
+		slug: '/community',
+	},
+	{
 		title: 'Contact',
 		slug: '/company/contact',
 	},

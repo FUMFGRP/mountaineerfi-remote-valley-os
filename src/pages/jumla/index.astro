@@ -3,12 +3,38 @@ import { Container, Button, CtaCardSection } from '@components/odyssey-theme';
 import Layout from '../../layouts/Page.astro';
 import { Icon } from 'astro-icon/components';
 import Sidebar from '../../components/Sidebar.astro';
-import SectionDivider from '../../components/SectionDivider.astro';
 
 const seo = {
   title: 'Jumla Field Study & Residency Program | Remote Valley OS | Mountaineer.fi',
   description: 'Apply for the Jumla Residency — prototype open-source solutions for remote communities in one of the toughest environments on earth. Karnali Province, Nepal.',
 };
+
+const tracks = [
+  { icon: 'ic:baseline-bolt', title: 'Renewable Energy Engineer', desc: 'Install the hybrid micro-grid — solar, hydro, wind, batteries. Set up distribution, load management, and monitoring.', dur: '6-12 mo' },
+  { icon: 'ic:baseline-build', title: 'Mechanical Engineer / Maker', desc: 'Build the shredder and filament extruder line. Commission the 3D printer farm. Design jigs and tooling.', dur: '6-12 mo' },
+  { icon: 'ic:baseline-print', title: '3D Printing Specialist', desc: 'Run the printer farm. Build the open-source parts library. Train local designers. Produce functional parts.', dur: '6-12 mo' },
+  { icon: 'ic:baseline-restaurant', title: 'Food Scientist', desc: 'Set up the apple processing hub: cold storage, cider line, vinegar fermentation, dehydration.', dur: '6-12 mo' },
+  { icon: 'ic:baseline-water-drop', title: 'Water & Sanitation Engineer', desc: 'Install purification nodes at charging stations. Set up the water quality testing lab.', dur: '3-6 mo' },
+  { icon: 'ic:baseline-school', title: 'Curriculum Designer', desc: 'Turn technical knowledge into visual, multilingual training guides. Build the 4-level training pipeline.', dur: '6-12 mo' },
+  { icon: 'ic:baseline-wifi', title: 'Mesh Network Engineer', desc: 'Deploy LoRa and Wi-Fi mesh nodes across the valley. Set up the local LLM server. Build sensor pipelines.', dur: '3-6 mo' },
+  { icon: 'ic:baseline-home', title: 'Natural Building Lead', desc: 'Lead construction of natural homes using stone, timber, earth. Integrate 3D-printed connectors.', dur: '6-12 mo' },
+];
+
+const pilotFindings = [
+  { stat: '~960kg/month', label: 'Plastic waste per village', color: 'var(--accent-sunset-orange)' },
+  { stat: '50 tons/year', label: 'Apple production in village', color: 'var(--accent-deep-blue)' },
+  { stat: '40%', label: 'Post-harvest loss without cold storage', color: 'var(--accent-sunset-orange)' },
+  { stat: '3,000m', label: 'Elevation — thinner air, 20-30% more solar', color: 'var(--accent-glacial-blue)' },
+];
+
+const modules = [
+  { title: 'Water Purification', finding: 'Feasibility: HIGH. Diarrheal disease is the #1 health complaint. Gravity-fed spring system exists — only filtration + UV needed at point of use.', priority: 'Highest impact, deploy first' },
+  { title: 'Energy Micro-Grid', finding: 'Feasibility: MEDIUM-HIGH. Solar + hydro is the right combo. Stream provides 25 L/s at 15m head = 3.7kW theoretical. Winter solar drops 40-60%.', priority: 'Foundation for all other modules' },
+  { title: 'Trash to Filament', finding: 'Feasibility: HIGH. Community members expressed embarrassment about plastic litter. Turning waste into valuable material is culturally resonant.', priority: 'Phase 2 deployment' },
+  { title: 'Food Production', finding: 'Feasibility: HIGH. Highest economic impact potential. 50 tons apples/year, 90% sold raw at low prices. Cold storage + processing = 10x income.', priority: 'Phase 1 alongside water' },
+  { title: 'Logistics EV', finding: 'Feasibility: LOW-MEDIUM. Defer full corridor. Deploy single e-cargo trike for farm-to-market transport as proof of concept.', priority: 'Phase 3 after road improvements' },
+  { title: 'Mesh Communication', finding: 'Feasibility: HIGH. 2G only in village center. Valley shape needs 2-3 ridge-top repeaters. Health post telemedicine is main use case.', priority: 'Deploy alongside water' },
+];
 ---
 
 <Layout {seo}>
@@ -16,118 +42,172 @@ const seo = {
     <Container>
       <div class="page-hero__content">
         <h1>Jumla Field Study</h1>
-        <p>In the remote highlands of Karnali Province, at 3,000 meters elevation, Jumla is our living laboratory. If a solution works here, it works anywhere.</p>
+        <p>In the remote highlands of Karnali Province, at 3,000 meters elevation, Jumla is our living laboratory. Three weeks on-site in May 2026. Five pillars tested. Hundreds of community members engaged.</p>
+        <div class="hero-ctas">
+          <Button href="/jumla/apply" customIcon>Apply for Residency <Fragment slot="icon"><Icon name="ic:baseline-chevron-right"/></Fragment></Button>
+          <Button href="#findings" outlined>Read the Findings</Button>
+        </div>
       </div>
     </Container>
   </section>
 
   <Container>
-    <section style="margin: var(--section-margin) auto;">
-      <div class="jumla-intro">
-        <div class="jumla-intro__text">
-          <h2>Why Jumla?</h2>
-          <p>Jumla is one of Nepal's most remote districts. Accessible only by small aircraft or a week-long trek from the nearest road head. Winters are brutal, infrastructure is minimal, and every supply chain is a challenge.</p>
-          <p>This is precisely why we work here. Jumla concentrates every problem the Remote Valley OS is designed to solve — plastic waste, contaminated water, food insecurity, energy poverty, lack of connectivity, and extreme isolation.</p>
-          <p>If we can build solutions that work in Jumla, they will work in any remote community on earth.</p>
-        </div>
-        <div class="jumla-intro__stats">
-          <div class="jumla-stat"><strong>3,000m</strong> Elevation</div>
-          <div class="jumla-stat"><strong>-10°C</strong> Winter avg</div>
-          <div class="jumla-stat"><strong>1</strong> Airstrip connection</div>
-          <div class="jumla-stat"><strong>5</strong> Pillars tested</div>
-        </div>
-      </div>
-    </section>
-  </Container>
-
-  <Container>
-    <section style="margin: var(--section-margin) auto;">
-      <h2>Residency Program</h2>
-      <p style="max-width: 40rem;">The Jumla Residency brings innovators, engineers, designers, and researchers to live and work in one of the world's most extreme environments. You'll prototype real solutions alongside local communities.</p>
-
-      <div class="residency-details">
-        <div class="residency-card">
-          <h3>Duration</h3>
-          <p>1 to 3 months. Long enough to build and test meaningful prototypes, short enough to fit into a sabbatical or project cycle.</p>
-        </div>
-        <div class="residency-card">
-          <h3>What's Provided</h3>
-          <p>Accommodation, local meals, in-country logistics support, community introductions, and access to our prototyping tools and materials.</p>
-        </div>
-        <div class="residency-card">
-          <h3>What You Bring</h3>
-          <p>Your skills, your project idea, your own gear if needed (laptop, specialized tools), and the resilience to work in extreme conditions.</p>
-        </div>
-        <div class="residency-card">
-          <h3>Who Should Apply</h3>
-          <p>Engineers, industrial designers, software developers, agricultural scientists, water specialists, renewable energy experts, and anyone building open-source solutions for remote communities.</p>
-        </div>
-      </div>
-    </section>
-  </Container>
-
-  <Container>
     <div class="content-with-sidebar">
       <div class="content-main">
-    <section style="margin: var(--section-margin) auto;">
-      <h2>Why Jumla?</h2>
-      ...
-    </section>
+        <section style="margin: var(--section-margin) auto;">
+          <h2>Why Jumla?</h2>
+          <div class="jumla-intro">
+            <div class="jumla-intro__text">
+              <p>Jumla District is one of Nepal's most remote regions. Accessible only by small aircraft or a multi-day 4WD journey from the nearest paved road. No grid electricity. Intermittent mobile coverage. Winters that drop to -10°C.</p>
+              <p>This is precisely why we work here. Jumla concentrates every problem the Remote Valley OS is designed to solve — plastic waste, contaminated water, food insecurity, energy poverty, lack of connectivity, and extreme isolation.</p>
+              <p><strong>The founding insight:</strong> If a solution works in Jumla, it will work in any remote community on Earth. The Himalayas are our proving ground.</p>
+            </div>
+            <div class="jumla-intro__stats">
+              {pilotFindings.map(f => (
+                <div class="jumla-stat" style="border-left: 4px solid {f.color};">
+                  <strong>{f.stat}</strong>
+                  <span>{f.label}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
 
-    <SectionDivider icon="mountain" />
+        <section style="margin: var(--section-margin) auto;" id="findings">
+          <h2>Field Study Findings</h2>
+          <p style="max-width: 40rem;">In May 2026, a team from Mountaineer.fi spent 21 days in Jumla conducting household surveys, key informant interviews, community workshops, technical site surveys, and prototype testing. Here is what we found:</p>
+          <div class="findings-grid">
+            {modules.map(m => (
+              <div class="finding-card">
+                <div class="finding-header">
+                  <h3>{m.title}</h3>
+                  <span class="finding-priority">{m.priority}</span>
+                </div>
+                <p>{m.finding}</p>
+              </div>
+            ))}
+          </div>
+        </section>
 
-    <section style="margin: var(--section-margin) auto;">
-      <h2>Residency Program</h2>
-      ...
-    </section>
+        <section style="margin: var(--section-margin) auto;">
+          <h2>Residency Program</h2>
+          <p style="max-width: 40rem;">The Jumla Residency brings engineers, designers, educators, and builders to live and work alongside the community. You will prototype real solutions, train local operators, and leave knowledge behind permanently.</p>
+          <p style="max-width: 40rem;">Every resident follows a non-negotiable process: <strong>Build → Document → Train → Test</strong>. A system is not complete until three local operators can pass blind troubleshooting without assistance.</p>
 
-    <SectionDivider icon="star" />
+          <div class="residency-tracks">
+            {tracks.map(t => (
+              <div class="track-card">
+                <div class="track-icon"><Icon name={t.icon} /></div>
+                <div class="track-info">
+                  <h3>{t.title}</h3>
+                  <p>{t.desc}</p>
+                  <span class="track-duration">{t.dur}</span>
+                </div>
+              </div>
+            ))}
+          </div>
+        </section>
 
-    <section style="margin: var(--section-margin) auto;">
-      <h2>Field Study Areas</h2>
-      ...
-    </section>
+        <section style="margin: var(--section-margin) auto;">
+          <h2>Living Conditions</h2>
+          <div class="conditions-grid">
+            <div class="condition-card">
+              <h3><Icon name="ic:baseline-home" /> Housing</h3>
+              <p>Private room in a natural home built from local stone and timber. Powered by the micro-grid. Shared kitchen and common area.</p>
+            </div>
+            <div class="condition-card">
+              <h3><Icon name="ic:baseline-restaurant" /> Food</h3>
+              <p>Monthly food stipend included. Communal produce from the region. Residents cook together or take meals with host families.</p>
+            </div>
+            <div class="condition-card">
+              <h3><Icon name="ic:baseline-science" /> Workspace</h3>
+              <p>Full access to the fabrication lab — 3D printers, hand tools, electronics bench — plus testing equipment and shared studio.</p>
+            </div>
+            <div class="condition-card">
+              <h3><Icon name="ic:baseline-wifi" /> Connectivity</h3>
+              <p>WiFi at the hub via mesh network. Starlink gateway provides internet. Reliable but not city-speed — plan accordingly.</p>
+            </div>
+            <div class="condition-card">
+              <h3><Icon name="ic:baseline-ac-unit" /> Climate</h3>
+              <p>Temperate Himalayan. Summer: mild, monsoon. Winter: cold, dry, clear. Pack for cold nights year-round at 2,300m.</p>
+            </div>
+            <div class="condition-card">
+              <h3><Icon name="ic:baseline-airplanemode-active" /> Travel</h3>
+              <p>Ground transport from Nepalgunj or Kathmandu to Jumla arranged. International travel is the resident's responsibility.</p>
+            </div>
+          </div>
+        </section>
+
+        <section style="margin: var(--section-margin) auto;">
+          <h2>Terms</h2>
+          <div class="terms-table">
+            <div class="term-row"><span class="term-label">Duration</span><span class="term-value">Minimum 3 months. Preferred 6-12 months.</span></div>
+            <div class="term-row"><span class="term-label">Housing</span><span class="term-value">Free (private or shared room)</span></div>
+            <div class="term-row"><span class="term-label">Food stipend</span><span class="term-value">Monthly allowance included</span></div>
+            <div class="term-row"><span class="term-label">Workspace</span><span class="term-value">Free access to fab lab and tools</span></div>
+            <div class="term-row"><span class="term-label">Travel</span><span class="term-value">In-country ground transport arranged</span></div>
+            <div class="term-row"><span class="term-label">Stipend</span><span class="term-value">Modest living stipend (covers basic needs)</span></div>
+            <div class="term-row"><span class="term-label">Visa</span><span class="term-value">Nepal tourist visa (renewable). Support letters provided.</span></div>
+            <div class="term-row"><span class="term-label">Insurance</span><span class="term-value">Required. Not provided.</span></div>
+            <div class="term-row"><span class="term-label">IP</span><span class="term-value">Everything produced is open source. Belongs to the commons.</span></div>
+          </div>
+        </section>
+
+        <CtaCardSection background="var(--theme-surface-1)" color="var(--theme-on-surface-1)">
+          <h2>Apply for the Jumla Residency</h2>
+          <p>Email <strong>residency@mountaineer.fi</strong> with your background, a project idea, preferred duration, and any questions. We review applications with a committee that includes community representatives.</p>
+          <div class="cta-row">
+            <Button href="/jumla/apply" customIcon>Apply Now <Fragment slot="icon"><Icon name="ic:baseline-chevron-right"/></Fragment></Button>
+            <Button href="/accelerator" unelevated>Contribute Remotely</Button>
+          </div>
+        </CtaCardSection>
+
+        <CtaCardSection background="var(--theme-surface-2)" color="var(--theme-on-surface-2)">
+          <h2>Follow the Field Work</h2>
+          <p>Watch our team build, test, and iterate in Jumla. Every prototype, every failure, every breakthrough — documented openly on GitHub.</p>
+          <div class="cta-row">
+            <Button href="https://github.com/regenerative-valley-os" customIcon>GitHub <Fragment slot="icon"><Icon name="ic:baseline-launch"/></Fragment></Button>
+            <Button href="/board" unelevated>Explore the Board</Button>
+          </div>
+        </CtaCardSection>
       </div>
       <Sidebar context="jumla" />
     </div>
   </Container>
-
-  <CtaCardSection background="var(--theme-surface-1)" color="var(--theme-on-surface-1)">
-    <h2>Apply for the Jumla Residency</h2>
-    <p>We're accepting applications for the next cohort. Tell us about your project and why you want to build it in the toughest place on earth.</p>
-    <Button href="/jumla/apply" customIcon>Apply Now <Fragment slot="icon"><Icon name="ic:baseline-chevron-right"/></Fragment></Button>
-  </CtaCardSection>
-
-  <CtaCardSection background="var(--theme-surface-2)" color="var(--theme-on-surface-2)">
-    <h2>Follow the Field Work</h2>
-    <p>Watch our team build, test, and iterate in Jumla. Every prototype, every failure, every breakthrough — documented openly.</p>
-    <div class="cta-row">
-      <Button href="https://youtube.com/@mountaineerfi" customIcon>YouTube <Fragment slot="icon"><Icon name="ic:baseline-launch"/></Fragment></Button>
-      <Button href="https://github.com/mountaineer-fi/remote-valley-os" unelevated>GitHub</Button>
-    </div>
-  </CtaCardSection>
 </Layout>
 
 <style>
   .page-hero { margin: var(--section-margin) auto; }
   .page-hero__content { max-width: 40rem; }
-  .jumla-intro { display: grid; grid-template-columns: 2fr 1fr; gap: 2rem; align-items: start; }
-  .jumla-intro__text p { margin-bottom: 1rem; }
+  .hero-ctas { display: flex; gap: 1rem; margin-top: 1.5rem; }
+  .jumla-intro { display: grid; grid-template-columns: 2fr 1fr; gap: 2rem; align-items: start; margin-top: 1.5rem; }
+  .jumla-intro__text p { margin-bottom: 1rem; font-size: var(--font-size-sm); }
   .jumla-intro__stats { display: flex; flex-direction: column; gap: 0.75rem; }
-  .jumla-stat { padding: 1rem; background-color: var(--theme-surface-1); border-radius: 0.5rem; text-align: center; font-size: var(--font-size-sm); }
-  .jumla-stat strong { display: block; font-family: var(--theme-font-family-display); font-size: var(--font-size-lg); color: var(--accent-sunset-orange); }
-  .residency-details { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.5rem; margin-top: 2rem; }
-  .residency-card { padding: 1.5rem; background-color: var(--theme-surface-1); border-radius: var(--theme-shape-radius); }
-  .residency-card h3 { margin-bottom: 0.5rem; }
-  .residency-card p { margin: 0; font-size: var(--font-size-sm); }
-  .field-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; margin-top: 2rem; }
-  .field-card { padding: 1.5rem; border-radius: var(--theme-shape-radius); border: 1px solid var(--theme-surface-1); }
-  .field-card h3 { margin-bottom: 0.5rem; font-size: var(--font-size-md); }
-  .field-card p { margin: 0; font-size: var(--font-size-sm); }
+  .jumla-stat { padding: 1rem; background-color: var(--theme-surface-1); border-radius: 0.5rem; font-size: var(--font-size-xs); }
+  .jumla-stat strong { display: block; font-family: var(--theme-font-family-display); font-size: var(--font-size-lg); color: var(--accent-sunset-orange); margin-bottom: 0.25rem; }
+  .findings-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem; margin-top: 1.5rem; }
+  .finding-card { padding: 1.25rem; background-color: var(--theme-surface-1); border-radius: var(--theme-shape-radius); }
+  .finding-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 0.5rem; gap: 0.5rem; }
+  .finding-header h3 { font-size: var(--font-size-base); margin: 0; }
+  .finding-priority { font-size: var(--font-size-xs); padding: 0.2rem 0.5rem; background-color: var(--accent-glacial-blue); color: var(--charcoal, #2D3436); border-radius: 1rem; font-weight: 600; white-space: nowrap; }
+  .finding-card p { font-size: var(--font-size-sm); margin: 0; }
+  .residency-tracks { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem; margin-top: 1.5rem; }
+  .track-card { display: flex; gap: 1rem; padding: 1rem; background-color: var(--theme-surface-1); border-radius: var(--theme-shape-radius); align-items: flex-start; }
+  .track-icon { font-size: 1.5rem; color: var(--accent-sunset-orange); flex-shrink: 0; margin-top: 0.25rem; }
+  .track-info h3 { font-size: var(--font-size-sm); margin-bottom: 0.25rem; }
+  .track-info p { font-size: var(--font-size-xs); margin: 0 0 0.35rem; opacity: 0.85; }
+  .track-duration { display: inline-block; font-size: var(--font-size-xs); padding: 0.15rem 0.5rem; background-color: var(--theme-surface-2); border-radius: 1rem; font-weight: 600; color: var(--accent-glacial-blue); }
+  .conditions-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; margin-top: 1.5rem; }
+  .condition-card { padding: 1.25rem; background-color: var(--theme-surface-1); border-radius: var(--theme-shape-radius); }
+  .condition-card h3 { font-size: var(--font-size-sm); margin-bottom: 0.5rem; display: flex; align-items: center; gap: 0.4rem; }
+  .condition-card p { font-size: var(--font-size-xs); margin: 0; }
+  .terms-table { display: flex; flex-direction: column; gap: 0.35rem; margin-top: 1.5rem; max-width: 36rem; }
+  .term-row { display: flex; justify-content: space-between; padding: 0.5rem 0.75rem; background-color: var(--theme-surface-1); border-radius: 0.25rem; font-size: var(--font-size-sm); }
+  .term-label { font-weight: 600; }
+  .term-value { opacity: 0.85; text-align: right; }
   .cta-row { display: flex; gap: 1rem; justify-content: center; }
   .content-with-sidebar { display: flex; gap: 3rem; align-items: flex-start; }
   .content-main { flex: 1; min-width: 0; }
   @media (max-width: 1024px) { .content-with-sidebar { flex-direction: column; } }
-  @media (max-width: 768px) { .jumla-intro { grid-template-columns: 1fr; } .residency-details { grid-template-columns: 1fr; } .field-grid { grid-template-columns: 1fr; } .cta-row { flex-direction: column; align-items: center; } }
+  @media (max-width: 768px) { .jumla-intro { grid-template-columns: 1fr; } .findings-grid, .residency-tracks, .conditions-grid { grid-template-columns: 1fr; } .hero-ctas { flex-direction: column; } .cta-row { flex-direction: column; align-items: center; } .term-row { flex-direction: column; gap: 0.2rem; } .term-value { text-align: left; } }
 </style>
-

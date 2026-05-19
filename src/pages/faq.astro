@@ -1,0 +1,126 @@
+---
+import { Container, Button, CtaCardSection } from '@components/odyssey-theme';
+import Layout from '../layouts/Page.astro';
+import { Icon } from 'astro-icon/components';
+
+const seo = {
+  title: 'FAQ — Remote Valley OS | Mountaineer.fi',
+  description: 'Frequently asked questions about Remote Valley OS — the open-source blueprint for self-sufficient valley communities.',
+};
+
+const faqs = [
+  {
+    category: 'General',
+    items: [
+      { q: 'What is Remote Valley OS?', a: 'Remote Valley OS is an open-source blueprint for building circular economies in remote, resource-constrained regions. It includes designs for renewable energy, waste-to-manufacturing, water purification, food processing, electric transport, and mesh communication — plus a residency program that transfers knowledge permanently to local communities.' },
+      { q: 'Is this a charity project?', a: 'No. It is a construction project. We are not asking for pity for remote villages. We are providing tools and training so that communities can build and maintain their own infrastructure. Mountaineer.fi is a for-profit entity, but all hardware, software, and documentation produced under Remote Valley OS is released under open-source licenses.' },
+      { q: 'Why Jumla?', a: 'Jumla is one of the hardest places in Nepal — high altitude, terrible roads, extreme isolation. If the blueprint works there, it can work anywhere. Jumla is the pilot, not the destination.' },
+      { q: 'Who is behind this?', a: 'Remote Valley OS is a project of Mountaineer.fi. The team includes engineers, designers, educators, and community development practitioners based in Nepal, Finland, and beyond.' },
+    ],
+  },
+  {
+    category: 'Open Source',
+    items: [
+      { q: 'What does "open source" mean here?', a: 'All hardware designs, software, firmware, documentation, and training materials are published under open-source licenses. Anyone can download and use them for free, modify and improve them, and share them. No licensing fees, no vendor lock-in, no permission needed.' },
+      { q: 'What licenses do you use?', a: 'Hardware: CERN Open Hardware License (CERN OHL-S). Software: GNU Affero General Public License (AGPL-3.0). Documentation: Creative Commons BY-SA 4.0.' },
+      { q: 'Can I use this for my own community?', a: 'Yes. That is the entire point. Download the plans, adapt them to your local conditions, and start building. You do not need our permission.' },
+      { q: 'Do I have to share back my improvements?', a: 'You are not legally required to, but we strongly encourage it. When you share back, every other community benefits. The blueprint grows stronger for everyone.' },
+    ],
+  },
+  {
+    category: 'Residency Program',
+    items: [
+      { q: 'Who can apply?', a: 'Engineers, makers, scientists, educators, and builders of all kinds. Specific tracks include renewable energy, mechanical engineering, 3D printing, food science, water sanitation, curriculum design, and general construction.' },
+      { q: 'How long is the residency?', a: 'Minimum 3 months. Preferred 6-12 months. The most impactful work happens over a full agricultural or seasonal cycle.' },
+      { q: 'What is provided?', a: 'Free housing in a natural home powered by clean energy, a modest food stipend, and access to the fabrication lab and tools.' },
+      { q: 'What is expected?', a: 'You must document everything, train at least three local operators until they pass blind troubleshooting, and share your work under open-source licenses. At least 50% of your time goes to a defined project.' },
+      { q: 'How do I apply?', a: 'Email residency@mountaineer.fi with your background, a project idea, your preferred duration, and any questions.' },
+    ],
+  },
+  {
+    category: 'Remote Contribution',
+    items: [
+      { q: 'I cannot travel to Nepal. Can I still help?', a: 'Yes. The Innovation Accelerator is designed for remote contributors. You can design components, write documentation, translate guides, analyze data, develop business models, or adapt the blueprint for a new region.' },
+      { q: 'How much time do I need to commit?', a: 'No minimum. Contribute for an hour or a year. Every contribution is credited.' },
+      { q: 'How do I start?', a: 'Visit github.com/regenerative-valley-os and look for issues labeled "good first issue" or browse the rv-accelerator repository. See our CONTRIBUTING.md for the full guide.' },
+    ],
+  },
+  {
+    category: 'The Systems',
+    items: [
+      { q: 'How does the trash-to-filament process work?', a: 'Community-collected plastic is sorted by type, shredded into flakes, melted, and extruded through a precision nozzle to create consistent 3D printer filament. That filament feeds a printer farm that makes spare parts, tools, and other items on demand.' },
+      { q: 'How does the micro-grid work?', a: 'It combines solar panels, a run-of-river hydro turbine, and small wind turbines with lithium iron phosphate battery storage. The system provides 24/7 electricity without diesel, even during winter when hydro output is low.' },
+      { q: 'Why charging stations every 50km?', a: '50km matches the practical range of electric two- and three-wheelers in mountainous terrain. Each station is also a water purification point and community hub, maximizing the value of each location.' },
+      { q: 'Do you have working hardware yet?', a: 'The field study is complete and all designs are published on GitHub. Phase 1 construction begins in Jumla in 2026-2027. All designs have been tested in the field during the May 2026 Jumla pilot.' },
+    ],
+  },
+  {
+    category: 'Privacy & Ethics',
+    items: [
+      { q: 'How do you ensure the community actually benefits?', a: 'The collective owns the processing hub. Farmers set prices. Local Master Trainers run the systems. The residency is designed to make itself unnecessary within two years. We do not extract profit — everything is reinvested in the community or published as open source.' },
+      { q: 'How is local knowledge respected?', a: 'Every resident works alongside local counterparts. Local knowledge informs every design decision. Documentation is translated into Nepali and the local dialect. Elders and traditional practitioners are consulted.' },
+    ],
+  },
+];
+---
+
+<Layout {seo}>
+  <section class="page-hero">
+    <Container>
+      <div class="page-hero__content">
+        <h1>Frequently Asked Questions</h1>
+        <p>Everything you want to know about Remote Valley OS — the project, the systems, the residency, and how to get involved.</p>
+      </div>
+    </Container>
+  </section>
+
+  <Container>
+    <section style="margin: var(--section-margin) auto;">
+      {faqs.map(group => (
+        <div class="faq-group">
+          <h2>{group.category}</h2>
+          <div class="faq-list">
+            {group.items.map(item => (
+              <details class="faq-item">
+                <summary class="faq-question">
+                  <span>{item.q}</span>
+                  <Icon name="ic:baseline-chevron-right" class="faq-chevron" />
+                </summary>
+                <div class="faq-answer">
+                  <p>{item.a}</p>
+                </div>
+              </details>
+            ))}
+          </div>
+        </div>
+      ))}
+    </section>
+
+    <CtaCardSection background="var(--theme-surface-2)" color="var(--theme-on-surface-2)">
+      <h2>Still Have Questions?</h2>
+      <p>Email us at contact@mountaineer.fi or open a discussion on GitHub.</p>
+      <div class="cta-row">
+        <Button href="mailto:contact@mountaineer.fi" customIcon>Email Us <Fragment slot="icon"><Icon name="ic:baseline-email"/></Fragment></Button>
+        <Button href="https://github.com/regenerative-valley-os" outlined>GitHub Discussions</Button>
+      </div>
+    </CtaCardSection>
+  </Container>
+</Layout>
+
+<style>
+  .page-hero { margin: var(--section-margin) auto; }
+  .page-hero__content { max-width: 40rem; }
+  .faq-group { margin-bottom: 3rem; }
+  .faq-group h2 { margin-bottom: 1rem; color: var(--accent-sunset-orange); }
+  .faq-list { display: flex; flex-direction: column; gap: 0.5rem; }
+  .faq-item { border-radius: var(--theme-shape-radius); overflow: hidden; background-color: var(--theme-surface-1); }
+  .faq-item[open] { background-color: var(--theme-surface-2); }
+  .faq-question { display: flex; justify-content: space-between; align-items: center; padding: 1rem 1.25rem; cursor: pointer; font-weight: 600; list-style: none; font-size: var(--font-size-sm); }
+  .faq-question::-webkit-details-marker { display: none; }
+  .faq-chevron { transition: transform 0.2s; flex-shrink: 0; margin-left: 1rem; }
+  .faq-item[open] .faq-chevron { transform: rotate(90deg); }
+  .faq-answer { padding: 0 1.25rem 1rem; font-size: var(--font-size-sm); }
+  .faq-answer p { margin: 0; opacity: 0.85; }
+  .cta-row { display: flex; gap: 1rem; justify-content: center; }
+  @media (max-width: 768px) { .cta-row { flex-direction: column; align-items: center; } }
+</style>

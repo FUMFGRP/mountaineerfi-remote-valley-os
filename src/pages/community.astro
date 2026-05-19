@@ -1,0 +1,161 @@
+---
+import { Container, Button, CtaCardSection } from '@components/odyssey-theme';
+import Layout from '../layouts/Page.astro';
+import { Icon } from 'astro-icon/components';
+
+const seo = {
+  title: 'Community — Contribute to Remote Valley OS | Mountaineer.fi',
+  description: 'Join the Remote Valley OS community. How to contribute, governance model, code of conduct, and ways to get involved from anywhere in the world.',
+};
+---
+
+<Layout {seo}>
+  <section class="page-hero">
+    <Container>
+      <div class="page-hero__content">
+        <h1>Community</h1>
+        <p>Remote Valley OS is built by a global community of engineers, designers, educators, and builders. Everyone is welcome. Here is how to get involved.</p>
+      </div>
+    </Container>
+  </section>
+
+  <Container>
+    <section style="margin: var(--section-margin) auto;">
+      <h2>Ways to Contribute</h2>
+      <div class="contribute-grid">
+        <div class="contrib-card">
+          <Icon name="ic:baseline-code" />
+          <h3>Code & Hardware</h3>
+          <p>Submit pull requests for firmware, CAD designs, sensor agents, or the dashboard. Look for <code>good-first-issue</code> labels in any repository.</p>
+        </div>
+        <div class="contrib-card">
+          <Icon name="ic:baseline-description" />
+          <h3>Documentation</h3>
+          <p>Improve operator manuals, translate guides into Nepali or other languages, or write training modules. Good docs are as important as good hardware.</p>
+        </div>
+        <div class="contrib-card">
+          <Icon name="ic:baseline-translate" />
+          <h3>Translation</h3>
+          <p>Help translate content into Nepali, Jumli, Hindi, or other regional languages. Make the blueprint accessible to the people who need it most.</p>
+        </div>
+        <div class="contrib-card">
+          <Icon name="ic:baseline-analytics" />
+          <h3>Data & Research</h3>
+          <p>Analyze field data, develop economic models, research adaptation requirements for new regions, or improve sensor data pipelines.</p>
+        </div>
+        <div class="contrib-card">
+          <Icon name="ic:baseline-store" />
+          <h3>Market & Business</h3>
+          <p>Develop market linkages for Jumla Origin products, design business models for agri-hubs, or build distribution channels for community-made goods.</p>
+        </div>
+        <div class="contrib-card">
+          <Icon name="ic:baseline-public" />
+          <h3>Regional Adaptation</h3>
+          <p>Adapt the blueprint for a new region — different climate, crops, materials, or cultural context. Write an adaptation guide for future deployments.</p>
+        </div>
+      </div>
+    </section>
+
+    <section style="margin: var(--section-margin) auto;">
+      <h2>How to Start</h2>
+      <div class="start-steps">
+        <div class="start-step">
+          <span class="start-num">1</span>
+          <div><strong>Fork a repository</strong> on <a href="https://github.com/regenerative-valley-os">github.com/regenerative-valley-os</a></div>
+        </div>
+        <div class="start-step">
+          <span class="start-num">2</span>
+          <div><strong>Find an issue</strong> labeled <code>good-first-issue</code> or <code>help-wanted</code></div>
+        </div>
+        <div class="start-step">
+          <span class="start-num">3</span>
+          <div><strong>Join a discussion</strong> — introduce yourself and ask questions in GitHub Discussions</div>
+        </div>
+        <div class="start-step">
+          <span class="start-num">4</span>
+          <div><strong>Open a pull request</strong> — every merged PR earns a place in the contributors list</div>
+        </div>
+        <div class="start-step">
+          <span class="start-num">5</span>
+          <div><strong>Apply for the accelerator</strong> — structured remote contribution with mentoring and recognition</div>
+        </div>
+      </div>
+    </section>
+
+    <section style="margin: var(--section-margin) auto;">
+      <h2>Governance Model</h2>
+      <p style="max-width: 36rem;">The project is governed by the people who do the work. Roles progress naturally as contributions grow.</p>
+      <div class="roles-grid">
+        <div class="role-card">
+          <h3>Community Member</h3>
+          <p>Participate in discussions, open issues, attend community calls. Everyone starts here.</p>
+        </div>
+        <div class="role-card">
+          <h3>Contributor</h3>
+          <p>One or more merged pull requests. Can label issues, vote in governance decisions, nominate maintainers.</p>
+        </div>
+        <div class="role-card">
+          <h3>Module Maintainer</h3>
+          <p>Sustained contributions to a specific module. Reviews PRs, triages issues, mentors newcomers. 12-month renewable term.</p>
+        </div>
+        <div class="role-card">
+          <h3>Core Maintainer</h3>
+          <p>Cross-module integration, release management, project direction. Nominated by core maintainers, confirmed by 2/3 vote.</p>
+        </div>
+        <div class="role-card">
+          <h3>Community Representative</h3>
+          <p>Elected by deployment-site communities. Represents local needs in governance decisions. Equal weight to maintainers in votes.</p>
+        </div>
+        <div class="role-card">
+          <h3>Master Trainer</h3>
+          <p>Certified through the education pipeline. Approves curriculum, certifies operators and technicians. Highest local authority.</p>
+        </div>
+      </div>
+    </section>
+
+    <section style="margin: var(--section-margin) auto;">
+      <h2>Our Standards</h2>
+      <p>All community members are expected to follow our <a href="/content/CODE_OF_CONDUCT.md">Code of Conduct</a> and <a href="/content/community-guidelines.md">Community Guidelines</a>. In short:</p>
+      <div class="standards-list">
+        <div class="standard-item"><Icon name="ic:baseline-check-circle" /> Be respectful and constructive</div>
+        <div class="standard-item"><Icon name="ic:baseline-check-circle" /> Assume good faith</div>
+        <div class="standard-item"><Icon name="ic:baseline-check-circle" /> Default to public communication</div>
+        <div class="standard-item"><Icon name="ic:baseline-check-circle" /> Give and accept feedback gracefully</div>
+        <div class="standard-item"><Icon name="ic:baseline-check-circle" /> Seek consensus before voting</div>
+        <div class="standard-item"><Icon name="ic:baseline-check-circle" /> Disagree constructively — focus on ideas, not people</div>
+      </div>
+    </section>
+
+    <CtaCardSection background="var(--theme-surface-2)" color="var(--theme-on-surface-2)">
+      <h2>Start Contributing</h2>
+      <p>Your first PR is one click away. Fork a repo, pick an issue, and join the global team building infrastructure for remote communities.</p>
+      <div class="cta-row">
+        <Button href="https://github.com/regenerative-valley-os" customIcon>GitHub Organization <Fragment slot="icon"><Icon name="ic:baseline-launch"/></Fragment></Button>
+        <Button href="/accelerator" unelevated>Innovation Accelerator</Button>
+        <Button href="/jumla/apply" outlined>Apply for Residency</Button>
+      </div>
+    </CtaCardSection>
+  </Container>
+</Layout>
+
+<style>
+  .page-hero { margin: var(--section-margin) auto; }
+  .page-hero__content { max-width: 40rem; }
+  .contribute-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; margin-top: 1.5rem; }
+  .contrib-card { padding: 1.25rem; background-color: var(--theme-surface-1); border-radius: var(--theme-shape-radius); display: flex; flex-direction: column; gap: 0.5rem; }
+  .contrib-card h3 { font-size: var(--font-size-sm); margin: 0; }
+  .contrib-card p { font-size: var(--font-size-xs); margin: 0; }
+  .contrib-card code { font-size: var(--font-size-xs); }
+  .start-steps { display: flex; flex-direction: column; gap: 0.5rem; margin-top: 1.5rem; max-width: 30rem; }
+  .start-step { display: flex; align-items: center; gap: 1rem; padding: 0.75rem 1rem; background-color: var(--theme-surface-1); border-radius: 0.5rem; font-size: var(--font-size-sm); }
+  .start-num { width: 2rem; height: 2rem; display: flex; align-items: center; justify-content: center; background-color: var(--accent-sunset-orange); color: #fff; border-radius: 50%; font-weight: 700; font-size: var(--font-size-sm); flex-shrink: 0; }
+  .roles-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; margin-top: 1.5rem; }
+  .role-card { padding: 1.25rem; border-radius: var(--theme-shape-radius); border: 1px solid var(--theme-surface-1); }
+  .role-card h3 { font-size: var(--font-size-sm); margin-bottom: 0.5rem; }
+  .role-card p { font-size: var(--font-size-xs); margin: 0; opacity: 0.85; }
+  .standards-list { display: grid; grid-template-columns: repeat(2, 1fr); gap: 0.5rem; margin-top: 1rem; max-width: 30rem; }
+  .standard-item { display: flex; align-items: center; gap: 0.5rem; font-size: var(--font-size-sm); }
+  .cta-row { display: flex; gap: 1rem; justify-content: center; }
+  @media (max-width: 1024px) { .contribute-grid, .roles-grid { grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width: 768px) { .contribute-grid, .roles-grid, .standards-list { grid-template-columns: 1fr; } .cta-row { flex-direction: column; align-items: center; } }
+</style>

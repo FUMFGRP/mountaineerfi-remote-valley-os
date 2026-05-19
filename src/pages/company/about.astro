@@ -1,65 +1,136 @@
 ---
-import { TextSection } from '@components/odyssey-theme';
+import { Container, Button, CtaCardSection } from '@components/odyssey-theme';
 import Layout from '../../layouts/Page.astro';
-import HeroSection from '../../components/sections/heros/HeroSection.astro';
+import { Icon } from 'astro-icon/components';
 
 const seo = {
-	title: 'About Remote Valley OS | Open-Source Blueprint for Remote Regions',
-	description: 'Remote Valley OS is an open-source operating system and blueprint for innovation in remote regions — built on 5 interconnected pillars, field-tested in Jumla, Nepal.',
+  title: 'About Remote Valley OS | Open-Source Blueprint for Remote Regions',
+  description: 'The origin story, philosophy, and timeline of Remote Valley OS — an open-source blueprint for self-sufficient valley communities. Built by Mountaineer.fi.',
 };
+
+const timeline = [
+  { period: 'May 2026', event: '3-week field study in Jumla, Nepal completed. 40 household surveys, 12 key informant interviews, 3 community co-design workshops.' },
+  { period: 'June 2026', event: 'Blueprint written. 27 content pages published. GitHub organization created. v0.1 released.' },
+  { period: 'Q3-Q4 2026', event: 'Module scaffolding. Hardware definition and procurement. Recruiting first residency cohort.' },
+  { period: 'Q1 2027', event: 'Integration testing. RV-OS digital twin operational. Sensor pipelines live.' },
+  { period: '2027', event: 'Phase 1 construction in Jumla. First residency cohort on-site. First Master Trainers certified.' },
+  { period: '2028', event: 'Replication package published. First external adaptation in a new region.' },
+  { period: '2029+', event: 'Global network of deployments. Self-sustaining regional hubs. Knowledge permanence proven.' },
+];
 ---
 
 <Layout {seo}>
-	<HeroSection>
-		<div slot="text-container">
-			<h1>About Remote Valley OS</h1>
-			<p>
-				An open-source operating system for the world's toughest environments. Five interconnected pillars, field-tested in the Himalayas, built for any remote region on earth.
-			</p>
-		</div>
-    <picture slot="image-container">
-      <img
-        src="/assets/images/home/classic-hero.jpg"
-        alt="Himalayan mountain landscape"
-        id="home-hero-image"
-      />
-    </picture>
-	</HeroSection>
-  <TextSection narrow>
-    <h2>What Is Remote Valley OS?</h2>
-    <p>
-      Remote Valley OS is an open-source operating system and innovation framework for remote communities. It is not software — it is a blueprint for solving systemic challenges in isolated regions: plastic waste, contaminated water, food insecurity, energy poverty, and lack of connectivity.
-    </p>
-    <p>
-      Born from years of field research in Jumla, Nepal — one of the most remote districts on earth — Remote Valley OS provides actionable designs, schematics, bills of materials, and deployment guides for five interconnected pillars.
-    </p>
+  <section class="page-hero">
+    <Container>
+      <div class="page-hero__content">
+        <h1>About Remote Valley OS</h1>
+        <p>We build tools for the world's most remote places. And we give them away for free.</p>
+      </div>
+    </Container>
+  </section>
 
-    <h2>Innovation Board</h2>
-    <p>
-      The <a href="/board">Innovation Board</a> organizes the work into five pillars, each addressing a critical need:
-    </p>
-    <p>
-      <strong>Trash → 3D Filament:</strong> Turning Himalayan plastic waste into recycled 3D printing filament for local manufacturing.
-    </p>
-    <p>
-      <strong>Water Purification:</strong> Low-cost, low-maintenance filtration for glacial melt and contaminated high-altitude sources.
-    </p>
-    <p>
-      <strong>Food Production:</strong> High-altitude greenhouses, indigenous seed banks, and hydroponic systems.
-    </p>
-    <p>
-      <strong>EV Logistics Network:</strong> Electric vehicle charging stations every 50km for a sustainable transport corridor.
-    </p>
-    <p>
-      <strong>Mesh Communication:</strong> Decentralized peer-to-peer mesh networks — no towers, no cellular, just resilient connectivity.
-    </p>
+  <Container>
+    <section style="margin: var(--section-margin) auto;">
+      <h2>The Origin</h2>
+      <div class="origin-story">
+        <p>In May 2026, a small team spent three weeks in <strong>Jumla District, Karnali Province, Nepal</strong> — one of the most remote and logistically challenging regions in the Himalayas. Accessible only by air or a multi-day 4WD journey, Jumla concentrates every problem that remote communities face.</p>
+        <p>We walked the land. We studied the rivers, the sun, and the wind. We mapped waste streams and agricultural value chains. We talked to farmers, shopkeepers, mothers, and young people.</p>
+        <p><strong>The conclusion was clear:</strong> remote regions are not poor in resources. They are rich in sun, water, wind, soil, and human ingenuity. What they lack is the <em>integration</em> — the systems that connect what they have to what they need — and the <em>training</em> that keeps those systems running.</p>
+        <p>We came back with a plan.</p>
+      </div>
+    </section>
 
-    <h2>Open-Source Blueprint</h2>
-    <p>
-      Every design, every line of code, and every deployment guide is open source. Available on <a href="https://github.com/mountaineer-fi/remote-valley-os">GitHub</a> under MIT and CERN OHL licenses. Fork it, adapt it, deploy it anywhere — no permission needed.
-    </p>
-    <p>
-      Remote Valley OS is a project of Mountaineer.fi and lives at <strong>remotevalley.mountaineer.fi</strong>.
-    </p>
-  </TextSection>
+    <section style="margin: var(--section-margin) auto;">
+      <h2>The Philosophy</h2>
+      <div class="philosophy-grid">
+        <div class="phil-card">
+          <h3><Icon name="ic:baseline-lock-open" /> Everything Is Open Source</h3>
+          <p>Hardware designs, software, documentation, training materials. All published under open-source licenses. Free to use. Free to modify. Free to share. No one owns it. Everyone owns it.</p>
+        </div>
+        <div class="phil-card">
+          <h3><Icon name="ic:baseline-school" /> Knowledge Must Outlast the Installer</h3>
+          <p>The reason most development projects fail is not bad technology. It is that knowledge leaves when the installer leaves. Our model ensures knowledge stays. Every step is documented. Every operator is trained until they can fix the system blindfolded.</p>
+        </div>
+        <div class="phil-card">
+          <h3><Icon name="ic:baseline-groups" /> Local People Become the Experts</h3>
+          <p>Within two years, local Master Trainers run everything. The residency becomes optional. The knowledge belongs to the community. We design for our own obsolescence.</p>
+        </div>
+        <div class="phil-card">
+          <h3><Icon name="ic:baseline-public" /> The Blueprint Bends to Fit the Place</h3>
+          <p>This is a starting point, not a finished product. Every community that uses it should adapt it to their crops, their climate, their language. The blueprint improves with every adaptation.</p>
+        </div>
+      </div>
+    </section>
+
+    <section style="margin: var(--section-margin) auto;">
+      <h2>The Name</h2>
+      <p>Remote Valley OS is named for what it is: an operating system for remote valleys. Just as an operating system manages a computer's hardware and software, RV-OS manages the systems that sustain a community — energy, waste, water, food, mobility, communication. It connects them, monitors them, documents them, and ensures they keep running.</p>
+      <p>The project lives as a subdomain of <strong>Mountaineer.fi</strong> because we believe solving problems at the edge — where conditions are hardest, where failure has real consequences — produces solutions that work everywhere.</p>
+      <p><strong>Peaks, not paperwork.</strong></p>
+    </section>
+
+    <section style="margin: var(--section-margin) auto;">
+      <h2>The Team</h2>
+      <p>Remote Valley OS is a project of <a href="https://mountaineer.fi">Mountaineer.fi</a> — a platform dedicated to innovation in the world's toughest environments. We are a distributed team of engineers, designers, educators, and community development practitioners based in Nepal, Finland, and beyond.</p>
+      <div class="team-meta">
+        <div class="team-stat"><strong>Distributed</strong> Nepal, Finland, global</div>
+        <div class="team-stat"><strong>Disciplines</strong> Engineering, design, education, development</div>
+        <div class="team-stat"><strong>Openings</strong> <a href="/jumla/apply">Residency applications open</a></div>
+      </div>
+    </section>
+
+    <section style="margin: var(--section-margin) auto;">
+      <h2>Timeline</h2>
+      <div class="timeline">
+        {timeline.map(t => (
+          <div class="timeline-item">
+            <span class="timeline-period">{t.period}</span>
+            <span class="timeline-event">{t.event}</span>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <section style="margin: var(--section-margin) auto;">
+      <h2>Contact</h2>
+      <div class="contact-links">
+        <a href="https://mountaineer.fi">Website: mountaineer.fi</a>
+        <a href="https://github.com/regenerative-valley-os">GitHub: regenerative-valley-os</a>
+        <a href="mailto:contact@mountaineer.fi">Email: contact@mountaineer.fi</a>
+        <a href="mailto:media@mountaineer.fi">Media: media@mountaineer.fi</a>
+      </div>
+    </section>
+
+    <CtaCardSection background="var(--theme-surface-2)" color="var(--theme-on-surface-2)">
+      <h2>Join the Mission</h2>
+      <p>Whether you build, write, teach, or fund — there is a place for you in this project.</p>
+      <div class="cta-row">
+        <Button href="/jumla/apply" customIcon>Apply for Residency <Fragment slot="icon"><Icon name="ic:baseline-chevron-right"/></Fragment></Button>
+        <Button href="https://github.com/regenerative-valley-os" unelevated>GitHub</Button>
+      </div>
+    </CtaCardSection>
+  </Container>
 </Layout>
+
+<style>
+  .page-hero { margin: var(--section-margin) auto; padding: 4rem 0; }
+  .page-hero__content { max-width: 40rem; }
+  .origin-story p { margin-bottom: 1rem; font-size: var(--font-size-sm); max-width: 36rem; }
+  .origin-story p:last-child { font-size: var(--font-size-lg); font-family: var(--theme-font-family-display); color: var(--accent-sunset-orange); }
+  .philosophy-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.5rem; margin-top: 1.5rem; }
+  .phil-card { padding: 1.5rem; border-radius: var(--theme-shape-radius); border: 1px solid var(--theme-surface-1); }
+  .phil-card h3 { margin-bottom: 0.5rem; display: flex; align-items: center; gap: 0.4rem; }
+  .phil-card p { margin: 0; font-size: var(--font-size-sm); }
+  .team-meta { display: flex; gap: 1rem; margin-top: 1rem; flex-wrap: wrap; }
+  .team-stat { padding: 0.75rem 1rem; background-color: var(--theme-surface-1); border-radius: 0.5rem; font-size: var(--font-size-sm); }
+  .team-stat strong { display: block; margin-bottom: 0.2rem; color: var(--accent-glacial-blue); }
+  .timeline { display: flex; flex-direction: column; gap: 0.5rem; margin-top: 1.5rem; max-width: 36rem; }
+  .timeline-item { display: flex; gap: 1rem; align-items: baseline; padding: 0.75rem 1rem; background-color: var(--theme-surface-1); border-radius: 0.5rem; font-size: var(--font-size-sm); }
+  .timeline-period { font-weight: 600; color: var(--accent-sunset-orange); white-space: nowrap; min-width: 6rem; }
+  .timeline-event { opacity: 0.9; }
+  .contact-links { display: flex; flex-direction: column; gap: 0.35rem; margin-top: 1rem; max-width: 24rem; }
+  .contact-links a { padding: 0.5rem 0.75rem; background-color: var(--theme-surface-1); border-radius: 0.25rem; font-size: var(--font-size-sm); color: var(--accent-deep-blue); text-decoration: none; }
+  .contact-links a:hover { text-decoration: underline; }
+  .cta-row { display: flex; gap: 1rem; justify-content: center; }
+  @media (max-width: 768px) { .philosophy-grid { grid-template-columns: 1fr; } .timeline-item { flex-direction: column; gap: 0.25rem; } .cta-row { flex-direction: column; align-items: center; } .team-meta { flex-direction: column; } }
+</style>

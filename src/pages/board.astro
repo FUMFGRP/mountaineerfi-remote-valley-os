@@ -29,17 +29,36 @@ const seo = {
             <div class="pillar-detail__text">
               <span class="pillar-number">01</span>
               <h2><Icon name="ic:baseline-recycling" /> Trash → 3D Filament</h2>
-              <p>Plastic waste is one of the most visible problems in the Himalayas. Expedition trash, single-use plastics, and discarded packaging accumulate in communities with no formal recycling infrastructure.</p>
-              <p>Our solution: decentralized collection points feeding into processing units that convert waste plastic into high-quality 3D printing filament. This filament powers local manufacturing — producing tools, replacement parts, and products for the community.</p>
-              <div class="pillar-meta">
-                <span><strong>Status:</strong> Prototype phase</span>
-                <span><strong>Tech:</strong> Shredder → Washer → Extruder → Spooler</span>
-                <span><strong>Open Source:</strong> Soon on GitHub</span>
+              <p>Turn a pollution problem into a local manufacturing resource. Plastic waste — bottles, wrappers, containers — is collected from the community, sorted by type, shredded into flakes, melted, and extruded into consistent 3D printer filament.</p>
+              <p>The filament feeds a printer farm that produces spare parts, tools, medical devices, and educational materials on demand. What was trash becomes the raw material for local manufacturing.</p>
+              <div class="process-steps">
+                <div class="process-step"><strong>Collect</strong> Community collection points at schools, markets, villages</div>
+                <div class="process-step"><strong>Sort</strong> PET, HDPE, PP, LDPE — each with different uses</div>
+                <div class="process-step"><strong>Shred</strong> Rotary blades cut plastic into 5-10mm flakes</div>
+                <div class="process-step"><strong>Extrude</strong> Heat + precision nozzle = consistent 1.75mm filament</div>
+                <div class="process-step"><strong>Print</strong> Parts for water filters, EV stations, tools, education</div>
               </div>
-              <a href="https://github.com/mountaineer-fi/remote-valley-os" class="pillar-contribute">Contribute to this pillar →</a>
+              <div class="pillar-meta">
+                <span><strong>Feedstock:</strong> ~960kg/month per village (PET, HDPE, PP)</span>
+                <span><strong>Output:</strong> 5kg filament/day per extruder</span>
+                <span><strong>Training:</strong> 4 levels — Foundation → Operator → Technician → Master Trainer</span>
+                <span><strong>License:</strong> CERN OHL-S (hardware)</span>
+              </div>
             </div>
             <div class="pillar-detail__image">
-              <img src="/assets/images/landing-1/landing-hero-1.jpg" alt="Trash to 3D filament recycling" />
+              <div class="pillar-diagram">
+                <div class="diagram-flow">
+                  <span class="flow-node">Collect</span>
+                  <span class="flow-arrow">→</span>
+                  <span class="flow-node">Sort</span>
+                  <span class="flow-arrow">→</span>
+                  <span class="flow-node">Shred</span>
+                  <span class="flow-arrow">→</span>
+                  <span class="flow-node">Extrude</span>
+                  <span class="flow-arrow">→</span>
+                  <span class="flow-node">Print</span>
+                </div>
+              </div>
             </div>
           </div>
         </section>
@@ -51,39 +70,118 @@ const seo = {
             <div class="pillar-detail__text">
               <span class="pillar-number">02</span>
               <h2><Icon name="ic:baseline-water-drop" /> Water Purification</h2>
-              <p>Glacial meltwater carries sediment and natural contaminants. Surface water is often contaminated by animal waste and human activity. Boiling is energy-intensive and unsustainable.</p>
-              <p>Our approach: low-cost, low-maintenance filtration systems using locally available materials. Gravity-fed ceramic filters, UV purification for community centers, and rainwater harvesting designs adapted for high-altitude precipitation patterns.</p>
-              <div class="pillar-meta">
-                <span><strong>Status:</strong> Field testing in Jumla</span>
-                <span><strong>Tech:</strong> Ceramic filtration + UV + Rainwater</span>
-                <span><strong>Open Source:</strong> Soon on GitHub</span>
+              <p>Decentralized, renewable-powered water treatment nodes. Each node draws from a river or spring, passes water through gravel → sand → microfiber pre-filters, then through a ceramic or ultrafiltration membrane, and finishes with UV sterilization.</p>
+              <p>Every EV charging station hosts a purification node — turning transport infrastructure into clean water infrastructure. Water quality is tested daily for turbidity, pH, and bacterial contamination.</p>
+              <div class="process-steps">
+                <div class="process-step"><strong>Source</strong> Solar-powered pump draws from upstream river or spring</div>
+                <div class="process-step"><strong>Pre-filter</strong> Gravel → Sand → 5-micron microfiber</div>
+                <div class="process-step"><strong>Membrane</strong> Ceramic or UF — removes 99.99% of bacteria</div>
+                <div class="process-step"><strong>UV</strong> Low-power UV light — final microbial barrier</div>
+                <div class="process-step"><strong>Dispense</strong> Clean water at community taps, free for all</div>
               </div>
-              <a href="https://github.com/mountaineer-fi/remote-valley-os" class="pillar-contribute">Contribute to this pillar →</a>
+              <div class="pillar-meta">
+                <span><strong>Capacity:</strong> 500+ people per node</span>
+                <span><strong>Cost:</strong> ~$570 per node (components)</span>
+                <span><strong>Power:</strong> ~15W per node (solar + micro-grid)</span>
+                <span><strong>Training:</strong> 4 levels, daily water quality testing</span>
+              </div>
             </div>
             <div class="pillar-detail__image">
-              <img src="/assets/images/landing-1/landing-sticky.jpg" alt="Water purification system" />
+              <div class="pillar-diagram">
+                <div class="diagram-flow">
+                  <span class="flow-node">Source</span>
+                  <span class="flow-arrow">→</span>
+                  <span class="flow-node">Pre-filter</span>
+                  <span class="flow-arrow">→</span>
+                  <span class="flow-node">Membrane</span>
+                  <span class="flow-arrow">→</span>
+                  <span class="flow-node">UV</span>
+                  <span class="flow-arrow">→</span>
+                  <span class="flow-node">Dispense</span>
+                </div>
+              </div>
             </div>
           </div>
         </section>
 
         <SectionDivider icon="water" />
 
-        <section style="margin: var(--section-margin) auto;" id="food">
+        <section style="margin: var(--section-margin) auto;" id="energy">
           <div class="pillar-detail">
             <div class="pillar-detail__text">
               <span class="pillar-number">03</span>
-              <h2><Icon name="ic:baseline-grass" /> Food Production</h2>
-              <p>Short growing seasons, limited arable land, and expensive supply chains make food security a constant challenge in remote mountain communities.</p>
-              <p>Our solutions: high-altitude greenhouse designs that extend growing seasons, indigenous seed bank preservation to protect biodiversity, and hydroponic systems that work indoors with minimal water. All designs optimized for off-grid operation.</p>
-              <div class="pillar-meta">
-                <span><strong>Status:</strong> Prototype phase</span>
-                <span><strong>Tech:</strong> Greenhouses + Seed banks + Hydroponics</span>
-                <span><strong>Open Source:</strong> Soon on GitHub</span>
+              <h2><Icon name="ic:baseline-bolt" /> Energy Micro-Grid</h2>
+              <p>A hybrid renewable system combining solar PV (20-50kW), run-of-river pico-hydro (5-15kW), and small wind (1-5kW) with LiFePO4 battery storage (50-100kWh). Provides 24/7 clean electricity — no diesel required.</p>
+              <p>The micro-grid is the heart of the entire blueprint. Without it, no other module functions. Solar covers daytime peaks, hydro provides 24-hour base load, and batteries smooth the supply through the night.</p>
+              <div class="process-steps">
+                <div class="process-step"><strong>Solar PV</strong> 20-50kW peak, 20-30% more efficient at high altitude</div>
+                <div class="process-step"><strong>Hydro</strong> 5-15kW continuous — runs 24/7, no dam needed</div>
+                <div class="process-step"><strong>Wind</strong> 1-5kW supplementary — ridge-top placement</div>
+                <div class="process-step"><strong>Battery</strong> 50-100kWh LiFePO4 — safe, 5+ year lifespan</div>
+                <div class="process-step"><strong>Distribution</strong> Priority circuits — fab lab, water, food, homes</div>
               </div>
-              <a href="https://github.com/mountaineer-fi/remote-valley-os" class="pillar-contribute">Contribute to this pillar →</a>
+              <div class="pillar-meta">
+                <span><strong>Total capacity:</strong> 26-70kW combined</span>
+                <span><strong>Storage:</strong> 50-100kWh (2 days backup)</span>
+                <span><strong>Cost savings:</strong> Eliminates NPR 15,000-25,000/month diesel</span>
+                <span><strong>Training:</strong> 4 levels — Foundation to Master Trainer</span>
+              </div>
             </div>
             <div class="pillar-detail__image">
-              <img src="/assets/images/landing-1/landing-hero-1.jpg" alt="High-altitude food production" />
+              <div class="pillar-diagram">
+                <div class="diagram-flow">
+                  <span class="flow-node">Solar</span>
+                  <span class="flow-arrow">+</span>
+                  <span class="flow-node">Hydro</span>
+                  <span class="flow-arrow">+</span>
+                  <span class="flow-node">Wind</span>
+                  <span class="flow-arrow">→</span>
+                  <span class="flow-node">Battery</span>
+                  <span class="flow-arrow">→</span>
+                  <span class="flow-node">Load</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <SectionDivider icon="bolt" />
+
+        <section style="margin: var(--section-margin) auto;" id="food">
+          <div class="pillar-detail pillar-detail--reversed">
+            <div class="pillar-detail__text">
+              <span class="pillar-number">04</span>
+              <h2><Icon name="ic:baseline-grass" /> Food Production</h2>
+              <p>A community-owned agri-processing hub that turns Jumla's world-class organic apples into high-value products. Cold storage extends fresh apple sales year-round. Cider, vinegar, and dehydrated products create income multiples.</p>
+              <p>Without the hub, farmers lose 40% of their harvest to spoilage and sell the rest at low prices to middlemen. With the hub, income increases 10x per farmer through year-round sales and value-added processing.</p>
+              <div class="process-steps">
+                <div class="process-step"><strong>Cold Storage</strong> 1-4°C — extends fresh apple sales 3-6 months</div>
+                <div class="process-step"><strong>Cider</strong> Crush, press, ferment — alcoholic and non-alcoholic</div>
+                <div class="process-step"><strong>Vinegar</strong> Acetification — apple cider vinegar, 2+ year shelf life</div>
+                <div class="process-step"><strong>Dehydrate</strong> Solar + electric — dried rings, fruit leather, powder</div>
+                <div class="process-step"><strong>Brand</strong> Jumla Origin — premium organic, global market</div>
+              </div>
+              <div class="pillar-meta">
+                <span><strong>Income multiplier:</strong> 10x per farmer (NPR 90K → NPR 1M+)</span>
+                <span><strong>Hub output:</strong> Cold storage + cider + vinegar + dried products</span>
+                <span><strong>Post-harvest loss:</strong> Reduced from 40% to under 10%</span>
+                <span><strong>Training:</strong> Food safety, processing, quality control, 4 levels</span>
+              </div>
+            </div>
+            <div class="pillar-detail__image">
+              <div class="pillar-diagram">
+                <div class="diagram-flow">
+                  <span class="flow-node">Harvest</span>
+                  <span class="flow-arrow">→</span>
+                  <span class="flow-node">Cold Store</span>
+                  <span class="flow-arrow">→</span>
+                  <span class="flow-node">Process</span>
+                  <span class="flow-arrow">→</span>
+                  <span class="flow-node">Package</span>
+                  <span class="flow-arrow">→</span>
+                  <span class="flow-node">Market</span>
+                </div>
+              </div>
             </div>
           </div>
         </section>
@@ -91,21 +189,38 @@ const seo = {
         <SectionDivider icon="leaf" />
 
         <section style="margin: var(--section-margin) auto;" id="ev">
-          <div class="pillar-detail pillar-detail--reversed">
+          <div class="pillar-detail">
             <div class="pillar-detail__text">
-              <span class="pillar-number">04</span>
-              <h2><Icon name="ic:baseline-ev-station" /> EV Logistics Network</h2>
-              <p>Transportation in the Himalayas is expensive, polluting, and unreliable. Diesel generators and fossil fuel vehicles dominate, with severe environmental and health consequences.</p>
-              <p>Our vision: an electric vehicle corridor through remote regions, with solar-powered charging stations every 50km. Electric 3-wheelers for last-mile cargo, EV ambulances for medical emergencies, and charging infrastructure that doubles as community microgrids.</p>
-              <div class="pillar-meta">
-                <span><strong>Status:</strong> Research & design</span>
-                <span><strong>Tech:</strong> Solar EV charging + 50km grid + E-rickshaws</span>
-                <span><strong>Open Source:</strong> Coming soon</span>
+              <span class="pillar-number">05</span>
+              <h2><Icon name="ic:baseline-ev-station" /> Logistics EV Corridor</h2>
+              <p>A clean mobility network with three layers: EV charging stations every 50km along the transport route, eVTOL aircraft for emergency and high-value cargo, and last-mile community logistics using e-rickshaws and cargo bicycles.</p>
+              <p>Each charging station doubles as a water purification node and community kiosk — maximizing the value of every infrastructure investment. The corridor connects Jumla's agri-hub to regional markets.</p>
+              <div class="process-steps">
+                <div class="process-step"><strong>EV Corridor</strong> 50km charging stations — solar-powered, battery swap</div>
+                <div class="process-step"><strong>eVTOL</strong> 100-250km range — medical evac, urgent parts, premium cargo</div>
+                <div class="process-step"><strong>Last Mile</strong> E-rickshaws + cargo bicycles — village to corridor</div>
+                <div class="process-step"><strong>Station Hub</strong> Every station = water + WiFi + battery swap + rest area</div>
+                <div class="process-step"><strong>Reverse Logistics</strong> Return trips carry supplies from market to villages</div>
               </div>
-              <a href="https://github.com/mountaineer-fi/remote-valley-os" class="pillar-contribute">Contribute to this pillar →</a>
+              <div class="pillar-meta">
+                <span><strong>Corridor:</strong> 50km station spacing, scalable to 150km+</span>
+                <span><strong>Vehicles:</strong> E-motorcycles, e-rickshaws, e-cargo trucks</span>
+                <span><strong>eVTOL:</strong> 200-500kg payload, no runway needed</span>
+                <span><strong>Training:</strong> EV operation, battery swap, high-voltage safety</span>
+              </div>
             </div>
             <div class="pillar-detail__image">
-              <img src="/assets/images/landing-1/landing-sticky.jpg" alt="EV logistics network" />
+              <div class="pillar-diagram">
+                <div class="diagram-flow">
+                  <span class="flow-node">Village</span>
+                  <span class="flow-arrow">→</span>
+                  <span class="flow-node">Station</span>
+                  <span class="flow-arrow">→</span>
+                  <span class="flow-node">Corridor</span>
+                  <span class="flow-arrow">→</span>
+                  <span class="flow-node">Market</span>
+                </div>
+              </div>
             </div>
           </div>
         </section>
@@ -113,26 +228,71 @@ const seo = {
         <SectionDivider icon="bolt" />
 
         <section style="margin: var(--section-margin) auto;" id="mesh">
-          <div class="pillar-detail">
+          <div class="pillar-detail pillar-detail--reversed">
             <div class="pillar-detail__text">
-              <span class="pillar-number">05</span>
+              <span class="pillar-number">06</span>
               <h2><Icon name="ic:baseline-wifi" /> Mesh Communication</h2>
-              <p>Cellular coverage in the Himalayas is sparse and unreliable. Satellite internet is expensive. Many remote communities have no connectivity at all.</p>
-              <p>Our approach: a decentralized peer-to-peer mesh network using low-cost radio hardware. No cell towers needed. Each node extends the network. Messages, emergency alerts, and data sync across the mesh. Works with smartphones via local WiFi. Resilient, private, and community-owned.</p>
-              <div class="pillar-meta">
-                <span><strong>Status:</strong> Prototype phase</span>
-                <span><strong>Tech:</strong> LoRa mesh + WiFi nodes + Solar-powered</span>
-                <span><strong>Open Source:</strong> Soon on GitHub</span>
+              <p>A decentralized wireless mesh network using LoRa for long-range backbone (10-15km) and Wi-Fi mesh for local high-bandwidth connectivity. Fully solar-powered, no cellular towers or satellite bills needed.</p>
+              <p>The network enables voice calls, messaging, market prices, weather data, telemedicine, remote learning, and a local LLM — an offline AI assistant that answers technical questions in Nepali. It is the nervous system of the entire blueprint.</p>
+              <div class="process-steps">
+                <div class="process-step"><strong>LoRa Backbone</strong> 915 MHz, 10-15km range, 50 kbps — connects valleys</div>
+                <div class="process-step"><strong>Wi-Fi Mesh</strong> 2.4/5 GHz, 100-300m per node — village connectivity</div>
+                <div class="process-step"><strong>Hub Server</strong> Local LLM, documentation, dashboard — fully offline</div>
+                <div class="process-step"><strong>Edge Nodes</strong> Village, ridge relay, farm, school, charging station</div>
+                <div class="process-step"><strong>Sensor Net</strong> Water quality, energy production, EV data — all on mesh</div>
               </div>
-              <a href="https://github.com/mountaineer-fi/remote-valley-os" class="pillar-contribute">Contribute to this pillar →</a>
+              <div class="pillar-meta">
+                <span><strong>Range:</strong> 10-15km LoRa, 100+ nodes per mesh</span>
+                <span><strong>Power:</strong> 5-15W per node — solar + battery</span>
+                <span><strong>LLM:</strong> Quantized 7B model, Nepali + English, fully offline</span>
+                <span><strong>Training:</strong> 4 levels — Foundation to Master Trainer</span>
+              </div>
             </div>
             <div class="pillar-detail__image">
-              <img src="/assets/images/landing-1/landing-hero-1.jpg" alt="Mesh communication network" />
+              <div class="pillar-diagram">
+                <div class="diagram-flow">
+                  <span class="flow-node">Sensors</span>
+                  <span class="flow-arrow">→</span>
+                  <span class="flow-node">LoRa</span>
+                  <span class="flow-arrow">→</span>
+                  <span class="flow-node">Hub</span>
+                  <span class="flow-arrow">→</span>
+                  <span class="flow-node">Wi-Fi</span>
+                  <span class="flow-arrow">→</span>
+                  <span class="flow-node">People</span>
+                </div>
+              </div>
             </div>
           </div>
         </section>
 
         <SectionDivider icon="star" />
+
+        <section style="margin: var(--section-margin) auto;">
+          <h2>How the Pillars Connect</h2>
+          <div class="integration-grid">
+            <div class="integration-item"><strong>Material Loop:</strong> Trash → Filament → Printed parts for water filters, EV stations, mesh enclosures, food equipment</div>
+            <div class="integration-item"><strong>Energy Loop:</strong> Solar + Hydro → EV charging → EV batteries → Village micro-grid → All modules</div>
+            <div class="integration-item"><strong>Water Loop:</strong> Filtration → Clean water → Reduced plastic bottles → Less waste → More filament feedstock</div>
+            <div class="integration-item"><strong>Food Loop:</strong> Cold storage → Year-round sales → Higher income → Community investment → More infrastructure</div>
+            <div class="integration-item"><strong>Data Loop:</strong> Sensors → Mesh → Dashboard → Alerts → Maintenance → Better uptime</div>
+            <div class="integration-item"><strong>Training Loop:</strong> Build → Document → Train → Test → Knowledge stays permanently</div>
+          </div>
+        </section>
+
+        <CtaCardSection background="var(--theme-surface-2)" color="var(--theme-on-surface-2)">
+          <h2>Built for the Toughest Place on Earth</h2>
+          <p>Every pillar is open source. Every design is field-tested. Fork it, adapt it, deploy it anywhere.</p>
+          <div class="cta-row">
+            <Button href="https://github.com/regenerative-valley-os" customIcon>Fork on GitHub <Fragment slot="icon"><Icon name="ic:baseline-launch"/></Fragment></Button>
+            <Button href="/jumla" unelevated>Jumla Residency</Button>
+            <Button href="/regions" outlined>Deploy in Your Region</Button>
+          </div>
+        </CtaCardSection>
+      </div>
+      <Sidebar context="board" />
+    </div>
+  </Container>
 </Layout>
 
 <style>
@@ -143,13 +303,20 @@ const seo = {
   .pillar-number { font-family: var(--theme-font-family-display); font-size: var(--font-size-xxxl); color: var(--accent-glacial-blue); opacity: 0.3; line-height: 1; display: block; margin-bottom: 0.5rem; }
   .pillar-detail__text h2 { margin-bottom: 1rem; }
   .pillar-detail__text p { margin-bottom: 0.75rem; font-size: var(--font-size-sm); }
+  .process-steps { display: flex; flex-direction: column; gap: 0.35rem; margin: 1rem 0; }
+  .process-step { padding: 0.4rem 0.75rem; background-color: var(--theme-surface-2); border-radius: 0.4rem; font-size: var(--font-size-xs); border-left: 3px solid var(--accent-sunset-orange); }
+  .process-step strong { color: var(--accent-glacial-blue); }
   .pillar-meta { display: flex; flex-direction: column; gap: 0.25rem; margin-top: 1rem; padding: 1rem; background-color: var(--theme-surface-1); border-radius: 0.5rem; font-size: var(--font-size-sm); }
-  .pillar-contribute { display: inline-block; margin-top: 0.75rem; font-weight: 600; font-size: var(--font-size-sm); color: var(--accent-deep-blue); text-decoration: none; }
-  .pillar-contribute:hover { text-decoration: underline; }
-  .pillar-detail__image img { width: 100%; border-radius: var(--theme-shape-radius); }
+  .pillar-diagram { background-color: var(--theme-surface-1); border-radius: var(--theme-shape-radius); padding: 2rem 1rem; display: flex; align-items: center; justify-content: center; min-height: 200px; }
+  .diagram-flow { display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 0.5rem; }
+  .flow-node { padding: 0.5rem 1rem; background-color: var(--accent-glacial-blue); color: var(--charcoal, #2D3436); border-radius: 0.5rem; font-weight: 600; font-size: var(--font-size-sm); }
+  .flow-arrow { font-size: 1.5rem; color: var(--accent-sunset-orange); font-weight: 700; }
+  .integration-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem; margin-top: 1.5rem; }
+  .integration-item { padding: 1rem; background-color: var(--theme-surface-1); border-radius: 0.5rem; font-size: var(--font-size-sm); }
+  .integration-item strong { color: var(--accent-sunset-orange); }
   .cta-row { display: flex; gap: 1rem; justify-content: center; }
   .content-with-sidebar { display: flex; gap: 3rem; align-items: flex-start; }
   .content-main { flex: 1; min-width: 0; }
   @media (max-width: 1024px) { .content-with-sidebar { flex-direction: column; } }
-  @media (max-width: 768px) { .pillar-detail { grid-template-columns: 1fr; } .pillar-detail--reversed .pillar-detail__image { order: 0; } .cta-row { flex-direction: column; align-items: center; } }
+  @media (max-width: 768px) { .pillar-detail { grid-template-columns: 1fr; } .pillar-detail--reversed .pillar-detail__image { order: 0; } .integration-grid { grid-template-columns: 1fr; } .cta-row { flex-direction: column; align-items: center; } }
 </style>
