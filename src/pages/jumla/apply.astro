@@ -1,0 +1,74 @@
+---
+import { Container, Button, CtaCardSection } from '@components/odyssey-theme';
+import Layout from '../../layouts/Page.astro';
+import ApplicationForm from '../../components/forms/ApplicationForm.astro';
+import Sidebar from '../../components/Sidebar.astro';
+import { Icon } from 'astro-icon/components';
+import SectionDivider from '../../components/SectionDivider.astro';
+
+const seo = {
+  title: 'Apply for Jumla Residency | Remote Valley OS',
+  description: 'Apply for the Jumla Residency program — prototype open-source solutions for remote communities in one of the toughest environments on earth.',
+};
+---
+
+<Layout {seo}>
+  <section class="page-hero">
+    <Container>
+      <div class="page-hero__content">
+        <h1>Apply for the Jumla Residency</h1>
+        <p>1 to 3 months in Karnali Province, Nepal. Build and test real solutions in one of the world's most extreme environments.</p>
+      </div>
+    </Container>
+  </section>
+
+  <Container>
+    <div class="content-with-sidebar">
+      <div class="content-main">
+        <section style="margin: var(--section-margin) auto;">
+          <h2>Before You Apply</h2>
+          <div class="prereq-grid">
+            <div class="prereq-card">
+              <h3><Icon name="ic:baseline-laptop" /> Self-Sufficient</h3>
+              <p>You bring your own laptop, personal gear, and the resilience to work in extreme conditions at 3,000m elevation.</p>
+            </div>
+            <div class="prereq-card">
+              <h3><Icon name="ic:baseline-lightbulb" /> Project-Driven</h3>
+              <p>Come with a project idea aligned with one of our 5 pillars. We provide tools, materials, and community connections.</p>
+            </div>
+            <div class="prereq-card">
+              <h3><Icon name="ic:baseline-lock-open" /> Open Source</h3>
+              <p>Everything you build becomes part of the Remote Valley OS. Your work will be documented and shared openly.</p>
+            </div>
+            <div class="prereq-card">
+              <h3><Icon name="ic:baseline-sync" /> Adaptable</h3>
+              <p>Jumla has limited infrastructure. Power, internet, and supply chains are unreliable. Flexibility is essential.</p>
+            </div>
+          </div>
+        </section>
+
+        <SectionDivider icon="compass" />
+
+        <section style="margin: var(--section-margin) auto;">
+          <h2>Application Form</h2>
+          <p>Tell us about yourself and your project. We review applications on a rolling basis.</p>
+          <ApplicationForm />
+        </section>
+      </div>
+      <Sidebar context="jumla" />
+    </div>
+  </Container>
+</Layout>
+
+<style>
+  .page-hero { margin: 0; padding: 6rem 0; background-color: var(--theme-surface-2); border-radius: var(--theme-shape-radius); text-align: center; }
+  .page-hero__content { max-width: 40rem; margin: 0 auto; }
+  .content-with-sidebar { display: flex; gap: 3rem; align-items: flex-start; }
+  .content-main { flex: 1; min-width: 0; }
+  .prereq-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem; margin-top: 1.5rem; }
+  .prereq-card { padding: 1.25rem; border-radius: var(--theme-shape-radius); border: 1px solid var(--theme-surface-1); }
+  .prereq-card h3 { margin-bottom: 0.5rem; font-size: var(--font-size-base); display: flex; align-items: center; gap: 0.5rem; }
+  .prereq-card p { margin: 0; font-size: var(--font-size-sm); }
+  @media (max-width: 1024px) { .content-with-sidebar { flex-direction: column; } }
+  @media (max-width: 768px) { .prereq-grid { grid-template-columns: 1fr; } }
+</style>

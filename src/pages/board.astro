@@ -1,0 +1,155 @@
+---
+import { Container, Button, CtaCardSection } from '@components/odyssey-theme';
+import Layout from '../layouts/Page.astro';
+import { Icon } from 'astro-icon/components';
+import Sidebar from '../components/Sidebar.astro';
+import SectionDivider from '../components/SectionDivider.astro';
+
+const seo = {
+  title: 'Innovation Board — 5 Pillars of Remote Valley OS | Mountaineer.fi',
+  description: 'Open-source solutions for remote regions: trash-to-3D-filament, water purification, food production, EV logistics network, and mesh communication. Field-tested in the Himalayas.',
+};
+---
+
+<Layout {seo}>
+  <section class="page-hero">
+    <Container>
+      <div class="page-hero__content">
+        <h1>Innovation Board</h1>
+        <p>Five interconnected pillars. Each one designed, prototyped, and tested in real remote conditions. All open source.</p>
+      </div>
+    </Container>
+  </section>
+
+  <Container>
+    <div class="content-with-sidebar">
+      <div class="content-main">
+        <section style="margin: var(--section-margin) auto;" id="filament">
+          <div class="pillar-detail">
+            <div class="pillar-detail__text">
+              <span class="pillar-number">01</span>
+              <h2><Icon name="ic:baseline-recycling" /> Trash → 3D Filament</h2>
+              <p>Plastic waste is one of the most visible problems in the Himalayas. Expedition trash, single-use plastics, and discarded packaging accumulate in communities with no formal recycling infrastructure.</p>
+              <p>Our solution: decentralized collection points feeding into processing units that convert waste plastic into high-quality 3D printing filament. This filament powers local manufacturing — producing tools, replacement parts, and products for the community.</p>
+              <div class="pillar-meta">
+                <span><strong>Status:</strong> Prototype phase</span>
+                <span><strong>Tech:</strong> Shredder → Washer → Extruder → Spooler</span>
+                <span><strong>Open Source:</strong> Soon on GitHub</span>
+              </div>
+              <a href="https://github.com/mountaineer-fi/remote-valley-os" class="pillar-contribute">Contribute to this pillar →</a>
+            </div>
+            <div class="pillar-detail__image">
+              <img src="/assets/images/landing-1/landing-hero-1.jpg" alt="Trash to 3D filament recycling" />
+            </div>
+          </div>
+        </section>
+
+        <SectionDivider icon="recycle" />
+
+        <section style="margin: var(--section-margin) auto;" id="water">
+          <div class="pillar-detail pillar-detail--reversed">
+            <div class="pillar-detail__text">
+              <span class="pillar-number">02</span>
+              <h2><Icon name="ic:baseline-water-drop" /> Water Purification</h2>
+              <p>Glacial meltwater carries sediment and natural contaminants. Surface water is often contaminated by animal waste and human activity. Boiling is energy-intensive and unsustainable.</p>
+              <p>Our approach: low-cost, low-maintenance filtration systems using locally available materials. Gravity-fed ceramic filters, UV purification for community centers, and rainwater harvesting designs adapted for high-altitude precipitation patterns.</p>
+              <div class="pillar-meta">
+                <span><strong>Status:</strong> Field testing in Jumla</span>
+                <span><strong>Tech:</strong> Ceramic filtration + UV + Rainwater</span>
+                <span><strong>Open Source:</strong> Soon on GitHub</span>
+              </div>
+              <a href="https://github.com/mountaineer-fi/remote-valley-os" class="pillar-contribute">Contribute to this pillar →</a>
+            </div>
+            <div class="pillar-detail__image">
+              <img src="/assets/images/landing-1/landing-sticky.jpg" alt="Water purification system" />
+            </div>
+          </div>
+        </section>
+
+        <SectionDivider icon="water" />
+
+        <section style="margin: var(--section-margin) auto;" id="food">
+          <div class="pillar-detail">
+            <div class="pillar-detail__text">
+              <span class="pillar-number">03</span>
+              <h2><Icon name="ic:baseline-grass" /> Food Production</h2>
+              <p>Short growing seasons, limited arable land, and expensive supply chains make food security a constant challenge in remote mountain communities.</p>
+              <p>Our solutions: high-altitude greenhouse designs that extend growing seasons, indigenous seed bank preservation to protect biodiversity, and hydroponic systems that work indoors with minimal water. All designs optimized for off-grid operation.</p>
+              <div class="pillar-meta">
+                <span><strong>Status:</strong> Prototype phase</span>
+                <span><strong>Tech:</strong> Greenhouses + Seed banks + Hydroponics</span>
+                <span><strong>Open Source:</strong> Soon on GitHub</span>
+              </div>
+              <a href="https://github.com/mountaineer-fi/remote-valley-os" class="pillar-contribute">Contribute to this pillar →</a>
+            </div>
+            <div class="pillar-detail__image">
+              <img src="/assets/images/landing-1/landing-hero-1.jpg" alt="High-altitude food production" />
+            </div>
+          </div>
+        </section>
+
+        <SectionDivider icon="leaf" />
+
+        <section style="margin: var(--section-margin) auto;" id="ev">
+          <div class="pillar-detail pillar-detail--reversed">
+            <div class="pillar-detail__text">
+              <span class="pillar-number">04</span>
+              <h2><Icon name="ic:baseline-ev-station" /> EV Logistics Network</h2>
+              <p>Transportation in the Himalayas is expensive, polluting, and unreliable. Diesel generators and fossil fuel vehicles dominate, with severe environmental and health consequences.</p>
+              <p>Our vision: an electric vehicle corridor through remote regions, with solar-powered charging stations every 50km. Electric 3-wheelers for last-mile cargo, EV ambulances for medical emergencies, and charging infrastructure that doubles as community microgrids.</p>
+              <div class="pillar-meta">
+                <span><strong>Status:</strong> Research & design</span>
+                <span><strong>Tech:</strong> Solar EV charging + 50km grid + E-rickshaws</span>
+                <span><strong>Open Source:</strong> Coming soon</span>
+              </div>
+              <a href="https://github.com/mountaineer-fi/remote-valley-os" class="pillar-contribute">Contribute to this pillar →</a>
+            </div>
+            <div class="pillar-detail__image">
+              <img src="/assets/images/landing-1/landing-sticky.jpg" alt="EV logistics network" />
+            </div>
+          </div>
+        </section>
+
+        <SectionDivider icon="bolt" />
+
+        <section style="margin: var(--section-margin) auto;" id="mesh">
+          <div class="pillar-detail">
+            <div class="pillar-detail__text">
+              <span class="pillar-number">05</span>
+              <h2><Icon name="ic:baseline-wifi" /> Mesh Communication</h2>
+              <p>Cellular coverage in the Himalayas is sparse and unreliable. Satellite internet is expensive. Many remote communities have no connectivity at all.</p>
+              <p>Our approach: a decentralized peer-to-peer mesh network using low-cost radio hardware. No cell towers needed. Each node extends the network. Messages, emergency alerts, and data sync across the mesh. Works with smartphones via local WiFi. Resilient, private, and community-owned.</p>
+              <div class="pillar-meta">
+                <span><strong>Status:</strong> Prototype phase</span>
+                <span><strong>Tech:</strong> LoRa mesh + WiFi nodes + Solar-powered</span>
+                <span><strong>Open Source:</strong> Soon on GitHub</span>
+              </div>
+              <a href="https://github.com/mountaineer-fi/remote-valley-os" class="pillar-contribute">Contribute to this pillar →</a>
+            </div>
+            <div class="pillar-detail__image">
+              <img src="/assets/images/landing-1/landing-hero-1.jpg" alt="Mesh communication network" />
+            </div>
+          </div>
+        </section>
+
+        <SectionDivider icon="star" />
+</Layout>
+
+<style>
+  .page-hero { margin: var(--section-margin) auto; }
+  .page-hero__content { max-width: 40rem; }
+  .pillar-detail { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: center; padding: 2rem 0; border-bottom: 1px solid var(--theme-surface-1); }
+  .pillar-detail--reversed .pillar-detail__image { order: -1; }
+  .pillar-number { font-family: var(--theme-font-family-display); font-size: var(--font-size-xxxl); color: var(--accent-glacial-blue); opacity: 0.3; line-height: 1; display: block; margin-bottom: 0.5rem; }
+  .pillar-detail__text h2 { margin-bottom: 1rem; }
+  .pillar-detail__text p { margin-bottom: 0.75rem; font-size: var(--font-size-sm); }
+  .pillar-meta { display: flex; flex-direction: column; gap: 0.25rem; margin-top: 1rem; padding: 1rem; background-color: var(--theme-surface-1); border-radius: 0.5rem; font-size: var(--font-size-sm); }
+  .pillar-contribute { display: inline-block; margin-top: 0.75rem; font-weight: 600; font-size: var(--font-size-sm); color: var(--accent-deep-blue); text-decoration: none; }
+  .pillar-contribute:hover { text-decoration: underline; }
+  .pillar-detail__image img { width: 100%; border-radius: var(--theme-shape-radius); }
+  .cta-row { display: flex; gap: 1rem; justify-content: center; }
+  .content-with-sidebar { display: flex; gap: 3rem; align-items: flex-start; }
+  .content-main { flex: 1; min-width: 0; }
+  @media (max-width: 1024px) { .content-with-sidebar { flex-direction: column; } }
+  @media (max-width: 768px) { .pillar-detail { grid-template-columns: 1fr; } .pillar-detail--reversed .pillar-detail__image { order: 0; } .cta-row { flex-direction: column; align-items: center; } }
+</style>

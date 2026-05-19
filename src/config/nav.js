@@ -4,7 +4,23 @@ export const nav = [
 		slug: '/',
 	},
 	{
-		title: 'Blog',
+		title: 'Board',
+		slug: '/board',
+	},
+	{
+		title: 'Jumla',
+		slug: '/jumla',
+	},
+	{
+		title: 'Regions',
+		slug: '/regions',
+	},
+	{
+		title: 'Remote Valley OS',
+		slug: '/remote-valley-os',
+	},
+	{
+		title: 'Stories',
 		slug: '/blog',
 	},
 	{

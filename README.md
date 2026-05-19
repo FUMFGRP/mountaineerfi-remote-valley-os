@@ -1,71 +1,98 @@
-<p align="center">
-  <img src="assets/gh-banner.png" alt="Odyssey Theme Banner">
-</p>
+# mountaineer.fi
 
-<br/>
-<div align="center">
-  <a href="https://twitter.com/jaydanurwin">
-  <img src="assets/twitter-badge.svg" alt="Follow Jaydan Urwin on Twitter"/>
-</a>
-  <a href="https://sapling.lemonsqueezy.com/checkout/buy/9b78751f-6382-442d-ac99-32c2318b70a0">
-    <img src="assets/sponsor-badge.svg" alt="Sponsor This Repo" />
-  </a>
-</div>
-<br/>
+**Peaks, not paperwork.**
 
-# Odyssey Theme
+Mountaineer.fi is a Himalayan climbing resource and the home of **Remote Valley OS** — an open-source blueprint for self-sufficient, regenerative valley communities.
 
-Odyssey Theme is a modern theme/starter for a business or startup's marketing website. It provides landing page examples, a full-featured blog, contact forms, and more. It is fully themeable to match your business' branding and style. It even includes a theme switcher component to show how easily the entire style of the site can be changed with only a few lines of CSS.
+We operate in three lanes:
 
-## Features
+| Lane | What We Do |
+|---|---|
+| **Expeditions** | Dry-priced climbing permits and basecamp access on four Nepalese peaks |
+| **Content Archive** | Long-form articles on training, gear, expedition history, and high-altitude science |
+| **Remote Valley OS** | Open-source framework for remote community infrastructure — all hardware, software, and documentation free under open-source licenses |
 
-<p align="center">
-  <img src="assets/lh-screenshot.png" alt="Screenshot of perfect score in Lighthouse benchmark">
-</p>
+---
 
+## Remote Valley OS
 
-- ✅ **A perfect score in Lighthouse**
-- ✅ **Blazing fast performance thanks to Astro 🚀**
-- ✅ **A Full Featured Blog with Tagging**
-- ✅ **Fully theme-able styles with for buttons, shapes, backgrounds, surfaces, etc.**
-- ✅ **Responsive, mobile-friendly landing pages**
-- ✅ **SEO Best Practices (Open Graph, Canonical URLs, sitemap)**
-- ✅ **Performant Local Fonts Setup**
-- ✅ **Contact Forms Setup for Netlify, Formspree, Formspark, etc.**
-- ✅ **A package of ready-to-use UI components**
+Remote Valley OS is a collection of five interconnected infrastructure systems, field-tested in Jumla, Nepal (May 2026):
 
+- ♻️ **Trash to Filament** — waste plastic → shredded → extruded → 3D printer filament
+- 💧 **Water Purification** — pre-filter → membrane → UV → clean drinking water
+- ⚡ **Energy Microgrid** — solar + hydro + battery, 24/7 village power
+- 🍎 **Food Production** — cold storage, cider press, vinegar, dehydrator
+- 🚗 **Logistics EV** — 50km EV corridor with charging stations
+- 📡 **Mesh Communication** — LoRa backbone + Wi-Fi clusters + local LLM
 
-## Demo
+All designs are open source. Hardware under **CERN OHL-S**, software under **AGPL-3.0**, documentation under **CC BY-SA 4.0**.
 
-View a [live demo](https://odyssey-theme.sapling.supply/) of the Odyssey Theme.
+Learn more: [mountaineer.fi/rv-os](https://remotevalley.mountaineer.fi)
 
-## Documentation
+---
 
-1. View the [Theme Setup Guide](https://odyssey-theme.sapling.supply/theme/theme-setup)
-2. View the [Customizing the Theme Guide](https://odyssey-theme.sapling.supply/theme/customizing-odyssey)
+## Tech Stack
 
-## Usage
+- **Framework:** [Astro](https://astro.build) 4.x
+- **UI:** Lit web components + Astro islands
+- **Styling:** CSS custom properties (fully themeable)
+- **Deployment:** Netlify / Deno Deploy
+- **Content:** Markdown + MDX
+
+## Getting Started
 
 ```bash
-cd theme
-
+cd odyssey-theme
 npm install
-
-npm start
+npm run dev
 ```
 
-## Deploy
+Build for production:
 
-Feel free to deploy and host your site on your favorite static hosting service such as Netlify, Firebase Hosting, Vercel, GitHub Pages, etc.
+```bash
+npm run build
+npm run preview
+```
 
-Astro has [an in-depth guide](https://docs.astro.build/en/guides/deploy/) on how to deploy an Astro project to each service.
+---
 
-## Sponsor
+## Repository Map
 
-If you find this theme useful, please consider donating to support the continued development of it with the link below
+```
+odyssey-theme/
+├── src/
+│   ├── content/          # All content (27+ markdown files)
+│   │   ├── modules/      # RV-OS module documentation (7 files)
+│   │   └── ...           # Brand, launch, community, and core pages
+│   ├── components/       # Reusable UI components (Lit + Astro)
+│   ├── layouts/          # Page layout templates
+│   ├── pages/            # Route pages (index, about, company/*)
+│   └── styles/           # Global styles and theme definitions
+├── public/               # Static assets
+├── assets/               # Images, logos, brand assets
+├── .github/              # Issue templates, CI/CD workflows, funding
+└── astro.config.mjs      # Astro configuration
+```
 
-[Donate to Odyssey Theme](https://sapling.lemonsqueezy.com/checkout/buy/9b78751f-6382-442d-ac99-32c2318b70a0)
+---
 
-## Support
+## Contributing
 
-Please feel free to post issues or submit PRs to this repo and we will do our best to respond in a timely manner, keeping in mind this template is offered for free as is on GitHub.
+See [CONTRIBUTING.md](src/content/CONTRIBUTING.md) for full guidelines.
+
+Quick start:
+1. Find a `good-first-issue` in any repository
+2. Fork and create a branch
+3. Submit a pull request against `develop`
+
+---
+
+## License
+
+- **Code:** AGPL-3.0 (see [LICENSE](LICENSE))
+- **Documentation:** CC BY-SA 4.0
+- **Hardware designs:** CERN OHL-S
+
+---
+
+*Built by climbers, for climbers.*

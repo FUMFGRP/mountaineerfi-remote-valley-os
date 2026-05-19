@@ -21,15 +21,15 @@ const { seo } = Astro.props as Props;
 		<span slot="logo">
 			<Logo />
 		</span>
-		<Button slot="action-item" href="/theme/get-started">Get Started</Button>
+		<Button slot="action-item" href="/board">Explore the Board</Button>
 	</Header>
 	<div id="page">
 		<slot />
 	</div>
 	<Footer
 		slot="footer"
-		background="var(--theme-surface-1)"
-		color="var(--theme-on-surface-1)"
+		background="var(--theme-surface-2)"
+		color="var(--theme-on-surface-2)"
 		footerLists={footerLists}
     footerSocials={footerSocials}
 		copyrightName={settings.name}

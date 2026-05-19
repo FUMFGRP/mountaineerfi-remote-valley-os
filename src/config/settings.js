@@ -1,8 +1,8 @@
 export default {
-	title: `Odyssey Astro Theme | A Marketing Website Theme for Startups and Businesses`,
-	description: `A simple, clean, and modern theme for a startup or businesses' marketing website.`,
-	url: `https://odyssey-theme.sapling.supply`, // No trailing slash!
-	name: `Odyssey`, // The short name of the business or brand name. Used for things like the copyright in the footer.
-	enableThemeSwitcher: true,
-	showPlug: true, // Disable this if you want to remove the plug from the footer. (╯°□°)╯︵ ┻━┻
+	title: `Remote Valley OS — Open Innovation for the World's Toughest Environment | Mountaineer.fi`,
+	description: `An open-source blueprint for innovation in remote regions. 5 pillars: trash-to-filament, water purification, food production, EV logistics, mesh networks. Field-tested in Jumla, Nepal.`,
+	url: `https://remotevalley.mountaineer.fi`,
+	name: `Remote Valley OS`,
+	enableThemeSwitcher: false,
+	showPlug: false,
 };

@@ -1,6 +1,5 @@
 ---
 import settings from '../../config/settings.js';
-import ThemeProvider from '../theme-switcher/ThemeProvider.astro';
 
 import '../../styles/index.css';
 
@@ -21,6 +20,10 @@ const image = new URL(Astro.props.image || './social.png', Astro.site);
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width" />
 <link rel="icon" type="image/png" href="/favicon.png" />
+<!-- Google Fonts: Montserrat + Caveat -->
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@700&family=Montserrat:wght@300;400;600;700&display=swap" rel="stylesheet" />
 <!-- Primary Meta Tags -->
 <title>{title}</title>
 <meta name="title" content={title} />
@@ -42,8 +45,21 @@ const image = new URL(Astro.props.image || './social.png', Astro.site);
 <meta property="twitter:description" content={description} />
 <meta property="twitter:image" content={image} />
 
-<!-- For Demonstration of the themes -->
-{settings.enableThemeSwitcher && <ThemeProvider />}
+<!-- Organization Schema -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "Remote Valley OS by Mountaineer.fi",
+  "url": "https://remotevalley.mountaineer.fi",
+  "logo": "https://mountaineer.fi/favicon.png",
+  "description": "Open-source innovation blueprint for remote regions. 5 pillars: trash-to-filament, water purification, food production, EV logistics, mesh networks.",
+  "sameAs": [
+    "https://youtube.com/@mountaineerfi",
+    "https://instagram.com/mountaineer.fi"
+  ]
+}
+</script>
 
 <!-- Google Analytics -->
 <script>

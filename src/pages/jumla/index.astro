@@ -1,0 +1,133 @@
+---
+import { Container, Button, CtaCardSection } from '@components/odyssey-theme';
+import Layout from '../../layouts/Page.astro';
+import { Icon } from 'astro-icon/components';
+import Sidebar from '../../components/Sidebar.astro';
+import SectionDivider from '../../components/SectionDivider.astro';
+
+const seo = {
+  title: 'Jumla Field Study & Residency Program | Remote Valley OS | Mountaineer.fi',
+  description: 'Apply for the Jumla Residency — prototype open-source solutions for remote communities in one of the toughest environments on earth. Karnali Province, Nepal.',
+};
+---
+
+<Layout {seo}>
+  <section class="page-hero">
+    <Container>
+      <div class="page-hero__content">
+        <h1>Jumla Field Study</h1>
+        <p>In the remote highlands of Karnali Province, at 3,000 meters elevation, Jumla is our living laboratory. If a solution works here, it works anywhere.</p>
+      </div>
+    </Container>
+  </section>
+
+  <Container>
+    <section style="margin: var(--section-margin) auto;">
+      <div class="jumla-intro">
+        <div class="jumla-intro__text">
+          <h2>Why Jumla?</h2>
+          <p>Jumla is one of Nepal's most remote districts. Accessible only by small aircraft or a week-long trek from the nearest road head. Winters are brutal, infrastructure is minimal, and every supply chain is a challenge.</p>
+          <p>This is precisely why we work here. Jumla concentrates every problem the Remote Valley OS is designed to solve — plastic waste, contaminated water, food insecurity, energy poverty, lack of connectivity, and extreme isolation.</p>
+          <p>If we can build solutions that work in Jumla, they will work in any remote community on earth.</p>
+        </div>
+        <div class="jumla-intro__stats">
+          <div class="jumla-stat"><strong>3,000m</strong> Elevation</div>
+          <div class="jumla-stat"><strong>-10°C</strong> Winter avg</div>
+          <div class="jumla-stat"><strong>1</strong> Airstrip connection</div>
+          <div class="jumla-stat"><strong>5</strong> Pillars tested</div>
+        </div>
+      </div>
+    </section>
+  </Container>
+
+  <Container>
+    <section style="margin: var(--section-margin) auto;">
+      <h2>Residency Program</h2>
+      <p style="max-width: 40rem;">The Jumla Residency brings innovators, engineers, designers, and researchers to live and work in one of the world's most extreme environments. You'll prototype real solutions alongside local communities.</p>
+
+      <div class="residency-details">
+        <div class="residency-card">
+          <h3>Duration</h3>
+          <p>1 to 3 months. Long enough to build and test meaningful prototypes, short enough to fit into a sabbatical or project cycle.</p>
+        </div>
+        <div class="residency-card">
+          <h3>What's Provided</h3>
+          <p>Accommodation, local meals, in-country logistics support, community introductions, and access to our prototyping tools and materials.</p>
+        </div>
+        <div class="residency-card">
+          <h3>What You Bring</h3>
+          <p>Your skills, your project idea, your own gear if needed (laptop, specialized tools), and the resilience to work in extreme conditions.</p>
+        </div>
+        <div class="residency-card">
+          <h3>Who Should Apply</h3>
+          <p>Engineers, industrial designers, software developers, agricultural scientists, water specialists, renewable energy experts, and anyone building open-source solutions for remote communities.</p>
+        </div>
+      </div>
+    </section>
+  </Container>
+
+  <Container>
+    <div class="content-with-sidebar">
+      <div class="content-main">
+    <section style="margin: var(--section-margin) auto;">
+      <h2>Why Jumla?</h2>
+      ...
+    </section>
+
+    <SectionDivider icon="mountain" />
+
+    <section style="margin: var(--section-margin) auto;">
+      <h2>Residency Program</h2>
+      ...
+    </section>
+
+    <SectionDivider icon="star" />
+
+    <section style="margin: var(--section-margin) auto;">
+      <h2>Field Study Areas</h2>
+      ...
+    </section>
+      </div>
+      <Sidebar context="jumla" />
+    </div>
+  </Container>
+
+  <CtaCardSection background="var(--theme-surface-1)" color="var(--theme-on-surface-1)">
+    <h2>Apply for the Jumla Residency</h2>
+    <p>We're accepting applications for the next cohort. Tell us about your project and why you want to build it in the toughest place on earth.</p>
+    <Button href="/jumla/apply" customIcon>Apply Now <Fragment slot="icon"><Icon name="ic:baseline-chevron-right"/></Fragment></Button>
+  </CtaCardSection>
+
+  <CtaCardSection background="var(--theme-surface-2)" color="var(--theme-on-surface-2)">
+    <h2>Follow the Field Work</h2>
+    <p>Watch our team build, test, and iterate in Jumla. Every prototype, every failure, every breakthrough — documented openly.</p>
+    <div class="cta-row">
+      <Button href="https://youtube.com/@mountaineerfi" customIcon>YouTube <Fragment slot="icon"><Icon name="ic:baseline-launch"/></Fragment></Button>
+      <Button href="https://github.com/mountaineer-fi/remote-valley-os" unelevated>GitHub</Button>
+    </div>
+  </CtaCardSection>
+</Layout>
+
+<style>
+  .page-hero { margin: var(--section-margin) auto; }
+  .page-hero__content { max-width: 40rem; }
+  .jumla-intro { display: grid; grid-template-columns: 2fr 1fr; gap: 2rem; align-items: start; }
+  .jumla-intro__text p { margin-bottom: 1rem; }
+  .jumla-intro__stats { display: flex; flex-direction: column; gap: 0.75rem; }
+  .jumla-stat { padding: 1rem; background-color: var(--theme-surface-1); border-radius: 0.5rem; text-align: center; font-size: var(--font-size-sm); }
+  .jumla-stat strong { display: block; font-family: var(--theme-font-family-display); font-size: var(--font-size-lg); color: var(--accent-sunset-orange); }
+  .residency-details { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.5rem; margin-top: 2rem; }
+  .residency-card { padding: 1.5rem; background-color: var(--theme-surface-1); border-radius: var(--theme-shape-radius); }
+  .residency-card h3 { margin-bottom: 0.5rem; }
+  .residency-card p { margin: 0; font-size: var(--font-size-sm); }
+  .field-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; margin-top: 2rem; }
+  .field-card { padding: 1.5rem; border-radius: var(--theme-shape-radius); border: 1px solid var(--theme-surface-1); }
+  .field-card h3 { margin-bottom: 0.5rem; font-size: var(--font-size-md); }
+  .field-card p { margin: 0; font-size: var(--font-size-sm); }
+  .cta-row { display: flex; gap: 1rem; justify-content: center; }
+  .content-with-sidebar { display: flex; gap: 3rem; align-items: flex-start; }
+  .content-main { flex: 1; min-width: 0; }
+  @media (max-width: 1024px) { .content-with-sidebar { flex-direction: column; } }
+  @media (max-width: 768px) { .jumla-intro { grid-template-columns: 1fr; } .residency-details { grid-template-columns: 1fr; } .field-grid { grid-template-columns: 1fr; } .cta-row { flex-direction: column; align-items: center; } }
+</style>
+

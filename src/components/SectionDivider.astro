@@ -1,0 +1,49 @@
+---
+import { Icon } from 'astro-icon/components';
+
+export type DividerIcon = 'mountain' | 'water' | 'leaf' | 'bolt' | 'wifi' | 'recycle' | 'rocket' | 'compass' | 'star';
+
+interface Props {
+  icon?: DividerIcon;
+}
+
+const { icon = 'mountain' } = Astro.props;
+
+const iconMap: Record<DividerIcon, string> = {
+  mountain: 'ic:baseline-mountain-flag',
+  water: 'ic:baseline-water-drop',
+  leaf: 'ic:baseline-eco',
+  bolt: 'ic:baseline-bolt',
+  wifi: 'ic:baseline-wifi',
+  recycle: 'ic:baseline-recycling',
+  rocket: 'ic:baseline-rocket-launch',
+  compass: 'ic:baseline-explore',
+  star: 'ic:baseline-star',
+};
+---
+
+<div class="section-divider">
+  <span class="section-divider__line"></span>
+  <Icon name={iconMap[icon]} />
+  <span class="section-divider__line"></span>
+</div>
+
+<style>
+  .section-divider {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    padding: 2rem 0;
+  }
+  .section-divider__line {
+    flex: 1;
+    max-width: 120px;
+    height: 1px;
+    background: linear-gradient(to right, transparent, var(--accent-glacial-blue), transparent);
+  }
+  .section-divider :global(svg) {
+    color: var(--accent-sunset-orange);
+    opacity: 0.6;
+  }
+</style>

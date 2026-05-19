@@ -1,16 +1,37 @@
 ---
 layout: '../../../layouts/Post.astro'
-title: Odyssey Theme Has Officially Been Released!
-description: This is a sample blog post for Odyssey
-publishDate: May 15, 2022
+title: 'From Trash to 3D Filament: Prototyping a Plastic Recycling Line'
+description: Building a low-cost plastic shredder, washer, and filament extruder in Jumla. Turning expedition waste into 3D printing feedstock for remote manufacturing.
+publishDate: January 10, 2026
 featuredImage: '/assets/images/blog/odyssey-theme-officially-released/featured.jpg'
-excerpt: 'The time has come to officially release Odyssey Theme to the world. Learn more about what it is and how you can start using it today.'
-tags: 
-  - Odyssey Theme
+excerpt: 'Himalayan communities are buried in plastic waste. Expedition trash, single-use bottles, and packaging with no recycling infrastructure. Our solution: turn it into 3D printing filament for local manufacturing.'
+tags: ['Trash to Filament', 'Hardware']
 ---
 
-import {Button} from '@components/odyssey-theme'
+Himalayan communities are buried in plastic waste. Expedition trash, single-use water bottles, and packaging materials accumulate with no formal recycling infrastructure. Burning is common, releasing toxic fumes into valleys that already struggle with air quality.
 
-## Getting Started
+Our solution: a decentralized plastic recycling line that converts waste into 3D printing filament.
 
-To get started with the Odyssey Theme clone the [Odyssey Theme Repository](https://gixthub.com/treefarmstudio/odyssey-theme) directly from GitHub .
+## The Machine
+
+We built a three-stage system using locally available components:
+
+**Stage 1: Shredder** — An electric motor drives a set of interlocking blades that reduce plastic containers to flakes. The design is adapted from the Precious Plastic open-source shredder, modified for high-altitude use with a sealed bearing housing to prevent dust ingress.
+
+**Stage 2: Washer** — A simple drum washer that agitates plastic flakes with water and biodegradable soap. The wash water is filtered and recycled — no wastewater discharge.
+
+**Stage 3: Extruder** — A heated screw barrel that melts the plastic flakes and extrudes them as consistent 1.75mm filament. Temperature control is critical: too hot and the plastic degrades, too cold and the diameter fluctuates. We built a PID controller from an Arduino Nano.
+
+## First Results
+
+After two weeks of tuning, we produced our first 100 meters of usable filament from locally collected HDPE (milk jugs and bottle caps). The filament diameter stayed within ±0.05mm tolerance — usable for most FDM 3D printers.
+
+## What We're Printing
+
+The first test prints were practical: replacement handles for farming tools, water filter housings, and enclosures for mesh network nodes. Each printed part replaces something that would otherwise need to be flown or trekked in from Kathmandu.
+
+## Open Source
+
+The full design — CAD files, BOM, firmware, and assembly guide — will be published on GitHub under the CERN Open Hardware License. Anyone building in a remote region can adapt the design to their local plastic waste stream.
+
+Want to build your own recycling line? Start with the /board blueprint or apply for the Jumla residency to work alongside the team.

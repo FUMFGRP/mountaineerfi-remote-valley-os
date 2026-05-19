@@ -7,6 +7,7 @@ import {
 } from '@components/odyssey-theme';
 import Layout from '../../layouts/Page.astro';
 import NewsletterForm from '../../components/forms/NewsletterForm.astro';
+import Sidebar from '../../components/Sidebar.astro';
 
 const posts = await Astro.glob('./posts/*.mdx').then(posts =>
 	posts
@@ -27,25 +28,29 @@ const posts = await Astro.glob('./posts/*.mdx').then(posts =>
 );
 
 const seo = {
-	title: 'Blog | Astro Odyssey Theme',
-	description: 'Astro Odyssey Theme Blog Page',
+	title: 'Field Reports | Remote Valley OS',
+	description: 'Field reports, technical guides, and stories from the Remote Valley OS project. Open-source innovation in the world\'s toughest environments.',
 };
 ---
 
 <Layout {seo}>
 	<Container>
-		<TextCardSection>
-			<h1>Odyssey Blog</h1>
-			<p>
-				View our blog to stay up to date on the latest news about our business.
-				Want to be the first to hear about a new blog post? Join our newsletter!
-			</p>
-			<NewsletterForm />
-		</TextCardSection>
-		<section class="blog-posts-list__section">
-			<h2>Recent Posts</h2>
-			<BlogPostsList posts={posts} />
-		</section>
+		<div class="content-with-sidebar">
+			<div class="content-main">
+				<TextCardSection>
+					<h1>Field Reports</h1>
+					<p>
+						Stories from the field — Jumla updates, technical deep-dives, and community reports from the Remote Valley OS project.
+					</p>
+					<NewsletterForm />
+				</TextCardSection>
+				<section class="blog-posts-list__section">
+					<h2>Recent Reports</h2>
+					<BlogPostsList posts={posts} />
+				</section>
+			</div>
+			<Sidebar context="blog" />
+		</div>
 	</Container>
 </Layout>
 
@@ -53,4 +58,7 @@ const seo = {
 	.blog-posts-list__section {
 		margin: var(--section-margin) auto;
 	}
+	.content-with-sidebar { display: flex; gap: 3rem; align-items: flex-start; }
+	.content-main { flex: 1; min-width: 0; }
+	@media (max-width: 1024px) { .content-with-sidebar { flex-direction: column; } }
 </style>

@@ -1,0 +1,29 @@
+---
+import { Icon } from 'astro-icon/components';
+import { Button, FormInput, FormSelect, FormTextarea } from '@components/odyssey-theme';
+
+const durationOptions = ['1 month', '2 months', '3 months', 'Flexible'];
+const skillOptions = ['Engineering', 'Industrial Design', 'Software Development', 'Agriculture / Food Systems', 'Water / Sanitation', 'Renewable Energy', 'Research / Science', 'Community Organizing', 'Filmmaking / Media', 'Other'];
+const hearOptions = ['Google Search', 'GitHub', 'YouTube', 'Instagram', 'Word of Mouth', 'Other'];
+---
+
+<form name="Jumla Application" method="POST" action="/thank-you">
+  <div class="app-form">
+    <FormInput type="text" label="Full Name" name="name" placeholder="Your full name" required />
+    <FormInput type="email" label="Email Address" name="email" placeholder="you@example.com" required />
+    <FormSelect label="Preferred Duration" name="duration" options={durationOptions} />
+    <FormSelect label="Primary Skill Area" name="skills" options={skillOptions} />
+    <FormTextarea label="Your Project Idea" name="project" placeholder="Tell us what you want to build or work on during the residency. What problem are you solving? What's your approach?" />
+    <FormTextarea label="Relevant Experience" name="experience" placeholder="Briefly describe your background and why you're a good fit for the Jumla Residency." />
+    <FormSelect label="How Did You Hear About Us?" name="hear" options={hearOptions} />
+    <Button customIcon>Submit Application <Fragment slot="icon"><Icon name="ic:baseline-chevron-right"/></Fragment></Button>
+  </div>
+</form>
+
+<style>
+  .app-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+  }
+</style>

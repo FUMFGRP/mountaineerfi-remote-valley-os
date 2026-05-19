@@ -1,0 +1,166 @@
+---
+import { Button } from '@components/odyssey-theme';
+import { Icon } from 'astro-icon/components';
+
+export type SidebarContext = 'board' | 'jumla' | 'rvos' | 'blog' | 'default';
+
+interface Props {
+  context?: SidebarContext;
+}
+
+const { context = 'default' } = Astro.props;
+
+interface CtaItem {
+  href: string;
+  label: string;
+  icon?: string;
+  variant: 'primary' | 'outlined' | 'unelevated';
+}
+
+const ctaSets: Record<SidebarContext, CtaItem[]> = {
+  board: [
+    { href: 'https://github.com/mountaineer-fi/remote-valley-os', label: 'Contribute on GitHub', icon: 'ic:baseline-code', variant: 'primary' },
+    { href: '/jumla/apply', label: 'Apply for Residency', icon: 'ic:baseline-assignment', variant: 'outlined' },
+    { href: '/regions', label: 'Deploy in Your Region', icon: 'ic:baseline-public', variant: 'unelevated' },
+  ],
+  jumla: [
+    { href: '/jumla/apply', label: 'Apply Now', icon: 'ic:baseline-assignment', variant: 'primary' },
+    { href: '/contact', label: 'Ask a Question', icon: 'ic:baseline-email', variant: 'outlined' },
+    { href: '/board', label: 'Explore the Board', icon: 'ic:baseline-dashboard', variant: 'unelevated' },
+  ],
+  rvos: [
+    { href: 'https://github.com/mountaineer-fi/remote-valley-os', label: 'Fork on GitHub', icon: 'ic:baseline-code', variant: 'primary' },
+    { href: '/regions', label: 'Start a Chapter', icon: 'ic:baseline-rocket-launch', variant: 'outlined' },
+    { href: '/board', label: 'View the Board', icon: 'ic:baseline-dashboard', variant: 'unelevated' },
+  ],
+  blog: [
+    { href: '/jumla/apply', label: 'Apply for Residency', icon: 'ic:baseline-assignment', variant: 'primary' },
+    { href: 'https://github.com/mountaineer-fi/remote-valley-os', label: 'Contribute on GitHub', icon: 'ic:baseline-code', variant: 'outlined' },
+    { href: '/board', label: 'Explore the Board', icon: 'ic:baseline-dashboard', variant: 'unelevated' },
+  ],
+  default: [
+    { href: '/board', label: 'Explore the Board', icon: 'ic:baseline-dashboard', variant: 'primary' },
+    { href: '/jumla/apply', label: 'Apply for Residency', icon: 'ic:baseline-assignment', variant: 'outlined' },
+    { href: 'https://github.com/mountaineer-fi/remote-valley-os', label: 'GitHub', icon: 'ic:baseline-code', variant: 'unelevated' },
+  ],
+};
+
+const ctas = ctaSets[context] || ctaSets.default;
+---
+
+<aside class="sidebar">
+  <div class="sidebar__card">
+    <h3 class="sidebar__title">Get Involved</h3>
+    <div class="sidebar__ctas">
+      {ctas.map((cta) => (
+        cta.variant === 'primary' ? (
+          <Button href={cta.href} customIcon>
+            {cta.label}
+            {cta.icon && (
+              <Fragment slot="icon">
+                <Icon name={cta.icon} />
+              </Fragment>
+            )}
+          </Button>
+        ) : cta.variant === 'outlined' ? (
+          <Button href={cta.href} outlined customIcon>
+            {cta.label}
+            {cta.icon && (
+              <Fragment slot="icon">
+                <Icon name={cta.icon} />
+              </Fragment>
+            )}
+          </Button>
+        ) : (
+          <Button href={cta.href} unelevated customIcon>
+            {cta.label}
+            {cta.icon && (
+              <Fragment slot="icon">
+                <Icon name={cta.icon} />
+              </Fragment>
+            )}
+          </Button>
+        )
+      ))}
+    </div>
+    <div class="sidebar__divider"></div>
+    <div class="sidebar__social">
+      <p>Follow the project</p>
+      <div class="sidebar__social-links">
+        <a href="https://github.com/mountaineer-fi/remote-valley-os" target="_blank" rel="noopener" title="GitHub">
+          <Icon name="mdi:github" />
+        </a>
+        <a href="https://youtube.com/@mountaineerfi" target="_blank" rel="noopener" title="YouTube">
+          <Icon name="mdi:youtube" />
+        </a>
+        <a href="https://instagram.com/mountaineer.fi" target="_blank" rel="noopener" title="Instagram">
+          <Icon name="mdi:instagram" />
+        </a>
+      </div>
+    </div>
+  </div>
+</aside>
+
+<style>
+  .sidebar {
+    width: 280px;
+    flex-shrink: 0;
+  }
+  .sidebar__card {
+    position: sticky;
+    top: calc(var(--navbar-height, 4rem) + 1.5rem);
+    padding: 1.5rem;
+    background-color: var(--theme-surface-1);
+    border-radius: var(--theme-shape-radius);
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+  .sidebar__title {
+    font-family: var(--theme-font-family-display);
+    font-size: var(--font-size-lg);
+    margin: 0;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid var(--accent-sunset-orange);
+  }
+  .sidebar__ctas {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+  .sidebar__divider {
+    height: 1px;
+    background-color: var(--theme-surface-2);
+    opacity: 0.3;
+  }
+  .sidebar__social {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+  .sidebar__social p {
+    font-size: var(--font-size-xs);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    opacity: 0.5;
+    margin: 0;
+  }
+  .sidebar__social-links {
+    display: flex;
+    gap: 0.75rem;
+  }
+  .sidebar__social-links a {
+    color: var(--theme-on-surface-1);
+    opacity: 0.5;
+    transition: opacity 0.2s, transform 0.2s;
+    display: inline-flex;
+  }
+  .sidebar__social-links a:hover {
+    opacity: 1;
+    transform: translateY(-2px);
+  }
+  @media (max-width: 1024px) {
+    .sidebar { width: 100%; }
+    .sidebar__card { position: static; }
+  }
+</style>

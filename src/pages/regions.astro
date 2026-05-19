@@ -1,0 +1,117 @@
+---
+import { Container, Button, CtaCardSection } from '@components/odyssey-theme';
+import Layout from '../layouts/Page.astro';
+import { Icon } from 'astro-icon/components';
+import Sidebar from '../components/Sidebar.astro';
+import SectionDivider from '../components/SectionDivider.astro';
+
+const seo = {
+  title: 'Deploy Remote Valley OS in Your Region | Remote Valley OS',
+  description: 'A step-by-step blueprint for adapting and deploying the Remote Valley OS open-source framework in any remote community worldwide.',
+};
+
+const steps = [
+  { num: '01', icon: 'ic:baseline-assignment', title: 'Assess Your Community', desc: 'Identify the specific challenges your remote community faces. Map existing infrastructure, waste flows, water sources, energy access, food systems, and connectivity.', deliverables: 'Community assessment report, priority ranking of needs' },
+  { num: '02', icon: 'ic:baseline-people', title: 'Form a Local Team', desc: 'Recruit 3-5 people from the community who will lead the implementation. Technical skills help but local knowledge and commitment matter more.', deliverables: 'Core team identified, roles defined' },
+  { num: '03', icon: 'ic:baseline-dashboard', title: 'Choose Your Pillars', desc: 'Not every region needs all 5 pillars. Start with the 1-2 most critical challenges. Our modular design lets you adopt what you need.', deliverables: 'Pillar selection, initial scope document' },
+  { num: '04', icon: 'ic:baseline-settings', title: 'Adapt the Blueprints', desc: 'Fork our GitHub repositories and adapt the designs to your local materials, climate, and constraints. Every blueprint includes adaptation guides.', deliverables: 'Localized designs, bill of materials' },
+  { num: '05', icon: 'ic:baseline-science', title: 'Prototype & Test', desc: 'Build a first prototype with locally available materials. Test in real conditions. Document failures and successes. Iterate.', deliverables: 'Working prototype, test results' },
+  { num: '06', icon: 'ic:baseline-share', title: 'Share & Contribute Back', desc: 'Document your adaptations and share them with the global RVOS community. Your improvements help every other region. Submit PRs, write field reports, join the network.', deliverables: 'Published adaptation guide, community contribution' },
+];
+---
+
+<Layout {seo}>
+  <section class="page-hero">
+    <Container>
+      <div class="page-hero__content">
+        <h1>Deploy in Your Region</h1>
+        <p>A six-step blueprint for adapting the Remote Valley OS framework to any remote community in the world. Open source. Modular. Community-driven.</p>
+        <div class="hero-ctas">
+          <Button href="https://github.com/mountaineer-fi/remote-valley-os" customIcon>Start with the Repos <Fragment slot="icon"><Icon name="ic:baseline-launch"/></Fragment></Button>
+          <Button href="/contact" outlined>Talk to the Team</Button>
+        </div>
+      </div>
+    </Container>
+  </section>
+
+  <Container>
+    <div class="content-with-sidebar">
+      <div class="content-main">
+        <section style="margin: var(--section-margin) auto;">
+          <h2>The Six-Step Blueprint</h2>
+          <div class="steps-list">
+            {steps.map((step) => (
+              <div class="step-card">
+                <span class="step-number"><Icon name={step.icon} /></span>
+                <div class="step-content">
+                  <h3>{step.title}</h3>
+                  <p>{step.desc}</p>
+                  <div class="step-deliverable">
+                    <strong>Deliverable:</strong> {step.deliverables}
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        <SectionDivider icon="rocket" />
+
+        <section style="margin: var(--section-margin) auto;">
+          <h2>What You Get</h2>
+          <div class="benefits-grid">
+            <div class="benefit-card">
+              <h3><Icon name="ic:baseline-folder-open" /> Complete Blueprints</h3>
+              <p>CAD files, schematics, BOMs, and deployment guides for all 5 pillars. Everything is open source under MIT / CERN OHL.</p>
+            </div>
+            <div class="benefit-card">
+              <h3><Icon name="ic:baseline-groups" /> Community Support</h3>
+              <p>Join a global network of communities adapting RVOS. Get help from engineers, designers, and field practitioners who have done it before.</p>
+            </div>
+            <div class="benefit-card">
+              <h3><Icon name="ic:baseline-school" /> Training Materials</h3>
+              <p>Step-by-step training guides for each pillar. Designed for community-level adoption with minimal technical prerequisites.</p>
+            </div>
+            <div class="benefit-card">
+              <h3><Icon name="ic:baseline-place" /> Jumla Residency</h3>
+              <p>Send a team member to our Jumla field lab for hands-on training. Learn by doing alongside experienced practitioners.</p>
+            </div>
+          </div>
+        </section>
+
+        <SectionDivider icon="star" />
+
+        <CtaCardSection background="var(--theme-surface-1)" color="var(--theme-on-surface-1)">
+          <h2>Ready to Start?</h2>
+          <p>Fork the repositories, read the docs, and join the community. Every region that adopts RVOS makes the framework stronger for everyone.</p>
+          <div class="cta-row">
+            <Button href="https://github.com/mountaineer-fi/remote-valley-os" customIcon>Fork on GitHub <Fragment slot="icon"><Icon name="ic:baseline-launch"/></Fragment></Button>
+            <Button href="/jumla/apply" unelevated>Apply for Training</Button>
+          </div>
+        </CtaCardSection>
+      </div>
+      <Sidebar context="rvos" />
+    </div>
+  </Container>
+</Layout>
+
+<style>
+  .page-hero { margin: var(--section-margin) auto; padding: 4rem 0; background-color: var(--theme-surface-2); border-radius: var(--theme-shape-radius); }
+  .page-hero__content { max-width: 40rem; margin: 0 auto; text-align: center; }
+  .hero-ctas { display: flex; gap: 1rem; margin-top: 1.5rem; justify-content: center; }
+  .content-with-sidebar { display: flex; gap: 3rem; align-items: flex-start; }
+  .content-main { flex: 1; min-width: 0; }
+  .steps-list { display: flex; flex-direction: column; gap: 1rem; margin-top: 1.5rem; }
+  .step-card { display: grid; grid-template-columns: auto 1fr; gap: 1.5rem; padding: 1.5rem; background-color: var(--theme-surface-1); border-radius: var(--theme-shape-radius); align-items: center; }
+  .step-number { font-size: 2.5rem; color: var(--accent-sunset-orange); display: flex; align-items: center; }
+  .step-content h3 { margin-bottom: 0.5rem; }
+  .step-content p { margin: 0 0 0.75rem; font-size: var(--font-size-sm); }
+  .step-deliverable { font-size: var(--font-size-sm); padding: 0.5rem 0.75rem; background-color: var(--theme-surface-2); border-radius: 0.25rem; color: var(--theme-on-surface-2); }
+  .benefits-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.5rem; margin-top: 1.5rem; }
+  .benefit-card { padding: 1.5rem; border-radius: var(--theme-shape-radius); border: 1px solid var(--theme-surface-1); }
+  .benefit-card h3 { margin-bottom: 0.5rem; display: flex; align-items: center; gap: 0.5rem; }
+  .benefit-card p { margin: 0; font-size: var(--font-size-sm); }
+  .cta-row { display: flex; gap: 1rem; justify-content: center; }
+  @media (max-width: 1024px) { .content-with-sidebar { flex-direction: column; } }
+  @media (max-width: 768px) { .benefits-grid { grid-template-columns: 1fr; } .hero-ctas { flex-direction: column; } .cta-row { flex-direction: column; align-items: center; } }
+</style>

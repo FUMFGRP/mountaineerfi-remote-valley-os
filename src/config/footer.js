@@ -1,54 +1,57 @@
 export const footerSocials = [
   {
-    name: 'Twitter',
-    url: 'https://twitter.com/jaydanurwin',
-    icon: "mdi:twitter",
-  },
-  {
-    name: 'Youtube',
-    url: 'https://youtube.com/@jaydanurwin',
-    icon: "mdi:youtube",
-  },
-  {
     name: 'Github',
-    url: 'https://github.com/jaydanurwin',
+    url: 'https://github.com/mountaineer-fi/remote-valley-os',
     icon: "mdi:github",
   },
   {
-    name: 'Discord',
-    url: 'https://astro.build/chat',
-    icon: "ic:baseline-discord",
+    name: 'Youtube',
+    url: 'https://youtube.com/@mountaineerfi',
+    icon: "mdi:youtube",
+  },
+  {
+    name: 'Instagram',
+    url: 'https://instagram.com/mountaineer.fi',
+    icon: "mdi:instagram",
   },
 ]
 
 export const footerLists = [
 	{
-		title: 'Landing Pages',
+		title: 'Remote Valley OS',
 		items: [
 			{
-				title: 'Landing Page 1',
-				slug: '/landing-pages/landing-1',
+				title: 'Board',
+				slug: '/board',
 			},
 			{
-				title: 'Landing Page 2',
-				slug: '/landing-pages/landing-2',
+				title: 'Jumla Residency',
+				slug: '/jumla',
 			},
-      // {
-			// 	title: 'Landing Page 3',
-			// 	slug: '/landing-pages/landing-3',
-			// },
+			{
+				title: 'Apply Now',
+				slug: '/jumla/apply',
+			},
+			{
+				title: 'Technical Blueprint',
+				slug: '/remote-valley-os',
+			},
 		],
 	},
 	{
-		title: 'Company',
+		title: 'More',
 		items: [
+			{
+				title: 'Deploy in Your Region',
+				slug: '/regions',
+			},
+			{
+				title: 'Stories',
+				slug: '/blog',
+			},
 			{
 				title: 'About',
 				slug: '/company/about',
-			},
-			{
-				title: 'Blog',
-				slug: '/blog',
 			},
 			{
 				title: 'Contact',
@@ -57,24 +60,12 @@ export const footerLists = [
 		],
 	},
 	{
-		title: 'Theme',
+		title: 'Mountaineer.fi',
 		items: [
 			{
-				title: 'Get Started',
-				slug: '/theme/get-started',
+				title: 'Main Site →',
+				slug: 'https://mountaineer.fi',
 			},
-			{
-				title: 'Style Guide',
-				slug: '/theme/style-guide',
-			},
-      {
-        title: 'Theme Setup',
-        slug: '/theme/theme-setup',
-      },
-      {
-        title: 'Customizing Odyssey',
-        slug: '/theme/customizing-odyssey',
-      }
 		],
 	},
 ];
