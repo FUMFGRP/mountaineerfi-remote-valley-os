@@ -35,7 +35,7 @@ We will keep you informed throughout the process.
 
 ### In Scope
 
-- All repositories under the [regenerative-valley-os](https://github.com/regenerative-valley-os) GitHub organization
+- All repositories under the [regenerative-valley-os](https://github.com/FUMFGRP/mountaineerfi-remote-valley-os) GitHub organization
 - Firmware running on deployed hardware (sensor nodes, mesh nodes, charge controllers)
 - RV-OS core API and data pipelines
 - Local LLM deployment and data handling

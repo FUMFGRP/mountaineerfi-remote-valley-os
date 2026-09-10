@@ -1,7 +1,7 @@
 export const footerSocials = [
   {
     name: 'Github',
-    url: 'https://github.com/mountaineer-fi/remote-valley-os',
+    url: 'https://github.com/FUMFGRP/mountaineerfi-remote-valley-os',
     icon: "mdi:github",
   },
   {

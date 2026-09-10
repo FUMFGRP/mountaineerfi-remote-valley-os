@@ -149,8 +149,8 @@ All contributors are credited in the CHANGELOG of the relevant module. Contribut
 
 ### Step 2: Join the Community
 
-- **GitHub:** github.com/regenerative-valley-os
-- **Discussions:** github.com/regenerative-valley-os/rv-os-community/discussions
+- **GitHub:** github.com/FUMFGRP/mountaineerfi-remote-valley-os
+- **Discussions:** github.com/FUMFGRP/mountaineerfi-remote-valley-os/discussions
 - **Contact:** accelerator@mountaineer.fi
 
 ### Step 3: Introduce Yourself

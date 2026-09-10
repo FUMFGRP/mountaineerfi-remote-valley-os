@@ -55,7 +55,7 @@ Phase 1 construction and the first residency cohort are now being recruited. The
 - Funding partners for equipment, logistics, and training
 - Pilot communities in other regions ready to adapt the blueprint
 
-The blueprint and all related materials are available immediately at **mountaineer.fi** and **github.com/regenerative-valley-os**.
+The blueprint and all related materials are available immediately at **mountaineer.fi** and **github.com/FUMFGRP/mountaineerfi-remote-valley-os**.
 
 ---
 
@@ -65,7 +65,7 @@ The blueprint and all related materials are available immediately at **mountaine
 [Title]
 Email: media@mountaineer.fi
 Website: mountaineer.fi
-GitHub: github.com/regenerative-valley-os
+GitHub: github.com/FUMFGRP/mountaineerfi-remote-valley-os
 
 ### Download Assets
 

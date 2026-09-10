@@ -96,7 +96,7 @@ Everything in this project is **open source**. This means:
 - Anyone can use them. Anyone can modify them. Anyone can share them.
 - No licenses. No fees. No company that can take it away.
 
-The plans live on **GitHub** at [github.com/regenerative-valley-os](https://github.com/regenerative-valley-os). This is like a public library where anyone can read, copy, and suggest improvements.
+The plans live on **GitHub** at [github.com/FUMFGRP/mountaineerfi-remote-valley-os](https://github.com/FUMFGRP/mountaineerfi-remote-valley-os). This is like a public library where anyone can read, copy, and suggest improvements.
 
 ### Why Open Source Matters
 
@@ -166,7 +166,7 @@ We did the field study. We wrote the plan. Now we build.
 ## Contact
 
 - **Website:** [mountaineer.fi](https://mountaineer.fi)
-- **GitHub:** [github.com/regenerative-valley-os](https://github.com/regenerative-valley-os)
+- **GitHub:** [github.com/FUMFGRP/mountaineerfi-remote-valley-os](https://github.com/FUMFGRP/mountaineerfi-remote-valley-os)
 - **Email:** contact@mountaineer.fi
 
 ---

@@ -78,7 +78,7 @@ You do not need to travel to Nepal to make a difference. The Innovation Accelera
 
 **How it works:**
 
-1. Visit our GitHub organization at github.com/regenerative-valley-os
+1. Visit our GitHub organization at github.com/FUMFGRP/mountaineerfi-remote-valley-os
 2. Browse open tasks in the rv-accelerator repository
 3. Pick something that matches your skills
 4. Fork the repository, make your contribution, and submit a pull request
@@ -120,7 +120,7 @@ You do not need our permission. You do not need to apply. The blueprint is free 
 
 **If you are from a remote community anywhere in the world:**
 
-1. Download the plans from GitHub at github.com/regenerative-valley-os
+1. Download the plans from GitHub at github.com/FUMFGRP/mountaineerfi-remote-valley-os
 2. Read the documentation
 3. Adapt the designs to your local conditions, crops, climate, and language
 4. Start building
@@ -154,7 +154,7 @@ Your work — whether you are in Jumla, in Kathmandu, in Helsinki, or anywhere e
 - **Residency applications:** residency@mountaineer.fi
 - **Partnerships:** partners@mountaineer.fi
 - **Community adaptations:** community@mountaineer.fi
-- **GitHub:** github.com/regenerative-valley-os
+- **GitHub:** github.com/FUMFGRP/mountaineerfi-remote-valley-os
 - **Website:** mountaineer.fi
 
 ---

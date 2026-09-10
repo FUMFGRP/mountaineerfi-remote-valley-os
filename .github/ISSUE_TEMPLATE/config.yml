@@ -1,8 +1,8 @@
 blank_issues_enabled: false
 contact_links:
   - name: Community Discussion
-    url: https://github.com/regenerative-valley-os/mountaineer.fi/discussions
+    url: https://github.com/FUMFGRP/mountaineerfi-remote-valley-os/discussions
     about: Questions, ideas, and general conversation belong in Discussions.
   - name: Security Issue
-    url: https://github.com/regenerative-valley-os/mountaineer.fi/security/policy
+    url: https://github.com/FUMFGRP/mountaineerfi-remote-valley-os/security/policy
     about: Please report security vulnerabilities via security@mountaineer.fi — not through a public issue.

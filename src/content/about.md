@@ -71,7 +71,7 @@ The project lives as a subdomain of **Mountaineer.fi** because we believe that s
 ## Contact
 
 - **Website:** [mountaineer.fi](https://mountaineer.fi)
-- **GitHub:** [github.com/regenerative-valley-os](https://github.com/regenerative-valley-os)
+- **GitHub:** [github.com/FUMFGRP/mountaineerfi-remote-valley-os](https://github.com/FUMFGRP/mountaineerfi-remote-valley-os)
 - **Email:** contact@mountaineer.fi
 - **Media inquiries:** media@mountaineer.fi
 

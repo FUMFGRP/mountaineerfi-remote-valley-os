@@ -10,7 +10,9 @@ const selectOptions = [
 
 ---
 
-<form name="Contact Form" method="POST" action="/contact-thank-you" >
+<form name="Landing Contact Form" method="POST" action="/thank-you" data-netlify="true" netlify-honeypot="bot-field">
+  <input type="hidden" name="form-name" value="Landing Contact Form" />
+  <p hidden><label>Don't fill this out if you're human: <input name="bot-field" /></label></p>
   <FormInput type="text" label="First Name" name="First Name" placeholder="John" />
   <FormInput type="text" label="Last Name" name="Last Name" placeholder="Doe" />
   <FormInput type="email" label="Email" name="Email" placeholder="hello@example.com" />

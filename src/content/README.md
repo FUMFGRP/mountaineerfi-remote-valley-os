@@ -11,7 +11,7 @@ Everything is open source. Free to use. Free to adapt. Free to share.
 ### Quick Links
 
 - **Website:** [mountaineer.fi](https://mountaineer.fi)
-- **GitHub:** [github.com/regenerative-valley-os](https://github.com/regenerative-valley-os)
+- **GitHub:** [github.com/FUMFGRP/mountaineerfi-remote-valley-os](https://github.com/FUMFGRP/mountaineerfi-remote-valley-os)
 - **Get Involved:** [Join the Project](join.md)
 - **Press Kit:** [press-release-2026.md](press-release-2026.md)
 - **License:** CERN OHL-S (hardware) · AGPL-3.0 (software) · CC BY-SA 4.0 (docs)

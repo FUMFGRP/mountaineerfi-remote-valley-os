@@ -85,7 +85,7 @@ No minimum. Contribute for an hour or a year. Every contribution is credited.
 
 ### How do I start?
 
-Visit [github.com/regenerative-valley-os](https://github.com/regenerative-valley-os) and look for issues labeled "good first issue" or browse the `rv-accelerator` repository.
+Visit [github.com/FUMFGRP/mountaineerfi-remote-valley-os](https://github.com/FUMFGRP/mountaineerfi-remote-valley-os) and look for issues labeled "good first issue" or browse the `rv-accelerator` repository.
 
 ---
 
@@ -129,7 +129,7 @@ Every resident works alongside local counterparts. Local knowledge informs every
 
 ### I have a question that is not here.
 
-Email **contact@mountaineer.fi** or open a discussion on [GitHub](https://github.com/regenerative-valley-os).
+Email **contact@mountaineer.fi** or open a discussion on [GitHub](https://github.com/FUMFGRP/mountaineerfi-remote-valley-os).
 
 ---
 

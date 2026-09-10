@@ -7,7 +7,9 @@ const skillOptions = ['Engineering', 'Industrial Design', 'Software Development'
 const hearOptions = ['Google Search', 'GitHub', 'YouTube', 'Instagram', 'Word of Mouth', 'Other'];
 ---
 
-<form name="Jumla Application" method="POST" action="/thank-you">
+<form name="Jumla Application" method="POST" action="/thank-you" data-netlify="true" netlify-honeypot="bot-field">
+  <input type="hidden" name="form-name" value="Jumla Application" />
+  <p hidden><label>Don't fill this out if you're human: <input name="bot-field" /></label></p>
   <div class="app-form">
     <FormInput type="text" label="Full Name" name="name" placeholder="Your full name" required />
     <FormInput type="email" label="Email Address" name="email" placeholder="you@example.com" required />

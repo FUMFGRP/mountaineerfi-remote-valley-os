@@ -43,7 +43,7 @@ All hardware designs, software, firmware, documentation, and training materials 
 - **Software:** GNU Affero General Public License (AGPL-3.0)
 - **Documentation:** Creative Commons BY-SA 4.0
 
-[Contribute on GitHub →](https://github.com/regenerative-valley-os)
+[Contribute on GitHub →](https://github.com/FUMFGRP/mountaineerfi-remote-valley-os)
 
 ---
 
@@ -70,4 +70,4 @@ All hardware designs, software, firmware, documentation, and training materials 
 
 **The blueprint is free. The knowledge is open. The invitation is for everyone.**
 
-[mountaineer.fi](https://mountaineer.fi) · [github.com/regenerative-valley-os](https://github.com/regenerative-valley-os) · [contact@mountaineer.fi](mailto:contact@mountaineer.fi)
+[mountaineer.fi](https://mountaineer.fi) · [github.com/FUMFGRP/mountaineerfi-remote-valley-os](https://github.com/FUMFGRP/mountaineerfi-remote-valley-os) · [contact@mountaineer.fi](mailto:contact@mountaineer.fi)

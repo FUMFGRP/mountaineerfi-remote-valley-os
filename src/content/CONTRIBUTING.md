@@ -55,9 +55,9 @@ If you see something missing that you want to build, open an issue and describe 
 Fork the repository on GitHub, then clone your fork locally.
 
 ```bash
-git clone https://github.com/YOUR-USERNAME/REPOSITORY-NAME.git
-cd REPOSITORY-NAME
-git remote add upstream https://github.com/regenerative-valley-os/REPOSITORY-NAME.git
+git clone https://github.com/YOUR-USERNAME/mountaineerfi-remote-valley-os.git
+cd mountaineerfi-remote-valley-os
+git remote add upstream https://github.com/FUMFGRP/mountaineerfi-remote-valley-os.git
 ```
 
 ### Step 2: Create a Branch
@@ -192,7 +192,7 @@ Always open pull requests against **`develop`**, not `main`.
 
 ## Getting Help
 
-- **Open a discussion:** github.com/regenerative-valley-os/rv-os-community/discussions
+- **Open a discussion:** github.com/FUMFGRP/mountaineerfi-remote-valley-os/discussions
 - **Tag a maintainer:** If you are stuck on an issue, ask for help in the comments
 - **Email:** accelerator@mountaineer.fi
 - **Monthly community call:** Join the live video meetup — details posted in Discussions

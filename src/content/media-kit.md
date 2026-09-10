@@ -14,7 +14,7 @@
 | **License** | Hardware: CERN OHL-S / Software: AGPL-3.0 / Docs: CC BY-SA 4.0 |
 | **Location** | Jumla District, Karnali Province, Nepal |
 | **Website** | https://mountaineer.fi/rv-os |
-| **GitHub** | https://github.com/regenerative-valley-os |
+| **GitHub** | https://github.com/FUMFGRP/mountaineerfi-remote-valley-os |
 | **Contact** | media@mountaineer.fi |
 
 ---
