@@ -190,4 +190,4 @@ You can start in the Accelerator and later apply for a residency, or vice versa.
 
 ---
 
-*Part of the Regenerative Valley Blueprint — an open-source project by Mountaineer.fi*
+*Part of Remote Valley OS — an open-source project by Mountaineer.fi*

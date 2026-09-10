@@ -1,4 +1,4 @@
-# Remote Valley OS — The Regenerative Valley Blueprint
+# Remote Valley OS — A blueprint for regenerative valleys
 
 **An open-source plan to help remote villages thrive. Starting in Jumla, Nepal. Free for the whole world.**
 

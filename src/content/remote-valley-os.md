@@ -240,4 +240,4 @@ Independent RV-OS deployments in different regions, each adapted to local condit
 
 ---
 
-*Part of the Regenerative Valley Blueprint. Licensed under AGPL-3.0 (software) and CC BY-SA 4.0 (documentation).*
+*Part of Remote Valley OS. Licensed under AGPL-3.0 (software) and CC BY-SA 4.0 (documentation).*

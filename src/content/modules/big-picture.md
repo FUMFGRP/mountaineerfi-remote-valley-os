@@ -1,6 +1,6 @@
 # The Big Picture — How Everything Connects
 
-**The Regenerative Valley Blueprint is not five separate projects. It is one integrated system where every module feeds into and depends on the others.**
+**Remote Valley OS is not five separate projects. It is one integrated system where every module feeds into and depends on the others.**
 
 ---
 
@@ -193,4 +193,4 @@ The output of the Jumla pilot is not just a functioning community. It is a **rep
 
 ---
 
-*Part of the Regenerative Valley Blueprint — an open-source project by Mountaineer.fi*
+*Part of Remote Valley OS — an open-source project by Mountaineer.fi*

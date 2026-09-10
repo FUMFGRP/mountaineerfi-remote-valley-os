@@ -185,4 +185,4 @@ The rv-adaptations repository contains photos, templates, and lessons learned fr
 
 ---
 
-*Part of the Regenerative Valley Blueprint. Licensed under CC BY-SA 4.0.*
+*Part of Remote Valley OS. Licensed under CC BY-SA 4.0.*

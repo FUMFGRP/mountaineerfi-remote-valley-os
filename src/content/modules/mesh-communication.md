@@ -231,4 +231,4 @@ Communities can:
 
 ---
 
-*Part of the Regenerative Valley Blueprint — an open-source project by Mountaineer.fi*
+*Part of Remote Valley OS — an open-source project by Mountaineer.fi*

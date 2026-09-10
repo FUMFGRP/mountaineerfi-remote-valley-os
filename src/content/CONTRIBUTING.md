@@ -211,4 +211,4 @@ We celebrate your work. You are part of this project.
 
 ---
 
-*Part of the Regenerative Valley Blueprint. Licensed under open-source hardware and software licenses.*
+*Part of Remote Valley OS. Licensed under open-source hardware and software licenses.*

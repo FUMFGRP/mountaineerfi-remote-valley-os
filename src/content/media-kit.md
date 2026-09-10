@@ -129,4 +129,4 @@ A: Yes. Every design file, BOM, firmware source, and documentation page is avail
 
 ---
 
-*Part of the Regenerative Valley Blueprint — an open-source project by Mountaineer.fi*
+*Part of Remote Valley OS — an open-source project by Mountaineer.fi*

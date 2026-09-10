@@ -219,4 +219,4 @@ This governance model itself is open source. It is adapted from best practices i
 
 ---
 
-*Part of the Regenerative Valley Blueprint — an open-source project by Mountaineer.fi*
+*Part of Remote Valley OS — an open-source project by Mountaineer.fi*

@@ -2,11 +2,11 @@
 
 ## Open-Source Blueprint to Transform Remote Regions Worldwide Launches from the Himalayas
 
-**Regenerative Valley Blueprint offers free, field-tested plans for circular economies in the world's most challenging environments — starting with a pilot in Jumla, Nepal.**
+**Remote Valley OS offers free, field-tested plans for circular economies in the world's most challenging environments — starting with a pilot in Jumla, Nepal.**
 
 ---
 
-**Jumla, Nepal / Helsinki, Finland — June 2026** — A team of researchers, engineers, and community development practitioners today announced the launch of the **Regenerative Valley Blueprint**, an open-source, modular framework designed to transform remote, resource-constrained regions into self-sustaining circular economies.
+**Jumla, Nepal / Helsinki, Finland — June 2026** — A team of researchers, engineers, and community development practitioners today announced the launch of **Remote Valley OS**, an open-source, modular framework for regenerative valleys designed to transform remote, resource-constrained regions into self-sustaining circular economies.
 
 The blueprint is grounded in a three-week pilot field study conducted on-site in **Jumla District, Karnali Province, Nepal** — one of the country's most remote and logistically challenging regions. The study assessed geography, hydrology, solar and wind potential, waste streams, agricultural value chains, and community infrastructure gaps.
 
@@ -26,7 +26,7 @@ The findings form the basis of five interconnected systems that together turn a 
 
 ### Knowledge Transfer as the Core Innovation
 
-Unlike traditional development models where systems fail after external support ends, the Regenerative Valley Blueprint prioritizes knowledge permanence. An on-site **Residency Program** brings engineers, scientists, and educators to live and work alongside local communities. Each resident follows a four-stage process: build, document, train, and test — ensuring at least three local operators can independently run and repair every system before the resident departs.
+Unlike traditional development models where systems fail after external support ends, Remote Valley OS prioritizes knowledge permanence. An on-site **Residency Program** brings engineers, scientists, and educators to live and work alongside local communities. Each resident follows a four-stage process: build, document, train, and test — ensuring at least three local operators can independently run and repair every system before the resident departs.
 
 A parallel **Education Pipeline** creates a permanent pathway from community member to Master Trainer:
 
@@ -39,7 +39,7 @@ The goal: within two years, local Master Trainers operate all systems, and exter
 
 ### Open Source for Global Replication
 
-All designs, firmware, documentation, and training materials are released under open-source licenses — CERN OHL-S for hardware, AGPL-3.0 for software, and CC BY-SA 4.0 for documentation. The entire project lives on GitHub under the **regenerative-valley-os** organization, where any community, organization, or individual can download, adapt, and deploy the plans without permission or fees.
+All designs, firmware, documentation, and training materials are released under open-source licenses — CERN OHL-S for hardware, AGPL-3.0 for software, and CC BY-SA 4.0 for documentation. The entire project lives on GitHub at **FUMFGRP/mountaineerfi-remote-valley-os**, where any community, organization, or individual can download, adapt, and deploy the plans without permission or fees.
 
 > "Remote regions are not empty. They are rich in sun, water, wind, soil, and human ingenuity," said [Name], Project Lead. "What they lack is not resources. What they lack is the integration — the systems that connect what they have to what they need. And the training that keeps those systems running. This blueprint exists to fill that gap. If it works in Jumla — one of the hardest, most isolated places on Earth — it can work anywhere."
 
