@@ -3,6 +3,9 @@ dist/
 .output/
 .astro/
 
+# netlify local state (site link + cached auth)
+.netlify/
+
 # dependencies
 node_modules/
 
