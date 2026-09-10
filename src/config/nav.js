@@ -1,9 +1,5 @@
 export const nav = [
 	{
-		title: 'Home',
-		slug: '/',
-	},
-	{
 		title: 'Board',
 		slug: '/board',
 	},
@@ -12,31 +8,34 @@ export const nav = [
 		slug: '/jumla',
 	},
 	{
+		title: 'RV-OS',
+		slug: '/remote-valley-os',
+	},
+	{
 		title: 'Regions',
 		slug: '/regions',
 	},
 	{
-		title: 'Remote Valley OS',
-		slug: '/remote-valley-os',
+		title: 'Community',
+		slug: '/community',
 	},
+];
+
+export const navSecondary = [
 	{
-		title: 'Stories',
-		slug: '/blog',
+		title: 'FAQ',
+		slug: '/faq',
 	},
 	{
 		title: 'About',
 		slug: '/company/about',
 	},
 	{
-		title: 'FAQ',
-		slug: '/faq',
-	},
-	{
-		title: 'Community',
-		slug: '/community',
-	},
-	{
 		title: 'Contact',
 		slug: '/company/contact',
+	},
+	{
+		title: 'Stories',
+		slug: '/blog',
 	},
 ];

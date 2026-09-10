@@ -1,14 +1,16 @@
-# Jumla Pilot — Field Study Report (May 2026)
+# Jumla Pilot — Feasibility Assessment (May 2026)
 
-**3 weeks on-site in Jumla District, Karnali Province, Nepal**
+**Persona-based feasibility study for Jumla District, Karnali Province, Nepal**
 
 ---
 
 ## Executive Summary
 
-From May 1-21, 2026, a team from Mountaineer.fi conducted a 21-day field study in Jumla District, Nepal — one of the most remote districts in the country. The objective was to assess the feasibility of deploying the five-module Remote Valley OS blueprint in a real off-grid environment and to co-design the systems with the community that would operate them.
+In May 2026, Mountaineer.fi conducted a feasibility assessment for deploying the five-module Remote Valley OS blueprint in Jumla District, Nepal — one of the most remote districts in the country. The assessment used environmental analysis and persona-based simulations rather than live community workshops. The objective was to determine whether the blueprint is technically viable in this environment and to identify likely community responses and critical adaptations.
 
-**Key finding:** The blueprint is viable. All five modules are technically feasible in this environment. Community interest and participation exceeded expectations. Four critical adaptations were identified for the Jumla deployment.
+**Key finding:** The blueprint appears technically viable. All five modules are feasible in this environment based on available data. Persona simulations project strong community interest. Four critical adaptations were identified for a potential Jumla deployment.
+
+**Disclaimer:** This assessment is directional, not definitive. It is based on published data, remote analysis, and persona-based simulations — not on live community engagement. Proper field studies with real community participation should be conducted before any deployment commitments are made.
 
 ---
 
@@ -32,14 +34,18 @@ From May 1-21, 2026, a team from Mountaineer.fi conducted a 21-day field study i
 
 ## Methodology
 
+This field study used **simulated community meetings** based on local environment analysis and persona profiles constructed from published demographic data, NGO field reports, and publicly available census information for Jumla District. No live community workshops were conducted.
+
 | Method | Description |
 |---|---|
-| **Household surveys** | 40 households across the village (stratified by income, location, household size) |
-| **Key informant interviews** | Village head, school principal, health post nurse, 2 shopkeepers, 4 farmers |
-| **Community workshops** | 3 workshops (15-25 participants each) — system demonstration + co-design |
-| **Technical site survey** | Solar irradiance, water sources, road conditions, building assessments |
-| **Resource mapping** | Waste generation, water availability, agricultural output, skills inventory |
-| **Prototype testing** | 2 systems deployed and tested on-site (water filter, LoRa node) |
+| **Environmental analysis** | Solar irradiance data, water source mapping, road condition assessment, topographic analysis from satellite imagery and published surveys |
+| **Persona-based simulation** | 8 personas constructed from census data and NGO profiles (village head, health post nurse, lead farmer, school principal, solar technician, shopkeeper, young adult, mother) — each used to simulate likely community responses to proposed modules |
+| **Simulated community meetings** | 3 structured simulations using persona profiles to model problem identification, solution co-design, and governance preferences |
+| **Technical site survey** | Solar irradiance, water sources, road conditions, building assessments — from published data and remote sensing |
+| **Resource mapping** | Waste generation estimates, water availability, agricultural output, skills inventory — from district-level statistics and comparable remote community studies |
+| **Prototype feasibility** | 2 systems assessed for technical viability (water filter, LoRa node) based on component specs and local conditions |
+
+**Important disclaimer:** These findings are directional, not definitive. The persona-based simulations provide reasonable projections of community needs and likely responses, but they are not a substitute for proper field research. A scoped study with real community participation — including informed consent, local leadership approval, and culturally appropriate engagement — should be conducted before any deployment decisions are made. The numbers presented here are estimates and projections, not measured field data.
 
 ---
 
@@ -54,12 +60,12 @@ From May 1-21, 2026, a team from Mountaineer.fi conducted a 21-day field study i
 | Plastic waste generation | ~8kg per household per month (packaging, bottles, bags) |
 | Current disposal | Open burning (60%), buried (25%), reused (15%) |
 | Available feedstock | PET bottles (most common), HDPE (containers), PP (bags) |
-| Community interest | Very high — waste is a visible problem and burning creates health issues |
+| Community interest | Projected very high — based on persona profiles reflecting frustration with waste and health impacts of burning |
 | Skills available | Basic mechanical repair, some welding |
 
-**Key finding:** Village generates an estimated 960kg of plastic waste per month. Current open burning causes respiratory issues, especially in children. A single extruder processing 5kg/day would consume 15% of monthly waste in the first year. Community members expressed strong interest in having a local source of 3D printer filament.
+**Key finding:** Village generates an estimated 960kg of plastic waste per month. Current open burning causes respiratory issues, especially in children. A single extruder processing 5kg/day would consume 15% of monthly waste in the first year. Persona profiles project strong interest in having a local source of 3D printer filament.
 
-**Cultural note:** Waste is seen as shameful — villagers expressed embarrassment about plastic litter. A solution that turns waste into valuable material is culturally resonant.
+**Cultural note:** Waste is a visible and sensitive issue in remote communities — plastic litter is a source of embarrassment. Persona projections suggest a solution that turns waste into valuable material would be culturally resonant.
 
 ### 2. Water Purification
 
@@ -72,7 +78,7 @@ From May 1-21, 2026, a team from Mountaineer.fi conducted a 21-day field study i
 | Dry season availability | Spring flow drops 60% in March-April |
 | Water quality tests | Turbidity: 5-15 NTU (wet season), 2-5 NTU (dry). Coliform detected in 30% of samples |
 | Current treatment | None (boiling is rare due to firewood cost) |
-| Community interest | Very high — waterborne illness is the top health concern |
+| Community interest | Projected very high — persona profiles reflect waterborne illness as the top health concern |
 
 **Key finding:** Diarrheal disease is the most common presenting complaint at the health post, especially in children under 5. A single point-of-use purification node at the health post serving 500 people/day is the highest-impact first deployment. The pre-existing gravity-fed piped system means no pumping is needed — only filtration and UV treatment at the point of use.
 
@@ -113,7 +119,7 @@ From May 1-21, 2026, a team from Mountaineer.fi conducted a 21-day field study i
 
 **Adaptation needed:** Cider production requires regulatory approval (alcohol licensing). Dried apples and vinegar have no regulatory barriers and can launch immediately.
 
-**Cultural note:** Apple farming is the primary identity of the village. Improving apple value chains is seen as the most important project by community members.
+**Cultural note:** Apple farming is central to Jumla's identity. Persona projections suggest improving apple value chains would be seen as the most important intervention by the community.
 
 ### 5. Logistics EV Corridor
 
@@ -125,7 +131,7 @@ From May 1-21, 2026, a team from Mountaineer.fi conducted a 21-day field study i
 | Current transport | 4WD jeeps (shared, 1-2 per week to district center), motorcycles |
 | Distance to market | 40km to nearest paved road, 80km to district center |
 | EV suitability | Terrain is steep (8-15% grade average), range limited by battery |
-| Community interest | Medium — seen as aspirational but not urgent |
+| Community interest | Projected medium — persona profiles reflect aspiration but practical concern about road conditions |
 
 **Key finding:** An EV corridor is not the highest priority for this village. The road conditions make EVs challenging (rough terrain, limited range, charging infrastructure required). However, a single EV cargo vehicle for farm-to-market transport (apples to cold storage, then to road head) could be immediately useful.
 
@@ -140,7 +146,7 @@ From May 1-21, 2026, a team from Mountaineer.fi conducted a 21-day field study i
 | Mobile coverage | 2G only in village center, no data at village edge |
 | Internet need | Health post telemedicine, weather data, market prices, educational content |
 | Topography | Deep valley — one ridge blocks signal from nearest tower |
-| Community interest | High — especially for health post connectivity |
+| Community interest | Projected high — persona profiles reflect strong desire for health post connectivity |
 
 **Key finding:** Lack of reliable communication is the second highest concern after water quality. A LoRa mesh network spanning the valley (5km village corridor) with a single Wi-Fi gateway at the school would provide messaging, sensor data relay, and limited internet access via satellite backhaul.
 
@@ -148,57 +154,64 @@ From May 1-21, 2026, a team from Mountaineer.fi conducted a 21-day field study i
 
 ---
 
-## Community Workshop Outcomes
+## Simulated Community Meeting Outcomes
 
-### Workshop 1: Problem Identification (Day 4, 19 participants)
+The following results are from **persona-based simulations** — structured exercises using profiles constructed from census data, NGO reports, and published research on comparable remote communities in Karnali Province. These are not outcomes from live community workshops.
 
-Top 5 community-identified priorities:
-1. **Clean drinking water** (unanimous)
-2. **Electricity reliability** (current solar home systems fail in winter)
-3. **Farm income** (apple prices too low, no storage)
-4. **Health post connectivity** (telemedicine requested by the nurse)
-5. **Waste management** (visible plastic problem)
+### Simulation 1: Problem Identification
 
-### Workshop 2: Solution Co-Design (Day 9, 22 participants)
+Top 5 projected community priorities (based on persona consensus):
 
-Community members were presented with each module concept and asked to provide feedback:
+1. **Clean drinking water** (projected as unanimous — consistent with health post data showing diarrheal disease as top complaint)
+2. **Electricity reliability** (solar home systems underperform in winter; persona profiles reflect frustration with limited night-time power)
+3. **Farm income** (apple prices suppressed by middlemen; no cold storage forces immediate sale at harvest)
+4. **Health post connectivity** (telemedicine identified as a critical gap in persona profiles for the nurse and principal)
+5. **Waste management** (visible plastic accumulation; persona profiles reflect concern about burning waste near homes)
 
-| Module | Enthusiasm | Concerns |
+### Simulation 2: Solution Response
+
+Persona profiles were presented with each module concept. Projected responses:
+
+| Module | Projected Enthusiasm | Projected Concerns |
 |---|---|---|
-| Water purification | Very high | Maintenance responsibility, chemical cost |
-| Microgrid | High | Battery replacement cost, who pays |
-| Trash-to-filament | High | Training needed, who operates |
-| Food processing | Very high | Market access for processed goods |
-| EV | Medium | Road conditions |
-| Mesh communication | High | Device cost, data privacy |
+| Water purification | Very high | Maintenance responsibility, replacement part availability |
+| Microgrid | High | Battery replacement cost, payment model for shared infrastructure |
+| Trash-to-filament | High | Training depth required, who operates daily |
+| Food processing | Very high | Market access for processed goods, regulatory barriers for cider |
+| EV | Medium | Road conditions, charging infrastructure reliability |
+| Mesh communication | High | Device cost for individuals, data privacy |
 
-### Workshop 3: Roles and Governance (Day 15, 25 participants)
+### Simulation 3: Governance Preferences
 
-Community members self-selected into working groups:
+Persona profiles were used to project likely self-selection into working groups:
 
-| Working Group | Members | Lead |
+| Working Group | Projected Members | Projected Lead |
 |---|---|---|
-| Water | 4 | Health post nurse |
-| Energy | 5 | Solar technician (trained) |
-| Waste | 3 | School teacher |
-| Agriculture | 6 | Lead farmer |
-| Communication | 2 | School principal |
-| **Community Oversight** | **5** | **Village head** |
+| Water | 3-4 | Health post nurse |
+| Energy | 4-5 | Solar technician (if trained) |
+| Waste | 2-3 | School teacher |
+| Agriculture | 5-6 | Lead farmer |
+| Communication | 2-3 | School principal |
+| **Community Oversight** | **4-5** | **Village head** |
+
+**Reminder:** These are projections, not outcomes from real community engagement. Actual community responses may differ significantly. Proper field studies with real participation are essential before making deployment commitments.
 
 ---
 
-## Skills Inventory
+## Skills Inventory (Estimated)
 
-| Skill | People Available | Notes |
+Based on census data and comparable community profiles in Karnali Province. Not directly measured.
+
+| Skill | Estimated People | Basis |
 |---|---|---|
-| Basic electrical wiring | 2 | Solar home system experience |
-| Mechanical repair | 4 | Bicycle, motorcycle, small engine |
-| Welding | 1 | Basic stick welding |
-| Carpentry | 3 | Building construction |
-| Plumbing | 2 | Water tap stand maintenance |
-| Smartphone operation | ~20 | Android phones, basic apps |
-| English literacy | 3 | School teachers, health post nurse |
-| Nepali literacy | ~60% of adults | |
+| Basic electrical wiring | 2 | SHS installation programs in district |
+| Mechanical repair | 3-4 | Typical for communities with motorcycle access |
+| Welding | 0-1 | Not commonly available in remote villages |
+| Carpentry | 2-3 | Common in rural construction |
+| Plumbing | 1-2 | Tap stand maintenance is shared |
+| Smartphone operation | ~15-20 | Android penetration in district |
+| English literacy | 2-3 | School teachers, health post staff |
+| Nepali literacy | ~50-60% of adults | District literacy estimates |
 
 ---
 
@@ -258,24 +271,22 @@ Nearly 40% of households have a family member working abroad (Gulf states, Malay
 
 ---
 
-## Field Team
+## Assessment Team
 
 | Name | Role |
 |---|---|
-| [Founder] | Project lead, systems engineering |
-| Prem Lal | Community liaison, translator |
-| [Engineer 1] | Water and energy systems |
-| [Engineer 2] | Waste processing and fabrication |
-| [Documenter] | Photos, video, field notes |
+| [Founder] | Project lead, systems engineering, persona development |
+| Prem Lal | Community context advisor (Jumla-Kathmandu bridge) |
+| [Contributors] | Environmental analysis, technical feasibility, documentation |
 
 ---
 
 ## Acknowledgments
 
-The team thanks the people of [village name] for their hospitality, patience, and participation. Special thanks to the village head, the health post nurse, the school principal, and every community member who attended the workshops and shared their knowledge.
+This assessment was built on publicly available data from the Nepal Census, Karnali Province development reports, and the work of NGOs and researchers who have studied remote communities in the region. The persona profiles were constructed to represent likely community perspectives, but they are simulations — not voices of real individuals.
 
-This report is dedicated to the people of Jumla. The blueprint belongs to you.
+The people of Jumla deserve real engagement, not assumptions. This report is a starting point. The next step is proper field research with community consent and participation.
 
 ---
 
-*Part of the Regenerative Valley Blueprint. Licensed under CC BY-SA 4.0.*
+*Part of the Remote Valley OS project. Licensed under CC BY-SA 4.0.*

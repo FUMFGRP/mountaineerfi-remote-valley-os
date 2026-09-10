@@ -1,5 +1,6 @@
 ---
 import { Icon } from 'astro-icon/components'
+import { navSecondary } from '../../config/nav';
 const { navData, rightMenu } = Astro.props;
 ---
 
@@ -9,9 +10,19 @@ const { navData, rightMenu } = Astro.props;
   const navHeader = document.querySelector('#odysseyNavHeader');
   const menuButtonIconHam = document.querySelector('#menuButtonIconHam');
   const menuButtonIconClose = document.querySelector('#menuButtonIconClose');
+  const moreButton = document.querySelector('#moreButton');
+  const moreDropdown = document.querySelector('#moreDropdown');
   let scrollPosition = 0;
 
   menuButton.addEventListener('click', toggleMenu)
+  if (moreButton) {
+    moreButton.addEventListener('click', toggleMore)
+    document.addEventListener('click', (e) => {
+      if (moreDropdown && !moreButton.contains(e.target) && !moreDropdown.contains(e.target)) {
+        moreDropdown.removeAttribute('open');
+      }
+    });
+  }
 
   function toggleMenu() {
     menuButtonIconHam.toggleAttribute('hidden');
@@ -19,7 +30,6 @@ const { navData, rightMenu } = Astro.props;
     
     if (navHeader.hasAttribute('mobile-menu-open', true)) {
       menuButton.title = "Open Main Menu"
-      // unlock scroll position
       bodyElement.style.removeProperty('overflow');
       bodyElement.style.removeProperty('position');
       bodyElement.style.removeProperty('top');
@@ -27,7 +37,6 @@ const { navData, rightMenu } = Astro.props;
       window.scrollTo(0, scrollPosition);
     } else {
       menuButton.title = "Close Main Menu"
-      // lock scroll position
       scrollPosition = window.pageYOffset;
       bodyElement.style.overflow = 'hidden';
       bodyElement.style.position = 'fixed';
@@ -36,6 +45,13 @@ const { navData, rightMenu } = Astro.props;
     }
     
     navHeader.toggleAttribute('mobile-menu-open');
+  }
+
+  function toggleMore(e) {
+    e.stopPropagation();
+    if (moreDropdown) {
+      moreDropdown.hasAttribute('open') ? moreDropdown.removeAttribute('open') : moreDropdown.setAttribute('open', '');
+    }
   }
 </script>  
 
@@ -59,8 +75,18 @@ const { navData, rightMenu } = Astro.props;
       {navData && <nav>
         <ul>
           {navData.map(navItem => (
-            (<li><a href={navItem.slug} >{navItem.title}</a></li>)
+            <li><a href={navItem.slug}>{navItem.title}</a></li>
           ))}
+          <li class="nav-more">
+            <button id="moreButton" title="More pages">
+              More <Icon name="ic:baseline-expand-more" width="18px" height="18px" />
+            </button>
+            <div id="moreDropdown" class="more-dropdown">
+              {navSecondary.map(item => (
+                <a href={item.slug}>{item.title}</a>
+              ))}
+            </div>
+          </li>
         </ul>
       </nav>}
     </slot>
@@ -110,13 +136,14 @@ const { navData, rightMenu } = Astro.props;
     vertical-align: middle;
   }
   nav {
-  display: flex;
+    display: flex;
   }
   nav ul {
     margin: 0;
     padding: 0;
     list-style: none;
     display: flex;
+    align-items: center;
   }
   nav ul li a {
     text-decoration: none;
@@ -127,6 +154,57 @@ const { navData, rightMenu } = Astro.props;
   }
   nav ul li a:hover {
     opacity: 1;
+  }
+  .nav-more {
+    position: relative;
+  }
+  #moreButton {
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: inherit;
+    opacity: 0.72;
+    font-size: inherit;
+    font-family: inherit;
+    display: flex;
+    align-items: center;
+    gap: 0.15rem;
+    transition: opacity linear 150ms;
+    padding: 0;
+  }
+  #moreButton:hover {
+    opacity: 1;
+  }
+  .more-dropdown {
+    display: none;
+    position: absolute;
+    top: 100%;
+    right: 0;
+    background-color: var(--theme-bg);
+    border: 1px solid var(--theme-surface-1);
+    border-radius: var(--theme-shape-radius);
+    padding: 0.5rem 0;
+    min-width: 140px;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.12);
+    z-index: 200;
+  }
+  .more-dropdown[open] {
+    display: flex;
+    flex-direction: column;
+  }
+  .more-dropdown a {
+    display: block;
+    padding: 0.5rem 1rem;
+    text-decoration: none;
+    color: inherit;
+    opacity: 0.85;
+    margin: 0;
+    white-space: nowrap;
+    font-size: var(--font-size-sm);
+  }
+  .more-dropdown a:hover {
+    opacity: 1;
+    background-color: var(--theme-surface-1);
   }
   @media(max-width: 600px) {
     #menuButton {
@@ -152,9 +230,27 @@ const { navData, rightMenu } = Astro.props;
       align-items: center;
       flex-direction: column;
     }
-     header[mobile-menu-open] nav ul li {
-       font-size: var(--font-size-lg);
-       margin-bottom: 1rem;
-     }
+    header[mobile-menu-open] nav ul li {
+      font-size: var(--font-size-lg);
+      margin-bottom: 1rem;
+    }
+    .nav-more {
+      position: static;
+    }
+    #moreButton {
+      display: none;
+    }
+    .more-dropdown {
+      display: flex !important;
+      position: static;
+      border: none;
+      box-shadow: none;
+      padding: 0;
+      background: transparent;
+    }
+    .more-dropdown a {
+      font-size: var(--font-size-lg);
+      padding: 0.25rem 0;
+    }
   }
 </style>
