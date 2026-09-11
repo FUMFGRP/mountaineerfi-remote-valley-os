@@ -1,7 +1,8 @@
 ---
 // Cookie consent banner for analytics (GDPR-friendly).
 // Only renders when Google Analytics is configured at build time.
-const gaId = import.meta.env.PUBLIC_GA_MEASUREMENT_ID;
+import settings from '../config/settings.js';
+const gaId = import.meta.env.PUBLIC_GA_MEASUREMENT_ID || settings.gaMeasurementId;
 ---
 
 {gaId && (

@@ -5,4 +5,7 @@ export default {
 	name: `Remote Valley OS`,
 	enableThemeSwitcher: false,
 	showPlug: false,
+	// Google Analytics 4 measurement ID. Public by nature (appears in page source).
+	// Override at build time with the PUBLIC_GA_MEASUREMENT_ID env var if needed.
+	gaMeasurementId: `G-GJRLE9GEXP`,
 };

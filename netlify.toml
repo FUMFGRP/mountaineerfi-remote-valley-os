@@ -7,3 +7,9 @@
 
 # Netlify Forms: forms are detected from the static HTML at deploy time.
 # Each form uses data-netlify="true" and a hidden form-name input.
+
+[[redirects]]
+  from = "/blog/tags/"
+  to = "/blog"
+  status = 301
+
