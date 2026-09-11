@@ -62,15 +62,27 @@ const image = new URL(Astro.props.image || './social.png', Astro.site);
 }
 </script>
 
-<!-- Google Analytics 4: only rendered when PUBLIC_GA_MEASUREMENT_ID is set at build time -->
+<!-- Google Analytics 4: defined here, loaded only after cookie consent (see CookieConsent) -->
 {gaId && (
-  <>
-    <script async src={`https://www.googletagmanager.com/gtag/js?id=${gaId}`}></script>
-    <script define:vars={{ gaId }}>
+  <script define:vars={{ gaId }}>
+    window.__GA_MEASUREMENT_ID = gaId;
+    window.__loadGA = function () {
+      if (window.__gaLoaded) return;
+      window.__gaLoaded = true;
+      var s = document.createElement('script');
+      s.async = true;
+      s.src = 'https://www.googletagmanager.com/gtag/js?id=' + gaId;
+      document.head.appendChild(s);
       window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
+      function gtag() { dataLayer.push(arguments); }
+      window.gtag = gtag;
       gtag('js', new Date());
-      gtag('config', gaId);
-    </script>
-  </>
+      gtag('config', gaId, { anonymize_ip: true });
+    };
+    try {
+      if (localStorage.getItem('rvo-cookie-consent') === 'granted') {
+        window.__loadGA();
+      }
+    } catch (e) {}
+  </script>
 )}

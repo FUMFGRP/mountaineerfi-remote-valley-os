@@ -1,0 +1,144 @@
+---
+// Cookie consent banner for analytics (GDPR-friendly).
+// Only renders when Google Analytics is configured at build time.
+const gaId = import.meta.env.PUBLIC_GA_MEASUREMENT_ID;
+---
+
+{gaId && (
+  <div
+    id="cookie-consent"
+    class="cookie-consent"
+    role="dialog"
+    aria-modal="false"
+    aria-label="Cookie consent"
+    hidden
+  >
+    <div class="cookie-consent__inner">
+      <div class="cookie-consent__text">
+        <strong>We use cookies</strong>
+        <p>
+          We use analytics cookies to understand how visitors use Remote Valley OS so we can
+          improve it. Rejecting them does not affect your experience. See our
+          <a href="/company/legal">privacy policy</a>.
+        </p>
+      </div>
+      <div class="cookie-consent__actions">
+        <button type="button" id="cookie-reject" class="cookie-btn cookie-btn--ghost">Reject</button>
+        <button type="button" id="cookie-accept" class="cookie-btn cookie-btn--primary">Accept</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    (function () {
+      var KEY = 'rvo-cookie-consent';
+      var banner = document.getElementById('cookie-consent');
+      if (!banner) return;
+
+      var stored = null;
+      try {
+        stored = localStorage.getItem(KEY);
+      } catch (e) {}
+
+      if (!stored) {
+        banner.hidden = false;
+      }
+
+      function decide(value) {
+        try {
+          localStorage.setItem(KEY, value);
+        } catch (e) {}
+        banner.hidden = true;
+        if (value === 'granted' && typeof window.__loadGA === 'function') {
+          window.__loadGA();
+        }
+      }
+
+      var accept = document.getElementById('cookie-accept');
+      var reject = document.getElementById('cookie-reject');
+      if (accept) accept.addEventListener('click', function () { decide('granted'); });
+      if (reject) reject.addEventListener('click', function () { decide('denied'); });
+    })();
+  </script>
+)}
+
+<style>
+  .cookie-consent {
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 90;
+    background-color: #2d3436;
+    color: #ffffff;
+    padding: 1rem;
+    box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.25);
+  }
+  .cookie-consent[hidden] {
+    display: none;
+  }
+  .cookie-consent__inner {
+    max-width: 64rem;
+    margin: 0 auto;
+    display: flex;
+    gap: 1.5rem;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+  }
+  .cookie-consent__text {
+    flex: 1 1 20rem;
+    font-size: var(--font-size-sm, 0.875rem);
+    line-height: 1.5;
+  }
+  .cookie-consent__text strong {
+    display: block;
+    margin-bottom: 0.25rem;
+    color: #a5d8ff;
+  }
+  .cookie-consent__text p {
+    margin: 0;
+    opacity: 0.9;
+  }
+  .cookie-consent__text a {
+    color: #a5d8ff;
+    text-decoration: underline;
+  }
+  .cookie-consent__actions {
+    display: flex;
+    gap: 0.75rem;
+    flex-shrink: 0;
+  }
+  .cookie-btn {
+    padding: 0.5rem 1.25rem;
+    border-radius: 0.25rem;
+    font-weight: 600;
+    font-size: var(--font-size-sm, 0.875rem);
+    cursor: pointer;
+    border: 2px solid transparent;
+    font-family: inherit;
+  }
+  .cookie-btn--primary {
+    background-color: #74b9ff;
+    color: #2d3436;
+  }
+  .cookie-btn--primary:hover {
+    background-color: #a5d8ff;
+  }
+  .cookie-btn--ghost {
+    background-color: transparent;
+    color: #ffffff;
+    border-color: rgba(255, 255, 255, 0.4);
+  }
+  .cookie-btn--ghost:hover {
+    border-color: #ffffff;
+  }
+  @media (max-width: 600px) {
+    .cookie-consent__actions {
+      width: 100%;
+    }
+    .cookie-btn {
+      flex: 1;
+    }
+  }
+</style>
