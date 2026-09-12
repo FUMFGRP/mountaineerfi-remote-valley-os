@@ -1,0 +1,163 @@
+---
+// Suggests a localized version of the site based on the visitor's
+// Accept-Language header and (in production) their Netlify geo country.
+// Only rendered on the default (English) locale.
+import { defaultLocale, nonDefaultLocales, localeNames, type Locale } from '../i18n';
+import { switchLocalePath, useTranslations } from '../i18n/utils';
+
+interface Props { locale?: Locale; }
+const { locale = defaultLocale } = Astro.props;
+const t = useTranslations(locale);
+const show = locale === defaultLocale;
+
+const suggestions = nonDefaultLocales.map((l) => ({
+  locale: l,
+  name: localeNames[l],
+  href: switchLocalePath(Astro.url.pathname, l),
+}));
+---
+
+{show && (
+  <>
+    <div id="lang-suggest" class="lang-suggest" role="region" aria-label={t.nav.language} hidden>
+      <div class="lang-suggest__inner">
+        <p class="lang-suggest__text"><span data-text></span></p>
+        <div class="lang-suggest__actions">
+          <a data-link class="lang-suggest__switch" href="#"></a>
+          <button type="button" data-stay class="lang-suggest__stay"></button>
+        </div>
+      </div>
+    </div>
+    <script
+      define:vars={{
+        suggestions,
+        template: t.langSuggest.text,
+        switchLabel: t.langSuggest.switch,
+        stayLabel: t.langSuggest.stay,
+      }}
+    >
+      (function () {
+        var el = document.getElementById('lang-suggest');
+        if (!el) return;
+
+        var KEY = 'rvo-lang-choice';
+        try {
+          if (localStorage.getItem(KEY)) return;
+        } catch (e) {}
+
+        var country = '';
+        try {
+          var m = document.cookie.match(/(?:^|;\s*)rvo-country=([^;]+)/);
+          if (m) country = decodeURIComponent(m[1]).toUpperCase();
+        } catch (e) {}
+
+        var countryMap = { NP: 'ne', IN: 'hi', RU: 'ru' };
+        var langs = navigator.languages || [navigator.language || ''];
+        var codes = langs.map(function (l) { return String(l).toLowerCase().split('-')[0]; });
+
+        var match = countryMap[country] || null;
+        if (!match) {
+          for (var i = 0; i < codes.length; i++) {
+            if (codes[i] === 'ne' || codes[i] === 'hi' || codes[i] === 'ru') {
+              match = codes[i];
+              break;
+            }
+          }
+        }
+        if (!match) return;
+
+        var target = null;
+        for (var j = 0; j < suggestions.length; j++) {
+          if (suggestions[j].locale === match) { target = suggestions[j]; break; }
+        }
+        if (!target) return;
+
+        function fill(str) { return str.replace('{name}', target.name); }
+        el.querySelector('[data-text]').textContent = fill(template);
+        var link = el.querySelector('[data-link]');
+        link.href = target.href;
+        link.textContent = fill(switchLabel);
+        el.querySelector('[data-stay]').textContent = stayLabel;
+
+        el.hidden = false;
+
+        link.addEventListener('click', function () {
+          try { localStorage.setItem(KEY, match); } catch (e) {}
+        });
+        el.querySelector('[data-stay]').addEventListener('click', function () {
+          try { localStorage.setItem(KEY, 'dismissed'); } catch (e) {}
+          el.hidden = true;
+        });
+      })();
+    </script>
+  </>
+)}
+
+<style>
+  .lang-suggest {
+    position: fixed;
+    top: 4.75rem;
+    left: 50%;
+    transform: translateX(-50%);
+    width: min(30rem, calc(100vw - 2rem));
+    z-index: 95;
+    background-color: #2d3436;
+    color: #ffffff;
+    border-radius: 0.5rem;
+    padding: 0.75rem 1rem;
+    box-shadow: 0 6px 24px rgba(0, 0, 0, 0.25);
+  }
+  .lang-suggest[hidden] {
+    display: none;
+  }
+  .lang-suggest__inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+  .lang-suggest__text {
+    margin: 0;
+    font-size: var(--font-size-sm, 0.875rem);
+  }
+  .lang-suggest__actions {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    flex-shrink: 0;
+  }
+  .lang-suggest__switch {
+    background-color: #74b9ff;
+    color: #2d3436;
+    font-weight: 600;
+    font-size: var(--font-size-sm, 0.875rem);
+    padding: 0.4rem 0.9rem;
+    border-radius: 0.25rem;
+    text-decoration: none;
+    white-space: nowrap;
+  }
+  .lang-suggest__switch:hover {
+    background-color: #a5d8ff;
+  }
+  .lang-suggest__stay {
+    background: transparent;
+    border: none;
+    color: #ffffff;
+    opacity: 0.7;
+    font-size: var(--font-size-xs, 0.75rem);
+    cursor: pointer;
+    font-family: inherit;
+    text-decoration: underline;
+    padding: 0;
+  }
+  .lang-suggest__stay:hover {
+    opacity: 1;
+  }
+  @media (max-width: 480px) {
+    .lang-suggest__inner {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+  }
+</style>

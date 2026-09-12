@@ -62,6 +62,11 @@
     "label": "Translation note",
     "text": "This page was translated with machine assistance and is awaiting native-speaker review. We fix errors as they are reported. If you spot one, help us improve it on GitHub."
   },
+  "langSuggest": {
+    "text": "This site is available in {name}.",
+    "switch": "View in {name}",
+    "stay": "Continue in English"
+  },
   "sidebar": {
     "getInvolved": "Get Involved",
     "contributeGithub": "Contribute on GitHub",
