@@ -104,7 +104,7 @@ const defaultHref = new URL(switchLocalePath(Astro.url.pathname, defaultLocale),
       function gtag() { dataLayer.push(arguments); }
       window.gtag = gtag;
       gtag('js', new Date());
-      gtag('config', gaId, { anonymize_ip: true });
+      gtag('config', gaId, { anonymize_ip: true, linker: { domains: ['mountaineer.fi', 'remotevalley.mountaineer.fi'] } });
     };
     try {
       if (localStorage.getItem('rvo-cookie-consent') === 'granted') {
