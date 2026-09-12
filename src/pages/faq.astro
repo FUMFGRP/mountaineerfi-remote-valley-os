@@ -2,10 +2,17 @@
 import { Container, Button, CtaCardSection } from '@components/odyssey-theme';
 import Layout from '../layouts/Page.astro';
 import { Icon } from 'astro-icon/components';
+import { defaultLocale, type Locale } from '../i18n';
+import { localizePath, useTranslations } from '../i18n/utils';
+
+interface Props { locale?: Locale; }
+const { locale = defaultLocale } = Astro.props;
+const t = useTranslations(locale);
+const p = localizePath;
 
 const seo = {
-  title: 'FAQ — Remote Valley OS | Mountaineer.fi',
-  description: 'Frequently asked questions about Remote Valley OS — the open-source blueprint for self-sufficient valley communities.',
+  title: t.faq.seoTitle,
+  description: t.faq.seoDescription,
 };
 
 const faqs = [
@@ -64,12 +71,12 @@ const faqs = [
 ];
 ---
 
-<Layout {seo}>
+<Layout {seo} {locale}>
   <section class="page-hero">
     <Container>
       <div class="page-hero__content">
-        <h1>Frequently Asked Questions</h1>
-        <p>Everything you want to know about Remote Valley OS — the project, the systems, the residency, and how to get involved.</p>
+        <h1>{t.faq.heroTitle}</h1>
+        <p>{t.faq.heroText}</p>
       </div>
     </Container>
   </section>
@@ -97,11 +104,11 @@ const faqs = [
     </section>
 
     <CtaCardSection background="var(--theme-surface-2)" color="var(--theme-on-surface-2)">
-      <h2>Still Have Questions?</h2>
-      <p>Email us at contact@mountaineer.fi or open a discussion on GitHub.</p>
+      <h2>{t.faq.stillTitle}</h2>
+      <p>{t.faq.stillText}</p>
       <div class="cta-row">
-        <Button href="mailto:contact@mountaineer.fi" customIcon>Email Us <Fragment slot="icon"><Icon name="ic:baseline-email"/></Fragment></Button>
-        <Button href="https://github.com/FUMFGRP/mountaineerfi-remote-valley-os" outlined>GitHub Discussions</Button>
+        <Button href="mailto:contact@mountaineer.fi" customIcon>{t.common.emailUs} <Fragment slot="icon"><Icon name="ic:baseline-email"/></Fragment></Button>
+        <Button href="https://github.com/FUMFGRP/mountaineerfi-remote-valley-os" outlined>{t.common.githubDiscussions}</Button>
       </div>
     </CtaCardSection>
   </Container>

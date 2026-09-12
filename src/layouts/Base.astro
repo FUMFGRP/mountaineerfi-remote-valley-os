@@ -3,17 +3,19 @@ import { SkipLink } from '@components/odyssey-theme';
 import BaseHead from '../components/head/BaseHead.astro';
 import type { Props as BaseHeadProps } from '../components/head/BaseHead.astro';
 import CookieConsent from '../components/CookieConsent.astro';
+import { defaultLocale, htmlLang, type Locale } from '../i18n';
 
 export interface Props {
 	seo?: BaseHeadProps;
+	locale?: Locale;
 }
 
-const { seo } = Astro.props;
+const { seo, locale = defaultLocale } = Astro.props;
 ---
 
-<html lang="en">
+<html lang={htmlLang[locale]}>
 	<head>
-		<BaseHead {...seo} />
+		<BaseHead {...seo} locale={locale} />
 	</head>
 	<body>
 		<SkipLink />
@@ -23,6 +25,6 @@ const { seo } = Astro.props;
 			<slot />
 		</main>
 		<slot name="footer" />
-		<CookieConsent />
+		<CookieConsent locale={locale} />
 	</body>
 </html>

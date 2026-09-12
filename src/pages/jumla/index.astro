@@ -3,10 +3,17 @@ import { Container, Button, CtaCardSection } from '@components/odyssey-theme';
 import Layout from '../../layouts/Page.astro';
 import { Icon } from 'astro-icon/components';
 import Sidebar from '../../components/Sidebar.astro';
+import { defaultLocale, type Locale } from '../../i18n';
+import { localizePath, useTranslations } from '../../i18n/utils';
+
+interface Props { locale?: Locale; }
+const { locale = defaultLocale } = Astro.props;
+const t = useTranslations(locale);
+const p = localizePath;
 
 const seo = {
-  title: 'Jumla Field Study & Residency Program | Remote Valley OS | Mountaineer.fi',
-  description: 'Apply for the Jumla Residency — prototype open-source solutions for remote communities in one of the toughest environments on earth. Karnali Province, Nepal.',
+  title: t.jumla.seoTitle,
+  description: t.jumla.seoDescription,
 };
 
 const tracks = [
@@ -37,15 +44,15 @@ const modules = [
 ];
 ---
 
-<Layout {seo}>
+<Layout {seo} {locale}>
   <section class="page-hero">
     <Container>
       <div class="page-hero__content">
-        <h1>Jumla Field Study</h1>
-        <p>In the remote highlands of Karnali Province, at 3,000 meters elevation, Jumla is our living laboratory. Three weeks on-site in May 2026. Five pillars tested. Hundreds of community members engaged.</p>
+        <h1>{t.jumla.heroTitle}</h1>
+        <p>{t.jumla.heroText}</p>
         <div class="hero-ctas">
-          <Button href="/jumla/apply" customIcon>Apply for Residency <Fragment slot="icon"><Icon name="ic:baseline-chevron-right"/></Fragment></Button>
-          <Button href="#findings" outlined>Read the Findings</Button>
+          <Button href={p('/jumla/apply', locale)} customIcon>{t.common.applyResidency} <Fragment slot="icon"><Icon name="ic:baseline-chevron-right"/></Fragment></Button>
+          <Button href="#findings" outlined>{t.common.readFindings}</Button>
         </div>
       </div>
     </Container>
@@ -55,12 +62,12 @@ const modules = [
     <div class="content-with-sidebar">
       <div class="content-main">
         <section style="margin: var(--section-margin) auto;">
-          <h2>Why Jumla?</h2>
+          <h2>{t.jumla.whyTitle}</h2>
           <div class="jumla-intro">
             <div class="jumla-intro__text">
-              <p>Jumla District is one of Nepal's most remote regions. Accessible only by small aircraft or a multi-day 4WD journey from the nearest paved road. No grid electricity. Intermittent mobile coverage. Winters that drop to -10°C.</p>
-              <p>This is precisely why we work here. Jumla concentrates every problem the Remote Valley OS is designed to solve — plastic waste, contaminated water, food insecurity, energy poverty, lack of connectivity, and extreme isolation.</p>
-              <p><strong>The founding insight:</strong> If a solution works in Jumla, it will work in any remote community on Earth. The Himalayas are our proving ground.</p>
+              <p>{t.jumla.whyP1}</p>
+              <p>{t.jumla.whyP2}</p>
+              <p>{t.jumla.whyP3}</p>
             </div>
             <div class="jumla-intro__stats">
               {pilotFindings.map(f => (
@@ -74,8 +81,8 @@ const modules = [
         </section>
 
         <section style="margin: var(--section-margin) auto;" id="findings">
-          <h2>Field Study Findings</h2>
-          <p style="max-width: 40rem;">In May 2026, a team from Mountaineer.fi spent 21 days in Jumla conducting household surveys, key informant interviews, community workshops, technical site surveys, and prototype testing. Here is what we found:</p>
+          <h2>{t.jumla.findingsTitle}</h2>
+          <p style="max-width: 40rem;">{t.jumla.findingsText}</p>
           <div class="findings-grid">
             {modules.map(m => (
               <div class="finding-card">
@@ -90,18 +97,18 @@ const modules = [
         </section>
 
         <section style="margin: var(--section-margin) auto;">
-          <h2>Residency Program</h2>
-          <p style="max-width: 40rem;">The Jumla Residency brings engineers, designers, educators, and builders to live and work alongside the community. You will prototype real solutions, train local operators, and leave knowledge behind permanently.</p>
-          <p style="max-width: 40rem;">Every resident follows a non-negotiable process: <strong>Build → Document → Train → Test</strong>. A system is not complete until three local operators can pass blind troubleshooting without assistance.</p>
+          <h2>{t.jumla.residencyTitle}</h2>
+          <p style="max-width: 40rem;">{t.jumla.residencyP1}</p>
+          <p style="max-width: 40rem;">{t.jumla.residencyP2}</p>
 
           <div class="residency-tracks">
-            {tracks.map(t => (
+            {tracks.map(track => (
               <div class="track-card">
-                <div class="track-icon"><Icon name={t.icon} /></div>
+                <div class="track-icon"><Icon name={track.icon} /></div>
                 <div class="track-info">
-                  <h3>{t.title}</h3>
-                  <p>{t.desc}</p>
-                  <span class="track-duration">{t.dur}</span>
+                  <h3>{track.title}</h3>
+                  <p>{track.desc}</p>
+                  <span class="track-duration">{track.dur}</span>
                 </div>
               </div>
             ))}
@@ -109,7 +116,7 @@ const modules = [
         </section>
 
         <section style="margin: var(--section-margin) auto;">
-          <h2>Living Conditions</h2>
+          <h2>{t.jumla.conditionsTitle}</h2>
           <div class="conditions-grid">
             <div class="condition-card">
               <h3><Icon name="ic:baseline-home" /> Housing</h3>
@@ -139,7 +146,7 @@ const modules = [
         </section>
 
         <section style="margin: var(--section-margin) auto;">
-          <h2>Terms</h2>
+          <h2>{t.jumla.termsTitle}</h2>
           <div class="terms-table">
             <div class="term-row"><span class="term-label">Duration</span><span class="term-value">Minimum 3 months. Preferred 6-12 months.</span></div>
             <div class="term-row"><span class="term-label">Housing</span><span class="term-value">Free (private or shared room)</span></div>
@@ -154,24 +161,24 @@ const modules = [
         </section>
 
         <CtaCardSection background="var(--theme-surface-1)" color="var(--theme-on-surface-1)">
-          <h2>Apply for the Jumla Residency</h2>
-          <p>Email <strong>residency@mountaineer.fi</strong> with your background, a project idea, preferred duration, and any questions. We review applications with a committee that includes community representatives.</p>
+          <h2>{t.jumla.applyTitle}</h2>
+          <p>{t.jumla.applyText}</p>
           <div class="cta-row">
-            <Button href="/jumla/apply" customIcon>Apply Now <Fragment slot="icon"><Icon name="ic:baseline-chevron-right"/></Fragment></Button>
-            <Button href="/accelerator" unelevated>Contribute Remotely</Button>
+            <Button href={p('/jumla/apply', locale)} customIcon>{t.common.applyNow} <Fragment slot="icon"><Icon name="ic:baseline-chevron-right"/></Fragment></Button>
+            <Button href={p('/community', locale)} unelevated>{t.common.contributeRemotely}</Button>
           </div>
         </CtaCardSection>
 
         <CtaCardSection background="var(--theme-surface-2)" color="var(--theme-on-surface-2)">
-          <h2>Follow the Field Work</h2>
-          <p>Watch our team build, test, and iterate in Jumla. Every prototype, every failure, every breakthrough — documented openly on GitHub.</p>
+          <h2>{t.jumla.followTitle}</h2>
+          <p>{t.jumla.followText}</p>
           <div class="cta-row">
-            <Button href="https://github.com/FUMFGRP/mountaineerfi-remote-valley-os" customIcon>GitHub <Fragment slot="icon"><Icon name="ic:baseline-launch"/></Fragment></Button>
-            <Button href="/board" unelevated>Explore the Board</Button>
+            <Button href="https://github.com/FUMFGRP/mountaineerfi-remote-valley-os" customIcon>{t.common.github} <Fragment slot="icon"><Icon name="ic:baseline-launch"/></Fragment></Button>
+            <Button href={p('/board', locale)} unelevated>{t.common.exploreBoard}</Button>
           </div>
         </CtaCardSection>
       </div>
-      <Sidebar context="jumla" />
+      <Sidebar context="jumla" {locale} />
     </div>
   </Container>
 </Layout>

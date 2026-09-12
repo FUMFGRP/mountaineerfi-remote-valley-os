@@ -2,10 +2,17 @@
 import { Container, Button, CtaCardSection } from '@components/odyssey-theme';
 import Layout from '../../layouts/Page.astro';
 import { Icon } from 'astro-icon/components';
+import { defaultLocale, type Locale } from '../../i18n';
+import { localizePath, useTranslations } from '../../i18n/utils';
+
+interface Props { locale?: Locale; }
+const { locale = defaultLocale } = Astro.props;
+const t = useTranslations(locale);
+const p = localizePath;
 
 const seo = {
-  title: 'About Remote Valley OS | Open-Source Blueprint for Remote Regions',
-  description: 'The origin story, philosophy, and timeline of Remote Valley OS — an open-source blueprint for self-sufficient valley communities. Built by Mountaineer.fi.',
+  title: t.about.seoTitle,
+  description: t.about.seoDescription,
 };
 
 const timeline = [
@@ -19,19 +26,19 @@ const timeline = [
 ];
 ---
 
-<Layout {seo}>
+<Layout {seo} {locale}>
   <section class="page-hero">
     <Container>
       <div class="page-hero__content">
-        <h1>About Remote Valley OS</h1>
-        <p>We build tools for the world's most remote places. And we give them away for free.</p>
+        <h1>{t.about.heroTitle}</h1>
+        <p>{t.about.heroText}</p>
       </div>
     </Container>
   </section>
 
   <Container>
     <section style="margin: var(--section-margin) auto;">
-      <h2>The Origin</h2>
+      <h2>{t.about.originTitle}</h2>
       <div class="origin-story">
         <p>In May 2026, a small team spent three weeks in <strong>Jumla District, Karnali Province, Nepal</strong> — one of the most remote and logistically challenging regions in the Himalayas. Accessible only by air or a multi-day 4WD journey, Jumla concentrates every problem that remote communities face.</p>
         <p>We walked the land. We studied the rivers, the sun, and the wind. We mapped waste streams and agricultural value chains. We talked to farmers, shopkeepers, mothers, and young people.</p>
@@ -41,7 +48,7 @@ const timeline = [
     </section>
 
     <section style="margin: var(--section-margin) auto;">
-      <h2>The Philosophy</h2>
+      <h2>{t.about.philosophyTitle}</h2>
       <div class="philosophy-grid">
         <div class="phil-card">
           <h3><Icon name="ic:baseline-lock-open" /> Everything Is Open Source</h3>
@@ -63,14 +70,14 @@ const timeline = [
     </section>
 
     <section style="margin: var(--section-margin) auto;">
-      <h2>The Name</h2>
+      <h2>{t.about.nameTitle}</h2>
       <p>Remote Valley OS is named for what it is: an operating system for remote valleys. Just as an operating system manages a computer's hardware and software, RV-OS manages the systems that sustain a community — energy, waste, water, food, mobility, communication. It connects them, monitors them, documents them, and ensures they keep running.</p>
       <p>The project lives as a subdomain of <strong>Mountaineer.fi</strong> because we believe solving problems at the edge — where conditions are hardest, where failure has real consequences — produces solutions that work everywhere.</p>
       <p><strong>Peaks, not paperwork.</strong></p>
     </section>
 
     <section style="margin: var(--section-margin) auto;">
-      <h2>The Team</h2>
+      <h2>{t.about.teamTitle}</h2>
       <p>Remote Valley OS is a project of <a href="https://mountaineer.fi">Mountaineer.fi</a> — a platform dedicated to innovation in the world's toughest environments. We are a distributed team of engineers, designers, educators, and community development practitioners based in Nepal, Finland, and beyond.</p>
       <div class="team-meta">
         <div class="team-stat"><strong>Distributed</strong> Nepal, Finland, global</div>
@@ -80,19 +87,19 @@ const timeline = [
     </section>
 
     <section style="margin: var(--section-margin) auto;">
-      <h2>Timeline</h2>
+      <h2>{t.about.timelineTitle}</h2>
       <div class="timeline">
-        {timeline.map(t => (
+        {timeline.map(item => (
           <div class="timeline-item">
-            <span class="timeline-period">{t.period}</span>
-            <span class="timeline-event">{t.event}</span>
+            <span class="timeline-period">{item.period}</span>
+            <span class="timeline-event">{item.event}</span>
           </div>
         ))}
       </div>
     </section>
 
     <section style="margin: var(--section-margin) auto;">
-      <h2>Contact</h2>
+      <h2>{t.about.contactTitle}</h2>
       <div class="contact-links">
         <a href="https://mountaineer.fi">Website: mountaineer.fi</a>
         <a href="https://github.com/FUMFGRP/mountaineerfi-remote-valley-os">GitHub: FUMFGRP/mountaineerfi-remote-valley-os</a>
@@ -102,8 +109,8 @@ const timeline = [
     </section>
 
     <CtaCardSection background="var(--theme-surface-2)" color="var(--theme-on-surface-2)">
-      <h2>Join the Mission</h2>
-      <p>Whether you build, write, teach, or fund — there is a place for you in this project.</p>
+      <h2>{t.about.ctaTitle}</h2>
+      <p>{t.about.ctaText}</p>
       <div class="cta-row">
         <Button href="/jumla/apply" customIcon>Apply for Residency <Fragment slot="icon"><Icon name="ic:baseline-chevron-right"/></Fragment></Button>
         <Button href="https://github.com/FUMFGRP/mountaineerfi-remote-valley-os" unelevated>GitHub</Button>

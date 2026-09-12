@@ -2,26 +2,33 @@
 import { Container, Button, CtaCardSection } from '@components/odyssey-theme';
 import Layout from '../layouts/Page.astro';
 import { Icon } from 'astro-icon/components';
+import { defaultLocale, type Locale } from '../i18n';
+import { localizePath, useTranslations } from '../i18n/utils';
+
+interface Props { locale?: Locale; }
+const { locale = defaultLocale } = Astro.props;
+const t = useTranslations(locale);
+const p = localizePath;
 
 const seo = {
-  title: 'Community — Contribute to Remote Valley OS | Mountaineer.fi',
-  description: 'Join the Remote Valley OS community. How to contribute, governance model, code of conduct, and ways to get involved from anywhere in the world.',
+  title: t.community.seoTitle,
+  description: t.community.seoDescription,
 };
 ---
 
-<Layout {seo}>
+<Layout {seo} {locale}>
   <section class="page-hero">
     <Container>
       <div class="page-hero__content">
-        <h1>Community</h1>
-        <p>Remote Valley OS is built by a global community of engineers, designers, educators, and builders. Everyone is welcome. Here is how to get involved.</p>
+        <h1>{t.community.heroTitle}</h1>
+        <p>{t.community.heroText}</p>
       </div>
     </Container>
   </section>
 
   <Container>
     <section style="margin: var(--section-margin) auto;">
-      <h2>Ways to Contribute</h2>
+      <h2>{t.community.waysTitle}</h2>
       <div class="contribute-grid">
         <div class="contrib-card">
           <Icon name="ic:baseline-code" />
@@ -57,7 +64,7 @@ const seo = {
     </section>
 
     <section style="margin: var(--section-margin) auto;">
-      <h2>How to Start</h2>
+      <h2>{t.community.startTitle}</h2>
       <div class="start-steps">
         <div class="start-step">
           <span class="start-num">1</span>
@@ -83,7 +90,7 @@ const seo = {
     </section>
 
     <section style="margin: var(--section-margin) auto;">
-      <h2>Governance Model</h2>
+      <h2>{t.community.governanceTitle}</h2>
       <p style="max-width: 36rem;">The project is governed by the people who do the work. Roles progress naturally as contributions grow.</p>
       <div class="roles-grid">
         <div class="role-card">
@@ -114,7 +121,7 @@ const seo = {
     </section>
 
     <section style="margin: var(--section-margin) auto;">
-      <h2>Our Standards</h2>
+      <h2>{t.community.standardsTitle}</h2>
       <p>All community members are expected to follow our <a href="/content/CODE_OF_CONDUCT.md">Code of Conduct</a> and <a href="/content/community-guidelines.md">Community Guidelines</a>. In short:</p>
       <div class="standards-list">
         <div class="standard-item"><Icon name="ic:baseline-check-circle" /> Be respectful and constructive</div>
@@ -127,8 +134,8 @@ const seo = {
     </section>
 
     <CtaCardSection background="var(--theme-surface-2)" color="var(--theme-on-surface-2)">
-      <h2>Start Contributing</h2>
-      <p>Your first PR is one click away. Fork a repo, pick an issue, and join the global team building infrastructure for remote communities.</p>
+      <h2>{t.community.ctaTitle}</h2>
+      <p>{t.community.ctaText}</p>
       <div class="cta-row">
         <Button href="https://github.com/FUMFGRP/mountaineerfi-remote-valley-os" customIcon>GitHub Organization <Fragment slot="icon"><Icon name="ic:baseline-launch"/></Fragment></Button>
         <Button href="/accelerator" unelevated>Innovation Accelerator</Button>

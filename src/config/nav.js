@@ -1,41 +1,14 @@
 export const nav = [
-	{
-		title: 'Board',
-		slug: '/board',
-	},
-	{
-		title: 'Jumla',
-		slug: '/jumla',
-	},
-	{
-		title: 'RV-OS',
-		slug: '/remote-valley-os',
-	},
-	{
-		title: 'Regions',
-		slug: '/regions',
-	},
-	{
-		title: 'Community',
-		slug: '/community',
-	},
+	{ key: 'board', path: '/board' },
+	{ key: 'jumla', path: '/jumla' },
+	{ key: 'rvos', path: '/remote-valley-os' },
+	{ key: 'regions', path: '/regions' },
+	{ key: 'community', path: '/community' },
 ];
 
 export const navSecondary = [
-	{
-		title: 'FAQ',
-		slug: '/faq',
-	},
-	{
-		title: 'About',
-		slug: '/company/about',
-	},
-	{
-		title: 'Contact',
-		slug: '/company/contact',
-	},
-	{
-		title: 'Stories',
-		slug: '/blog',
-	},
+	{ key: 'faq', path: '/faq' },
+	{ key: 'about', path: '/company/about' },
+	{ key: 'contact', path: '/company/contact' },
+	{ key: 'stories', path: '/blog' },
 ];

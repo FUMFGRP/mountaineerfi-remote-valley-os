@@ -4,19 +4,26 @@ import Layout from '../layouts/Page.astro';
 import { Icon } from 'astro-icon/components';
 import Sidebar from '../components/Sidebar.astro';
 import SectionDivider from '../components/SectionDivider.astro';
+import { defaultLocale, type Locale } from '../i18n';
+import { localizePath, useTranslations } from '../i18n/utils';
+
+interface Props { locale?: Locale; }
+const { locale = defaultLocale } = Astro.props;
+const t = useTranslations(locale);
+const p = localizePath;
 
 const seo = {
-  title: 'Innovation Board — 5 Pillars of Remote Valley OS | Mountaineer.fi',
-  description: 'Open-source solutions for remote regions: trash-to-3D-filament, water purification, food production, EV logistics network, and mesh communication. Field-tested in the Himalayas.',
+  title: t.board.seoTitle,
+  description: t.board.seoDescription,
 };
 ---
 
-<Layout {seo}>
+<Layout {seo} {locale}>
   <section class="page-hero">
     <Container>
       <div class="page-hero__content">
-        <h1>Innovation Board</h1>
-        <p>Five interconnected pillars. Each one designed, prototyped, and tested in real remote conditions. All open source.</p>
+        <h1>{t.board.heroTitle}</h1>
+        <p>{t.board.heroText}</p>
       </div>
     </Container>
   </section>
@@ -269,28 +276,25 @@ const seo = {
         <SectionDivider icon="star" />
 
         <section style="margin: var(--section-margin) auto;">
-          <h2>How the Pillars Connect</h2>
+          <h2>{t.board.integrationTitle}</h2>
           <div class="integration-grid">
-            <div class="integration-item"><strong>Material Loop:</strong> Trash → Filament → Printed parts for water filters, EV stations, mesh enclosures, food equipment</div>
-            <div class="integration-item"><strong>Energy Loop:</strong> Solar + Hydro → EV charging → EV batteries → Village micro-grid → All modules</div>
-            <div class="integration-item"><strong>Water Loop:</strong> Filtration → Clean water → Reduced plastic bottles → Less waste → More filament feedstock</div>
-            <div class="integration-item"><strong>Food Loop:</strong> Cold storage → Year-round sales → Higher income → Community investment → More infrastructure</div>
-            <div class="integration-item"><strong>Data Loop:</strong> Sensors → Mesh → Dashboard → Alerts → Maintenance → Better uptime</div>
-            <div class="integration-item"><strong>Training Loop:</strong> Build → Document → Train → Test → Knowledge stays permanently</div>
+            {t.board.integrations.map((item) => (
+              <div class="integration-item"><strong>{item.label}:</strong> {item.text}</div>
+            ))}
           </div>
         </section>
 
         <CtaCardSection background="var(--theme-surface-2)" color="var(--theme-on-surface-2)">
-          <h2>Built for the Toughest Place on Earth</h2>
-          <p>Every pillar is open source. Every design is field-tested. Fork it, adapt it, deploy it anywhere.</p>
+          <h2>{t.board.ctaTitle}</h2>
+          <p>{t.board.ctaText}</p>
           <div class="cta-row">
-            <Button href="https://github.com/FUMFGRP/mountaineerfi-remote-valley-os" customIcon>Fork on GitHub <Fragment slot="icon"><Icon name="ic:baseline-launch"/></Fragment></Button>
-            <Button href="/jumla" unelevated>Jumla Residency</Button>
-            <Button href="/regions" outlined>Deploy in Your Region</Button>
+            <Button href="https://github.com/FUMFGRP/mountaineerfi-remote-valley-os" customIcon>{t.common.forkGithub} <Fragment slot="icon"><Icon name="ic:baseline-launch"/></Fragment></Button>
+            <Button href={p('/jumla', locale)} unelevated>{t.nav.jumla}</Button>
+            <Button href={p('/regions', locale)} outlined>{t.common.deployRegion}</Button>
           </div>
         </CtaCardSection>
       </div>
-      <Sidebar context="board" />
+      <Sidebar context="board" {locale} />
     </div>
   </Container>
 </Layout>

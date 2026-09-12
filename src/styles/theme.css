@@ -37,7 +37,7 @@
 	--theme-blog-post-header-width: 1200px;
 
 	/* Theme Fonts */
-	--theme-font-family-display: 'Caveat', cursive;
+	--theme-font-family-display: 'Caveat', 'Noto Sans Devanagari', 'Montserrat', cursive;
 	--theme-font-family-sans: 'Montserrat', -apple-system, BlinkMacSystemFont,
 		sans-serif;
 }

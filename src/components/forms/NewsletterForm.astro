@@ -1,15 +1,20 @@
 ---
 import {Icon} from 'astro-icon/components'
 import {Button, FormInput } from "@components/odyssey-theme";
+import { defaultLocale, type Locale } from '../../i18n';
+import { useTranslations } from '../../i18n/utils';
 
+interface Props { locale?: Locale; }
+const { locale = defaultLocale } = Astro.props;
+const t = useTranslations(locale);
 ---
 
 <form name="Newsletter Form" method="POST" action="/thank-you" data-netlify="true" netlify-honeypot="bot-field">
   <input type="hidden" name="form-name" value="Newsletter Form" />
   <p hidden><label>Don't fill this out if you're human: <input name="bot-field" /></label></p>
   <div class="newsletter-form__container">
-    <FormInput type="email" name="Email" placeholder="hello@example.com"/>
-    <Button customIcon>Submit
+    <FormInput type="email" name="Email" placeholder={t.forms.emailPlaceholder}/>
+    <Button customIcon>{t.forms.submit}
       <Fragment slot="icon">
         <Icon name="ic:baseline-chevron-right" />
       </Fragment>

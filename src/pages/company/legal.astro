@@ -1,14 +1,20 @@
 ---
 import { TextSection } from '@components/odyssey-theme';
 import Layout from '../../layouts/Page.astro';
+import { defaultLocale, type Locale } from '../../i18n';
+import { useTranslations } from '../../i18n/utils';
+
+interface Props { locale?: Locale; }
+const { locale = defaultLocale } = Astro.props;
+const t = useTranslations(locale);
 
 const seo = {
-  title: `Legal | Remote Valley OS`,
-  description: `Remote Valley OS terms of service and privacy policy.`,
+  title: t.legal.seoTitle,
+  description: t.legal.seoDescription,
 };
 ---
 
-<Layout seo={seo}>
+<Layout seo={seo} {locale}>
   <TextSection narrow>
     <h1>Legal &amp; Terms</h1>
 

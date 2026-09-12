@@ -16,64 +16,33 @@ export const footerSocials = [
   },
 ]
 
-export const footerLists = [
-	{
-		title: 'Remote Valley OS',
-		items: [
-			{
-				title: 'Board',
-				slug: '/board',
-			},
-			{
-				title: 'Jumla Residency',
-				slug: '/jumla',
-			},
-			{
-				title: 'Apply Now',
-				slug: '/jumla/apply',
-			},
-			{
-				title: 'Technical Blueprint',
-				slug: '/remote-valley-os',
-			},
-		],
-	},
-	{
-		title: 'More',
-		items: [
-			{
-				title: 'Deploy in Your Region',
-				slug: '/regions',
-			},
-			{
-				title: 'Stories',
-				slug: '/blog',
-			},
-			{
-				title: 'About',
-				slug: '/company/about',
-			},
-			{
-				title: 'FAQ',
-				slug: '/faq',
-			},
-			{
-				title: 'Community',
-				slug: '/community',
-			},
-			{
-				title: 'Contact',
-				slug: '/company/contact',
-			},
-		],
-	},
-	{
-		title: 'Mountaineer.fi',
-		items: [
-			{
-				title: 'Main Site →',
-				slug: 'https://mountaineer.fi',
-			},
-		],
-	},
+// Footer columns reference translation keys and paths; the layout resolves
+// labels via the locale dictionary and prefixes paths with the locale.
+export const footerColumns = [
+  {
+    titleKey: 'colProject',
+    items: [
+      { key: 'board', path: '/board' },
+      { key: 'jumlaResidency', path: '/jumla' },
+      { key: 'applyNow', path: '/jumla/apply' },
+      { key: 'technicalBlueprint', path: '/remote-valley-os' },
+    ],
+  },
+  {
+    titleKey: 'colMore',
+    items: [
+      { key: 'deployRegion', path: '/regions' },
+      { key: 'stories', path: '/blog' },
+      { key: 'about', path: '/company/about' },
+      { key: 'faq', path: '/faq' },
+      { key: 'community', path: '/community' },
+      { key: 'contact', path: '/company/contact' },
+    ],
+  },
+  {
+    titleKey: 'colMountaineer',
+    items: [
+      { key: 'mainSite', path: 'https://mountaineer.fi', external: true },
+    ],
+  },
 ];

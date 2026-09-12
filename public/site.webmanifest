@@ -1,0 +1,14 @@
+{
+  "name": "Remote Valley OS",
+  "short_name": "RV-OS",
+  "description": "Open-source blueprint for self-sufficient, regenerative valley communities.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#2D3436",
+  "theme_color": "#2D3436",
+  "icons": [
+    { "src": "/favicon.svg", "type": "image/svg+xml", "sizes": "any" },
+    { "src": "/icon-192.png", "type": "image/png", "sizes": "192x192" },
+    { "src": "/icon-512.png", "type": "image/png", "sizes": "512x512" }
+  ]
+}

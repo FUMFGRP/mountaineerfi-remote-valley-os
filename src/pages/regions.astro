@@ -4,10 +4,17 @@ import Layout from '../layouts/Page.astro';
 import { Icon } from 'astro-icon/components';
 import Sidebar from '../components/Sidebar.astro';
 import SectionDivider from '../components/SectionDivider.astro';
+import { defaultLocale, type Locale } from '../i18n';
+import { localizePath, useTranslations } from '../i18n/utils';
+
+interface Props { locale?: Locale; }
+const { locale = defaultLocale } = Astro.props;
+const t = useTranslations(locale);
+const p = localizePath;
 
 const seo = {
-  title: 'Deploy Remote Valley OS in Your Region | Remote Valley OS',
-  description: 'A step-by-step blueprint for adapting and deploying the Remote Valley OS open-source framework in any remote community worldwide.',
+  title: t.regions.seoTitle,
+  description: t.regions.seoDescription,
 };
 
 const steps = [
@@ -20,15 +27,15 @@ const steps = [
 ];
 ---
 
-<Layout {seo}>
+<Layout {seo} {locale}>
   <section class="page-hero">
     <Container>
       <div class="page-hero__content">
-        <h1>Deploy in Your Region</h1>
-        <p>A six-step blueprint for adapting the Remote Valley OS framework to any remote community in the world. Open source. Modular. Community-driven.</p>
+        <h1>{t.regions.heroTitle}</h1>
+        <p>{t.regions.heroText}</p>
         <div class="hero-ctas">
-          <Button href="https://github.com/FUMFGRP/mountaineerfi-remote-valley-os" customIcon>Start with the Repos <Fragment slot="icon"><Icon name="ic:baseline-launch"/></Fragment></Button>
-          <Button href="/contact" outlined>Talk to the Team</Button>
+          <Button href="https://github.com/FUMFGRP/mountaineerfi-remote-valley-os" customIcon>{t.common.startRepos} <Fragment slot="icon"><Icon name="ic:baseline-launch"/></Fragment></Button>
+          <Button href={p('/company/contact', locale)} outlined>{t.common.talkTeam}</Button>
         </div>
       </div>
     </Container>
@@ -38,7 +45,7 @@ const steps = [
     <div class="content-with-sidebar">
       <div class="content-main">
         <section style="margin: var(--section-margin) auto;">
-          <h2>The Six-Step Blueprint</h2>
+          <h2>{t.regions.stepsTitle}</h2>
           <div class="steps-list">
             {steps.map((step) => (
               <div class="step-card">
@@ -58,7 +65,7 @@ const steps = [
         <SectionDivider icon="rocket" />
 
         <section style="margin: var(--section-margin) auto;">
-          <h2>What You Get</h2>
+          <h2>{t.regions.benefitsTitle}</h2>
           <div class="benefits-grid">
             <div class="benefit-card">
               <h3><Icon name="ic:baseline-folder-open" /> Complete Blueprints</h3>
@@ -82,15 +89,15 @@ const steps = [
         <SectionDivider icon="star" />
 
         <CtaCardSection background="var(--theme-surface-1)" color="var(--theme-on-surface-1)">
-          <h2>Ready to Start?</h2>
-          <p>Fork the repositories, read the docs, and join the community. Every region that adopts RVOS makes the framework stronger for everyone.</p>
+          <h2>{t.regions.ctaTitle}</h2>
+          <p>{t.regions.ctaText}</p>
           <div class="cta-row">
-            <Button href="https://github.com/FUMFGRP/mountaineerfi-remote-valley-os" customIcon>Fork on GitHub <Fragment slot="icon"><Icon name="ic:baseline-launch"/></Fragment></Button>
-            <Button href="/jumla/apply" unelevated>Apply for Training</Button>
+            <Button href="https://github.com/FUMFGRP/mountaineerfi-remote-valley-os" customIcon>{t.common.forkGithub} <Fragment slot="icon"><Icon name="ic:baseline-launch"/></Fragment></Button>
+            <Button href={p('/jumla/apply', locale)} unelevated>{t.common.applyResidency}</Button>
           </div>
         </CtaCardSection>
       </div>
-      <Sidebar context="rvos" />
+      <Sidebar context="rvos" {locale} />
     </div>
   </Container>
 </Layout>

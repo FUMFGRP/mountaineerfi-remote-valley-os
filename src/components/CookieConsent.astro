@@ -2,6 +2,14 @@
 // Cookie consent banner for analytics (GDPR-friendly).
 // Only renders when Google Analytics is configured at build time.
 import settings from '../config/settings.js';
+import { defaultLocale, type Locale } from '../i18n';
+import { localizePath, useTranslations } from '../i18n/utils';
+
+interface Props {
+  locale?: Locale;
+}
+const { locale = defaultLocale } = Astro.props;
+const t = useTranslations(locale);
 const gaId = import.meta.env.PUBLIC_GA_MEASUREMENT_ID || settings.gaMeasurementId;
 ---
 
@@ -11,21 +19,20 @@ const gaId = import.meta.env.PUBLIC_GA_MEASUREMENT_ID || settings.gaMeasurementI
     class="cookie-consent"
     role="dialog"
     aria-modal="false"
-    aria-label="Cookie consent"
+    aria-label={t.cookie.title}
     hidden
   >
     <div class="cookie-consent__inner">
       <div class="cookie-consent__text">
-        <strong>We use cookies</strong>
+        <strong>{t.cookie.title}</strong>
         <p>
-          We use analytics cookies to understand how visitors use Remote Valley OS so we can
-          improve it. Rejecting them does not affect your experience. See our
-          <a href="/company/legal">privacy policy</a>.
+          {t.cookie.text}
+          <a href={localizePath('/company/legal', locale)}>{t.cookie.privacy}</a>.
         </p>
       </div>
       <div class="cookie-consent__actions">
-        <button type="button" id="cookie-reject" class="cookie-btn cookie-btn--ghost">Reject</button>
-        <button type="button" id="cookie-accept" class="cookie-btn cookie-btn--primary">Accept</button>
+        <button type="button" id="cookie-reject" class="cookie-btn cookie-btn--ghost">{t.cookie.reject}</button>
+        <button type="button" id="cookie-accept" class="cookie-btn cookie-btn--primary">{t.cookie.accept}</button>
       </div>
     </div>
   </div>

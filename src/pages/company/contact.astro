@@ -2,29 +2,33 @@
 import ContactForm from '../../components/forms/ContactForm.astro';
 import Layout from '../../layouts/Page.astro';
 import { Container } from '@components/odyssey-theme';
+import { defaultLocale, type Locale } from '../../i18n';
+import { useTranslations } from '../../i18n/utils';
+
+interface Props { locale?: Locale; }
+const { locale = defaultLocale } = Astro.props;
+const t = useTranslations(locale);
 
 const seo = {
-	title: 'Contact | Remote Valley OS',
-	description: 'Get in touch with the Remote Valley OS team — ask about the Jumla Residency, contributing on GitHub, or deploying in your region.',
+	title: t.contact.seoTitle,
+	description: t.contact.seoDescription,
 };
 ---
 
-<Layout seo={seo}>
+<Layout {seo} {locale}>
 	<Container>
 		<section class="contact-hero__section">
 			<div class="contact-hero__text-section">
-				<h1>Contact Us</h1>
-				<p>
-					Have a story about innovation in remote regions? Want to contribute to the Remote Valley OS project or join the Jumla residency program? We'd love to hear from you.
-				</p>
+				<h1>{t.contact.heroTitle}</h1>
+				<p>{t.contact.heroText}</p>
 				<div>
 					<p>
-						<em><a href="mailto:hello@mountaineer.fi">hello@mountaineer.fi</a></em>
+						<em><a href="mailto:contact@mountaineer.fi">contact@mountaineer.fi</a></em>
 					</p>
 				</div>
 			</div>
 			<div class="col-2__container">
-				<ContactForm />
+				<ContactForm {locale} />
 			</div>
 		</section>
 	</Container>

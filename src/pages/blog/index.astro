@@ -8,6 +8,10 @@ import {
 import Layout from '../../layouts/Page.astro';
 import NewsletterForm from '../../components/forms/NewsletterForm.astro';
 import Sidebar from '../../components/Sidebar.astro';
+import { defaultLocale, type Locale } from '../../i18n';
+
+interface Props { locale?: Locale; }
+const { locale = defaultLocale } = Astro.props;
 
 const posts = await Astro.glob('./posts/*.mdx').then(posts =>
 	posts
@@ -33,7 +37,7 @@ const seo = {
 };
 ---
 
-<Layout {seo}>
+<Layout {seo} {locale}>
 	<Container>
 		<div class="content-with-sidebar">
 			<div class="content-main">
@@ -42,14 +46,14 @@ const seo = {
 					<p>
 						Stories from the field — Jumla updates, technical deep-dives, and community reports from the Remote Valley OS project.
 					</p>
-					<NewsletterForm />
+					<NewsletterForm {locale} />
 				</TextCardSection>
 				<section class="blog-posts-list__section">
 					<h2>Recent Reports</h2>
 					<BlogPostsList posts={posts} />
 				</section>
 			</div>
-			<Sidebar context="blog" />
+			<Sidebar context="blog" {locale} />
 		</div>
 	</Container>
 </Layout>

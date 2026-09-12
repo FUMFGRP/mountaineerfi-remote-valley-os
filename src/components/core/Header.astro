@@ -1,7 +1,12 @@
 ---
-import { Icon } from 'astro-icon/components'
+import { Icon } from 'astro-icon/components';
 import { navSecondary } from '../../config/nav';
-const { navData, rightMenu } = Astro.props;
+import LanguageSwitcher from '../LanguageSwitcher.astro';
+import { localizePath, useTranslations } from '../../i18n/utils';
+import { type Locale } from '../../i18n';
+
+const { navData, rightMenu, locale = 'en' as Locale } = Astro.props;
+const t = useTranslations(locale);
 ---
 
 <script type="module">
@@ -29,14 +34,14 @@ const { navData, rightMenu } = Astro.props;
     menuButtonIconClose.toggleAttribute('hidden');
     
     if (navHeader.hasAttribute('mobile-menu-open', true)) {
-      menuButton.title = "Open Main Menu"
+      menuButton.title = menuButton.dataset.openTitle;
       bodyElement.style.removeProperty('overflow');
       bodyElement.style.removeProperty('position');
       bodyElement.style.removeProperty('top');
       bodyElement.style.removeProperty('width');
       window.scrollTo(0, scrollPosition);
     } else {
-      menuButton.title = "Close Main Menu"
+      menuButton.title = menuButton.dataset.closeTitle;
       scrollPosition = window.pageYOffset;
       bodyElement.style.overflow = 'hidden';
       bodyElement.style.position = 'fixed';
@@ -57,7 +62,7 @@ const { navData, rightMenu } = Astro.props;
 
 <header id="odysseyNavHeader" class={`${rightMenu ? "header--right" : ``.trim()}`}>
   <div class="header-logo-menu__container">
-  <button id="menuButton" title="Open Main Menu">
+  <button id="menuButton" title={t.nav.menuOpen} data-open-title={t.nav.menuOpen} data-close-title={t.nav.menuClose}>
     <span id="menuButtonIconHam">
       <Icon name="ic:baseline-menu" width="24px" height="24px" />
     </span>
@@ -65,7 +70,7 @@ const { navData, rightMenu } = Astro.props;
       <Icon name="ic:baseline-close" width="24px" height="24px" />
     </span>
   </button>
-  <a class="header-logo__link" href="/">
+  <a class="header-logo__link" href={localizePath('/', locale)}>
     <slot name="logo">
     </slot>
   </a>
@@ -75,15 +80,15 @@ const { navData, rightMenu } = Astro.props;
       {navData && <nav>
         <ul>
           {navData.map(navItem => (
-            <li><a href={navItem.slug}>{navItem.title}</a></li>
+            <li><a href={localizePath(navItem.path, locale)}>{t.nav[navItem.key]}</a></li>
           ))}
           <li class="nav-more">
-            <button id="moreButton" title="More pages">
-              More <Icon name="ic:baseline-expand-more" width="18px" height="18px" />
+            <button id="moreButton" title={t.nav.more}>
+              {t.nav.more} <Icon name="ic:baseline-expand-more" width="18px" height="18px" />
             </button>
             <div id="moreDropdown" class="more-dropdown">
               {navSecondary.map(item => (
-                <a href={item.slug}>{item.title}</a>
+                <a href={localizePath(item.path, locale)}>{t.nav[item.key]}</a>
               ))}
             </div>
           </li>
@@ -92,6 +97,7 @@ const { navData, rightMenu } = Astro.props;
     </slot>
   </div>
   <div class="header-action-item__container">
+    <LanguageSwitcher locale={locale} />
     <slot name="action-item">
     </slot>
   </div>
@@ -121,6 +127,9 @@ const { navData, rightMenu } = Astro.props;
   }
   .header-action-item__container {
     z-index: 100;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
   }
   #menuButton {
     outline: none;

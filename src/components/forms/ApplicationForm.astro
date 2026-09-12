@@ -1,24 +1,27 @@
 ---
 import { Icon } from 'astro-icon/components';
 import { Button, FormInput, FormSelect, FormTextarea } from '@components/odyssey-theme';
+import { defaultLocale, type Locale } from '../../i18n';
+import { useTranslations } from '../../i18n/utils';
 
-const durationOptions = ['1 month', '2 months', '3 months', 'Flexible'];
-const skillOptions = ['Engineering', 'Industrial Design', 'Software Development', 'Agriculture / Food Systems', 'Water / Sanitation', 'Renewable Energy', 'Research / Science', 'Community Organizing', 'Filmmaking / Media', 'Other'];
-const hearOptions = ['Google Search', 'GitHub', 'YouTube', 'Instagram', 'Word of Mouth', 'Other'];
+interface Props { locale?: Locale; }
+const { locale = defaultLocale } = Astro.props;
+const t = useTranslations(locale);
+const f = t.forms;
 ---
 
 <form name="Jumla Application" method="POST" action="/thank-you" data-netlify="true" netlify-honeypot="bot-field">
   <input type="hidden" name="form-name" value="Jumla Application" />
   <p hidden><label>Don't fill this out if you're human: <input name="bot-field" /></label></p>
   <div class="app-form">
-    <FormInput type="text" label="Full Name" name="name" placeholder="Your full name" required />
-    <FormInput type="email" label="Email Address" name="email" placeholder="you@example.com" required />
-    <FormSelect label="Preferred Duration" name="duration" options={durationOptions} />
-    <FormSelect label="Primary Skill Area" name="skills" options={skillOptions} />
-    <FormTextarea label="Your Project Idea" name="project" placeholder="Tell us what you want to build or work on during the residency. What problem are you solving? What's your approach?" />
-    <FormTextarea label="Relevant Experience" name="experience" placeholder="Briefly describe your background and why you're a good fit for the Jumla Residency." />
-    <FormSelect label="How Did You Hear About Us?" name="hear" options={hearOptions} />
-    <Button customIcon>Submit Application <Fragment slot="icon"><Icon name="ic:baseline-chevron-right"/></Fragment></Button>
+    <FormInput type="text" label={f.name} name="name" placeholder={f.namePlaceholder} required />
+    <FormInput type="email" label={f.email} name="email" placeholder={f.emailPlaceholder} required />
+    <FormSelect label={f.duration} name="duration" options={f.durations} />
+    <FormSelect label={f.skills} name="skills" options={f.skillOptions} />
+    <FormTextarea label={f.project} name="project" placeholder={f.projectPlaceholder} />
+    <FormTextarea label={f.experience} name="experience" placeholder={f.experiencePlaceholder} />
+    <FormSelect label={f.hear} name="hear" options={f.hearOptions} />
+    <Button customIcon>{f.submitApplication} <Fragment slot="icon"><Icon name="ic:baseline-chevron-right"/></Fragment></Button>
   </div>
 </form>
 

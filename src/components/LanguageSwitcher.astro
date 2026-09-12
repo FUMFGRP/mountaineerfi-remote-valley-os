@@ -1,0 +1,120 @@
+---
+import { Icon } from 'astro-icon/components';
+import { locales, localeNames, localeLabels, type Locale } from '../i18n';
+import { switchLocalePath, useTranslations } from '../i18n/utils';
+
+interface Props {
+  locale: Locale;
+}
+const { locale } = Astro.props;
+const t = useTranslations(locale);
+const pathname = Astro.url.pathname;
+---
+
+<div class="lang-switcher">
+  <button id="langButton" class="lang-switcher__button" aria-haspopup="true" aria-expanded="false" title={t.nav.language}>
+    <Icon name="ic:baseline-language" width="20px" height="20px" />
+    <span class="lang-switcher__current">{localeLabels[locale]}</span>
+  </button>
+  <ul id="langMenu" class="lang-switcher__menu" hidden>
+    {locales.map((l) => (
+      <li>
+        <a
+          href={switchLocalePath(pathname, l)}
+          class:list={['lang-switcher__link', { 'is-active': l === locale }]}
+          hreflang={l}
+          lang={l}
+        >
+          <span>{localeNames[l]}</span>
+          <span class="lang-switcher__code">{localeLabels[l]}</span>
+        </a>
+      </li>
+    ))}
+  </ul>
+</div>
+
+<script>
+  const button = document.getElementById('langButton');
+  const menu = document.getElementById('langMenu');
+  if (button && menu) {
+    button.addEventListener('click', (e) => {
+      e.stopPropagation();
+      const open = !menu.hasAttribute('hidden');
+      menu.toggleAttribute('hidden', open);
+      button.setAttribute('aria-expanded', String(!open));
+    });
+    document.addEventListener('click', () => {
+      if (!menu.hasAttribute('hidden')) {
+        menu.setAttribute('hidden', '');
+        button.setAttribute('aria-expanded', 'false');
+      }
+    });
+  }
+</script>
+
+<style>
+  .lang-switcher {
+    position: relative;
+  }
+  .lang-switcher__button {
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: inherit;
+    font: inherit;
+    opacity: 0.72;
+    padding: 0.25rem;
+    transition: opacity 150ms linear;
+  }
+  .lang-switcher__button:hover {
+    opacity: 1;
+  }
+  .lang-switcher__current {
+    font-size: var(--font-size-sm, 0.875rem);
+    font-weight: 600;
+  }
+  .lang-switcher__menu {
+    position: absolute;
+    top: calc(100% + 0.5rem);
+    right: 0;
+    margin: 0;
+    padding: 0.35rem 0;
+    list-style: none;
+    min-width: 10rem;
+    background-color: var(--theme-bg);
+    border: 1px solid var(--theme-surface-1);
+    border-radius: var(--theme-shape-radius);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
+    z-index: 200;
+  }
+  .lang-switcher__menu[hidden] {
+    display: none;
+  }
+  .lang-switcher__link {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    padding: 0.5rem 1rem;
+    text-decoration: none;
+    color: inherit;
+    opacity: 0.85;
+    white-space: nowrap;
+    font-size: var(--font-size-sm, 0.875rem);
+  }
+  .lang-switcher__link:hover {
+    opacity: 1;
+    background-color: var(--theme-surface-1);
+  }
+  .lang-switcher__link.is-active {
+    opacity: 1;
+    font-weight: 600;
+  }
+  .lang-switcher__code {
+    font-size: 0.75rem;
+    opacity: 0.6;
+  }
+</style>

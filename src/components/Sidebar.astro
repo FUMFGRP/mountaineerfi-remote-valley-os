@@ -1,14 +1,20 @@
 ---
 import { Button } from '@components/odyssey-theme';
 import { Icon } from 'astro-icon/components';
+import { defaultLocale, type Locale } from '../i18n';
+import { localizePath, useTranslations } from '../i18n/utils';
 
 export type SidebarContext = 'board' | 'jumla' | 'rvos' | 'blog' | 'default';
 
 interface Props {
   context?: SidebarContext;
+  locale?: Locale;
 }
 
-const { context = 'default' } = Astro.props;
+const { context = 'default', locale = defaultLocale } = Astro.props;
+const t = useTranslations(locale);
+const p = localizePath;
+const GITHUB = 'https://github.com/FUMFGRP/mountaineerfi-remote-valley-os';
 
 interface CtaItem {
   href: string;
@@ -19,29 +25,29 @@ interface CtaItem {
 
 const ctaSets: Record<SidebarContext, CtaItem[]> = {
   board: [
-    { href: 'https://github.com/FUMFGRP/mountaineerfi-remote-valley-os', label: 'Contribute on GitHub', icon: 'ic:baseline-code', variant: 'primary' },
-    { href: '/jumla/apply', label: 'Apply for Residency', icon: 'ic:baseline-assignment', variant: 'outlined' },
-    { href: '/regions', label: 'Deploy in Your Region', icon: 'ic:baseline-public', variant: 'unelevated' },
+    { href: GITHUB, label: t.sidebar.contributeGithub, icon: 'ic:baseline-code', variant: 'primary' },
+    { href: p('/jumla/apply', locale), label: t.sidebar.applyResidency, icon: 'ic:baseline-assignment', variant: 'outlined' },
+    { href: p('/regions', locale), label: t.sidebar.deployRegion, icon: 'ic:baseline-public', variant: 'unelevated' },
   ],
   jumla: [
-    { href: '/jumla/apply', label: 'Apply Now', icon: 'ic:baseline-assignment', variant: 'primary' },
-    { href: '/contact', label: 'Ask a Question', icon: 'ic:baseline-email', variant: 'outlined' },
-    { href: '/board', label: 'Explore the Board', icon: 'ic:baseline-dashboard', variant: 'unelevated' },
+    { href: p('/jumla/apply', locale), label: t.sidebar.applyNow, icon: 'ic:baseline-assignment', variant: 'primary' },
+    { href: p('/company/contact', locale), label: t.sidebar.askQuestion, icon: 'ic:baseline-email', variant: 'outlined' },
+    { href: p('/board', locale), label: t.sidebar.exploreBoard, icon: 'ic:baseline-dashboard', variant: 'unelevated' },
   ],
   rvos: [
-    { href: 'https://github.com/FUMFGRP/mountaineerfi-remote-valley-os', label: 'Fork on GitHub', icon: 'ic:baseline-code', variant: 'primary' },
-    { href: '/regions', label: 'Start a Chapter', icon: 'ic:baseline-rocket-launch', variant: 'outlined' },
-    { href: '/board', label: 'View the Board', icon: 'ic:baseline-dashboard', variant: 'unelevated' },
+    { href: GITHUB, label: t.sidebar.forkGithub, icon: 'ic:baseline-code', variant: 'primary' },
+    { href: p('/regions', locale), label: t.sidebar.startChapter, icon: 'ic:baseline-rocket-launch', variant: 'outlined' },
+    { href: p('/board', locale), label: t.sidebar.viewBoard, icon: 'ic:baseline-dashboard', variant: 'unelevated' },
   ],
   blog: [
-    { href: '/jumla/apply', label: 'Apply for Residency', icon: 'ic:baseline-assignment', variant: 'primary' },
-    { href: 'https://github.com/FUMFGRP/mountaineerfi-remote-valley-os', label: 'Contribute on GitHub', icon: 'ic:baseline-code', variant: 'outlined' },
-    { href: '/board', label: 'Explore the Board', icon: 'ic:baseline-dashboard', variant: 'unelevated' },
+    { href: p('/jumla/apply', locale), label: t.sidebar.applyResidency, icon: 'ic:baseline-assignment', variant: 'primary' },
+    { href: GITHUB, label: t.sidebar.contributeGithub, icon: 'ic:baseline-code', variant: 'outlined' },
+    { href: p('/board', locale), label: t.sidebar.exploreBoard, icon: 'ic:baseline-dashboard', variant: 'unelevated' },
   ],
   default: [
-    { href: '/board', label: 'Explore the Board', icon: 'ic:baseline-dashboard', variant: 'primary' },
-    { href: '/jumla/apply', label: 'Apply for Residency', icon: 'ic:baseline-assignment', variant: 'outlined' },
-    { href: 'https://github.com/FUMFGRP/mountaineerfi-remote-valley-os', label: 'GitHub', icon: 'ic:baseline-code', variant: 'unelevated' },
+    { href: p('/board', locale), label: t.sidebar.exploreBoard, icon: 'ic:baseline-dashboard', variant: 'primary' },
+    { href: p('/jumla/apply', locale), label: t.sidebar.applyResidency, icon: 'ic:baseline-assignment', variant: 'outlined' },
+    { href: GITHUB, label: t.sidebar.github, icon: 'ic:baseline-code', variant: 'unelevated' },
   ],
 };
 
@@ -50,7 +56,7 @@ const ctas = ctaSets[context] || ctaSets.default;
 
 <aside class="sidebar">
   <div class="sidebar__card">
-    <h3 class="sidebar__title">Get Involved</h3>
+    <h3 class="sidebar__title">{t.sidebar.getInvolved}</h3>
     <div class="sidebar__ctas">
       {ctas.map((cta) => (
         cta.variant === 'primary' ? (
@@ -85,7 +91,7 @@ const ctas = ctaSets[context] || ctaSets.default;
     </div>
     <div class="sidebar__divider"></div>
     <div class="sidebar__social">
-      <p>Follow the project</p>
+      <p>{t.sidebar.followProject || t.common.followProject}</p>
       <div class="sidebar__social-links">
         <a href="https://github.com/FUMFGRP/mountaineerfi-remote-valley-os" target="_blank" rel="noopener" title="GitHub">
           <Icon name="mdi:github" />

@@ -1,0 +1,65 @@
+---
+// Locale-prefixed routes for all non-default locales (ne, hi, ru).
+// Reuses the same page components as the root (English) routes.
+import { nonDefaultLocales, type Locale } from '../../i18n';
+import HomePage from '../../components/pages/HomePage.astro';
+import BoardPage from '../board.astro';
+import JumlaPage from '../jumla/index.astro';
+import ApplyPage from '../jumla/apply.astro';
+import RvosPage from '../remote-valley-os.astro';
+import RegionsPage from '../regions.astro';
+import FaqPage from '../faq.astro';
+import CommunityPage from '../community.astro';
+import BlogPage from '../blog/index.astro';
+import AboutPage from '../company/about.astro';
+import ContactPage from '../company/contact.astro';
+import LegalPage from '../company/legal.astro';
+import ThankYouPage from '../thank-you.astro';
+
+export function getStaticPaths() {
+  const slugs = [
+    '',
+    'board',
+    'jumla',
+    'jumla/apply',
+    'remote-valley-os',
+    'regions',
+    'faq',
+    'community',
+    'blog',
+    'company/about',
+    'company/contact',
+    'company/legal',
+    'thank-you',
+  ];
+  const paths: any[] = [];
+  for (const locale of nonDefaultLocales) {
+    for (const slug of slugs) {
+      paths.push({ params: { locale, slug: slug === '' ? undefined : slug } });
+    }
+  }
+  return paths;
+}
+
+const { locale, slug } = Astro.params as { locale: Locale; slug?: string };
+
+const pageMap: Record<string, any> = {
+  '': HomePage,
+  board: BoardPage,
+  jumla: JumlaPage,
+  'jumla/apply': ApplyPage,
+  'remote-valley-os': RvosPage,
+  regions: RegionsPage,
+  faq: FaqPage,
+  community: CommunityPage,
+  blog: BlogPage,
+  'company/about': AboutPage,
+  'company/contact': ContactPage,
+  'company/legal': LegalPage,
+  'thank-you': ThankYouPage,
+};
+
+const Page = pageMap[slug ?? ''] ?? HomePage;
+---
+
+<Page locale={locale} />

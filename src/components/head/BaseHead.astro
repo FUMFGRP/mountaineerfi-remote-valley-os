@@ -1,5 +1,7 @@
 ---
 import settings from '../../config/settings.js';
+import { locales, defaultLocale, htmlLang, type Locale } from '../../i18n';
+import { switchLocalePath } from '../../i18n/utils';
 
 import '../../styles/index.css';
 
@@ -8,28 +10,50 @@ export interface Props {
 	description?: string;
 	canonicalURL?: URL | string;
 	image?: string;
+	locale?: Locale;
 }
 
-const title = Astro.props.title || settings.title;
-const description = Astro.props.description || settings.description;
+const {
+	title = settings.title,
+	description = settings.description,
+	canonicalURL = new URL(Astro.url.pathname, Astro.site),
+	image = new URL(Astro.props.image || './social.png', Astro.site),
+	locale = defaultLocale,
+} = Astro.props;
+
 const gaId = import.meta.env.PUBLIC_GA_MEASUREMENT_ID || settings.gaMeasurementId;
-const canonicalURL = Astro.props.canonicalURL || new URL(Astro.url.pathname, Astro.site);
-const image = new URL(Astro.props.image || './social.png', Astro.site);
+
+// hreflang alternates for every locale, plus x-default (English)
+const alternates = locales.map((l) => ({
+	locale: l,
+	href: new URL(switchLocalePath(Astro.url.pathname, l), Astro.site).href,
+}));
+const defaultHref = new URL(switchLocalePath(Astro.url.pathname, defaultLocale), Astro.site).href;
 ---
 
 <!-- Global Metadata -->
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width" />
-<link rel="icon" type="image/png" href="/favicon.png" />
-<!-- Google Fonts: Montserrat + Caveat -->
+<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png" />
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16.png" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+<link rel="manifest" href="/site.webmanifest" />
+<meta name="theme-color" content="#2D3436" />
+<!-- Google Fonts: Montserrat (Latin + Cyrillic), Caveat (display), Noto Sans Devanagari (Hindi/Nepali) -->
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@700&family=Montserrat:wght@300;400;600;700&display=swap" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@700&family=Montserrat:wght@300;400;600;700&family=Noto+Sans+Devanagari:wght@400;600;700&display=swap" rel="stylesheet" />
 <!-- Primary Meta Tags -->
 <title>{title}</title>
 <meta name="title" content={title} />
 <meta name="description" content={description} />
 <link rel="canonical" href={canonicalURL} />
+<!-- Language alternates -->
+{alternates.map((alt) => (
+  <link rel="alternate" hreflang={alt.locale} href={alt.href} />
+))}
+<link rel="alternate" hreflang="x-default" href={defaultHref} />
 <!-- Generator -->
 <meta name="generator" content={Astro.generator} />
 <!-- Open Graph / Facebook -->
@@ -38,6 +62,7 @@ const image = new URL(Astro.props.image || './social.png', Astro.site);
 <meta property="og:title" content={title} />
 <meta property="og:description" content={description} />
 <meta property="og:image" content={image} />
+<meta property="og:locale" content={htmlLang[locale]} />
 
 <!-- Twitter -->
 <meta property="twitter:card" content="summary_large_image" />
@@ -53,9 +78,10 @@ const image = new URL(Astro.props.image || './social.png', Astro.site);
   "@type": "Organization",
   "name": "Remote Valley OS by Mountaineer.fi",
   "url": "https://remotevalley.mountaineer.fi",
-  "logo": "https://mountaineer.fi/favicon.png",
+  "logo": "https://remotevalley.mountaineer.fi/icon-512.png",
   "description": "Open-source innovation blueprint for remote regions. 5 pillars: trash-to-filament, water purification, food production, EV logistics, mesh networks.",
   "sameAs": [
+    "https://github.com/FUMFGRP/mountaineerfi-remote-valley-os",
     "https://youtube.com/@mountaineerfi",
     "https://instagram.com/mountaineer.fi"
   ]

@@ -1,22 +1,22 @@
 ---
 import { Button, FormInput, FormSelect, FormTextarea } from '@components/odyssey-theme';
+import { defaultLocale, type Locale } from '../../i18n';
+import { useTranslations } from '../../i18n/utils';
 
-const selectOptions = [
-  "Google Search",
-  "Social Media",
-  "Email",
-]
-
+interface Props { locale?: Locale; }
+const { locale = defaultLocale } = Astro.props;
+const t = useTranslations(locale);
+const f = t.forms;
 ---
 
 <form name="Contact Form" method="POST" action="/thank-you" data-netlify="true" netlify-honeypot="bot-field">
   <input type="hidden" name="form-name" value="Contact Form" />
   <p hidden><label>Don't fill this out if you're human: <input name="bot-field" /></label></p>
-  <FormInput type="text" label="Name" name="Name" placeholder="John Doe" />
-  <FormInput type="email" label="Email" name="Email" placeholder="hello@example.com" />
-  <FormSelect label="How Did You Hear About Us?" name="How Did You Hear About Us?" options={selectOptions} />
-  <FormTextarea label="Message" name="Message" placeholder="Your message here..." />
-  <Button>Submit</Button>
+  <FormInput type="text" label={f.name} name="Name" placeholder="John Doe" />
+  <FormInput type="email" label={f.email} name="Email" placeholder={f.emailPlaceholder} />
+  <FormSelect label={f.hear} name="How Did You Hear About Us?" options={f.hearOptions} />
+  <FormTextarea label={f.message} name="Message" placeholder={f.messagePlaceholder} />
+  <Button>{f.submit}</Button>
 </form>
 
 <style>

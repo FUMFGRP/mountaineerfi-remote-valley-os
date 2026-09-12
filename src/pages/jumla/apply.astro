@@ -5,19 +5,26 @@ import ApplicationForm from '../../components/forms/ApplicationForm.astro';
 import Sidebar from '../../components/Sidebar.astro';
 import { Icon } from 'astro-icon/components';
 import SectionDivider from '../../components/SectionDivider.astro';
+import { defaultLocale, type Locale } from '../../i18n';
+import { localizePath, useTranslations } from '../../i18n/utils';
+
+interface Props { locale?: Locale; }
+const { locale = defaultLocale } = Astro.props;
+const t = useTranslations(locale);
+const p = localizePath;
 
 const seo = {
-  title: 'Apply for Jumla Residency | Remote Valley OS',
-  description: 'Apply for the Jumla Residency program — prototype open-source solutions for remote communities in one of the toughest environments on earth.',
+  title: t.apply.seoTitle,
+  description: t.apply.seoDescription,
 };
 ---
 
-<Layout {seo}>
+<Layout {seo} {locale}>
   <section class="page-hero">
     <Container>
       <div class="page-hero__content">
-        <h1>Apply for the Jumla Residency</h1>
-        <p>1 to 3 months in Karnali Province, Nepal. Build and test real solutions in one of the world's most extreme environments.</p>
+        <h1>{t.apply.heroTitle}</h1>
+        <p>{t.apply.heroText}</p>
       </div>
     </Container>
   </section>
@@ -26,7 +33,7 @@ const seo = {
     <div class="content-with-sidebar">
       <div class="content-main">
         <section style="margin: var(--section-margin) auto;">
-          <h2>Before You Apply</h2>
+          <h2>{t.apply.beforeTitle}</h2>
           <div class="prereq-grid">
             <div class="prereq-card">
               <h3><Icon name="ic:baseline-laptop" /> Self-Sufficient</h3>
@@ -50,12 +57,12 @@ const seo = {
         <SectionDivider icon="compass" />
 
         <section style="margin: var(--section-margin) auto;">
-          <h2>Application Form</h2>
-          <p>Tell us about yourself and your project. We review applications on a rolling basis.</p>
-          <ApplicationForm />
+          <h2>{t.apply.formTitle}</h2>
+          <p>{t.apply.formText}</p>
+          <ApplicationForm {locale} />
         </section>
       </div>
-      <Sidebar context="jumla" />
+      <Sidebar context="jumla" {locale} />
     </div>
   </Container>
 </Layout>

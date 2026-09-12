@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="200" height="200" role="img" aria-label="Remote Valley OS">
+  <rect width="200" height="200" rx="42" fill="#2D3436"/>
+  <g fill="#A5D8FF"
+     font-family="Montserrat, Helvetica, Arial, sans-serif"
+     font-weight="700"
+     font-size="56"
+     text-anchor="middle">
+    <text x="50" y="70">R</text>
+    <text x="150" y="70">V</text>
+    <text x="50" y="170">O</text>
+    <text x="150" y="170">S</text>
+  </g>
+</svg>

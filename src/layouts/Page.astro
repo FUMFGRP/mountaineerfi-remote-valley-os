@@ -4,26 +4,44 @@ import Layout from './Base.astro';
 import type { Props as BaseHeadProps } from '../components/head/BaseHead.astro';
 import Logo from '../components/Logo.astro';
 import settings from '../config/settings';
-import { footerLists, footerSocials } from '../config/footer';
+import { footerColumns, footerSocials } from '../config/footer';
+import { nav } from '../config/nav.js';
+import { defaultLocale, type Locale } from '../i18n';
+import { localizePath, useTranslations } from '../i18n/utils';
 
 
 export interface Props {
 	seo?: BaseHeadProps;
+	locale?: Locale;
 }
 
-import { nav } from '../config/nav.js';
+const { seo, locale = defaultLocale } = Astro.props;
+const t = useTranslations(locale);
 
-const { seo } = Astro.props as Props;
+const footerLists = footerColumns.map((col) => ({
+	title: t.footer[col.titleKey as keyof typeof t.footer] as string,
+	items: col.items.map((item) => ({
+		title: t.footer[item.key as keyof typeof t.footer] as string,
+		slug: (item as { external?: boolean }).external ? item.path : localizePath(item.path, locale),
+	})),
+}));
 ---
 
-<Layout seo={seo}>
-	<Header rightMenu navData={nav} slot="header">
+<Layout seo={seo} locale={locale}>
+	<Header rightMenu navData={nav} locale={locale} slot="header">
 		<span slot="logo">
 			<Logo />
 		</span>
-		<Button slot="action-item" href="/board">Explore the Board</Button>
+		<Button slot="action-item" href={localizePath('/board', locale)}>{t.nav.exploreBoard}</Button>
 	</Header>
 	<div id="page">
+		{locale !== defaultLocale && (
+			<aside class="translation-notice" aria-label={t.reviewNotice.label}>
+				<div class="translation-notice__inner">
+					<strong>{t.reviewNotice.label}:</strong> {t.reviewNotice.text}
+				</div>
+			</aside>
+		)}
 		<slot />
 	</div>
 	<Footer
@@ -38,3 +56,19 @@ const { seo } = Astro.props as Props;
 		<Logo slot="logo" />
 	</Footer>
 </Layout>
+
+<style>
+	.translation-notice {
+		max-width: 72rem;
+		margin: 0 auto;
+		padding: 0.5rem 1rem;
+	}
+	.translation-notice__inner {
+		background-color: var(--theme-surface-1);
+		border-left: 3px solid var(--accent-sunset-orange, #e17055);
+		border-radius: 0.25rem;
+		padding: 0.5rem 0.75rem;
+		font-size: var(--font-size-xs, 0.75rem);
+		line-height: 1.5;
+	}
+</style>

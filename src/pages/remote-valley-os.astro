@@ -3,22 +3,29 @@ import { Container, Button, CtaCardSection } from '@components/odyssey-theme';
 import Layout from '../layouts/Page.astro';
 import { Icon } from 'astro-icon/components';
 import Sidebar from '../components/Sidebar.astro';
+import { defaultLocale, type Locale } from '../i18n';
+import { localizePath, useTranslations } from '../i18n/utils';
+
+interface Props { locale?: Locale; }
+const { locale = defaultLocale } = Astro.props;
+const t = useTranslations(locale);
+const p = localizePath;
 
 const seo = {
-  title: 'Remote Valley OS — Open Source Blueprint | Architecture & GitHub | Mountaineer.fi',
-  description: 'The full open-source system architecture behind Remote Valley OS. Sensor ingestion, local LLM, offline-first design, and 5 interconnected modules. Fork on GitHub.',
+  title: t.rvos.seoTitle,
+  description: t.rvos.seoDescription,
 };
 ---
 
-<Layout {seo}>
+<Layout {seo} {locale}>
   <section class="page-hero">
     <Container>
       <div class="page-hero__content">
-        <h1>Remote Valley OS</h1>
-        <p>A system-of-systems integration layer connecting hardware, data, and people into one coherent infrastructure. Open source. Offline-first. Field-tested.</p>
+        <h1>{t.rvos.heroTitle}</h1>
+        <p>{t.rvos.heroText}</p>
         <div class="hero-ctas">
-          <Button href="https://github.com/FUMFGRP/mountaineerfi-remote-valley-os" customIcon>View on GitHub <Fragment slot="icon"><Icon name="ic:baseline-launch"/></Fragment></Button>
-          <Button href="/board" outlined>Explore the Modules</Button>
+          <Button href="https://github.com/FUMFGRP/mountaineerfi-remote-valley-os" customIcon>{t.common.viewGithub} <Fragment slot="icon"><Icon name="ic:baseline-launch"/></Fragment></Button>
+          <Button href={p('/board', locale)} outlined>{t.common.exploreBoard}</Button>
         </div>
       </div>
     </Container>
@@ -28,9 +35,9 @@ const seo = {
     <div class="content-with-sidebar">
       <div class="content-main">
         <section style="margin: var(--section-margin) auto;">
-          <h2>What RV-OS Is</h2>
-          <p>Remote Valley OS is not an operating system in the Windows/Linux sense. It is a <strong>system-of-systems integration layer</strong> — the middleware and tooling that connects five independent infrastructure modules into a unified, observable, and manageable whole.</p>
-          <p>Each module works on its own. RV-OS makes them work together. The stack runs fully offline and syncs to GitHub when connectivity is available.</p>
+          <h2>{t.rvos.whatTitle}</h2>
+          <p>{t.rvos.whatP1}</p>
+          <p>{t.rvos.whatP2}</p>
 
           <div class="arch-diagram">
             <div class="arch-layer arch-layer--top">Dashboard &amp; Alerts <span class="arch-detail">Web UI + SMS + LoRa text messages</span></div>
@@ -48,7 +55,7 @@ const seo = {
         </section>
 
         <section style="margin: var(--section-margin) auto;">
-          <h2>Sensor Ingestion Pipeline</h2>
+          <h2>{t.rvos.sensorTitle}</h2>
           <p>Every module is instrumented with sensors that report operational data. A lightweight agent on each module cluster collects, timestamps, and stores data locally before relaying it over LoRa or MQTT to the central collector.</p>
           <div class="sensor-grid">
             <div class="sensor-item"><strong>Extruder temp</strong> <span>Serial / 5 sec / ~50B</span></div>
@@ -64,7 +71,7 @@ const seo = {
         </section>
 
         <section style="margin: var(--section-margin) auto;">
-          <h2>Local LLM</h2>
+          <h2>{t.rvos.llmTitle}</h2>
           <p>A small, locally-hosted language model runs on the hub server, powered by the micro-grid. It answers maintenance questions in Nepali and English, walks operators through troubleshooting, and translates documentation — all fully offline.</p>
           <div class="llm-specs">
             <div class="spec-item"><strong>Model:</strong> Quantized 7B (4-bit, ~4GB RAM)</div>
@@ -75,7 +82,7 @@ const seo = {
         </section>
 
         <section style="margin: var(--section-margin) auto;">
-          <h2>Offline-First Design</h2>
+          <h2>{t.rvos.offlineTitle}</h2>
           <p>Every component runs fully offline. Internet is never required for operation.</p>
           <div class="offline-table">
             <div class="offline-row"><span class="offline-label">Sensor ingestion</span><span class="offline-online">Stream normal</span><span class="offline-offline">Buffer locally indefinitely</span></div>
@@ -88,7 +95,7 @@ const seo = {
         </section>
 
         <section style="margin: var(--section-margin) auto;">
-          <h2>Hardware Requirements</h2>
+          <h2>{t.rvos.hardwareTitle}</h2>
           <div class="hw-table">
             <div class="hw-row"><span class="hw-part">Central server</span><span class="hw-spec">Raspberry Pi 4 (4GB)</span><span class="hw-power">~15W</span><span class="hw-cost">$75</span></div>
             <div class="hw-row"><span class="hw-part">Sensor agent (per module)</span><span class="hw-spec">Pi Zero 2 W</span><span class="hw-power">~3W</span><span class="hw-cost">$25</span></div>
@@ -101,7 +108,7 @@ const seo = {
         </section>
 
         <section style="margin: var(--section-margin) auto;">
-          <h2>Security Model</h2>
+          <h2>{t.rvos.securityTitle}</h2>
           <div class="security-grid">
             <div class="security-item"><Icon name="ic:baseline-lock" /> All data encrypted at rest</div>
             <div class="security-item"><Icon name="ic:baseline-phone-android" /> Sensor data locally owned — never transmitted without explicit sync</div>
@@ -112,7 +119,7 @@ const seo = {
         </section>
 
         <section style="margin: var(--section-margin) auto;">
-          <h2>Software Stack</h2>
+          <h2>{t.rvos.stackTitle}</h2>
           <div class="stack-grid">
             <div class="stack-item"><strong>API server</strong> FastAPI (Python)</div>
             <div class="stack-item"><strong>Dashboard</strong> Astro + SolidJS (static)</div>
@@ -126,7 +133,7 @@ const seo = {
         </section>
 
         <section style="margin: var(--section-margin) auto;">
-          <h2>Deployment Phases</h2>
+          <h2>{t.rvos.phasesTitle}</h2>
           <div class="phase-grid">
             <div class="phase-card">
               <span class="phase-badge">Phase 1</span>
@@ -147,7 +154,7 @@ const seo = {
         </section>
 
         <section style="margin: var(--section-margin) auto;">
-          <h2>Repositories</h2>
+          <h2>{t.rvos.reposTitle}</h2>
           <div class="repo-grid">
             <div class="repo-card"><h3>rv-os-core</h3><p>API server, dashboard frontend, database schema</p></div>
             <div class="repo-card"><h3>rv-os-agent</h3><p>Per-module sensor agent firmware and scripts</p></div>
@@ -159,16 +166,16 @@ const seo = {
         </section>
 
         <CtaCardSection background="var(--theme-surface-2)" color="var(--theme-on-surface-2)">
-          <h2>Start Building</h2>
-          <p>Star the repo, open an issue, submit a PR, or apply for the Jumla residency. Every contribution moves the mission forward.</p>
+          <h2>{t.rvos.ctaTitle}</h2>
+          <p>{t.rvos.ctaText}</p>
           <div class="cta-row">
-            <Button href="https://github.com/FUMFGRP/mountaineerfi-remote-valley-os" customIcon>GitHub <Fragment slot="icon"><Icon name="ic:baseline-launch"/></Fragment></Button>
-            <Button href="/jumla/apply" unelevated>Apply for Residency</Button>
-            <Button href="/regions" outlined>Deploy in Your Region</Button>
+            <Button href="https://github.com/FUMFGRP/mountaineerfi-remote-valley-os" customIcon>{t.common.github} <Fragment slot="icon"><Icon name="ic:baseline-launch"/></Fragment></Button>
+            <Button href={p('/jumla/apply', locale)} unelevated>{t.common.applyResidency}</Button>
+            <Button href={p('/regions', locale)} outlined>{t.common.deployRegion}</Button>
           </div>
         </CtaCardSection>
       </div>
-      <Sidebar context="rvos" />
+      <Sidebar context="rvos" {locale} />
     </div>
   </Container>
 </Layout>
