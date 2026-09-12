@@ -9,7 +9,7 @@
 	"scripts": {
 		"dev": "astro dev",
 		"start": "astro dev",
-		"build": "astro build",
+		"build": "astro build && node scripts/sitemap-hreflang.mjs",
 		"preview": "astro preview",
 		"format": "npx prettier -w .",
 		"deploy": "netlify deploy --prod --dir=dist",
