@@ -106,14 +106,28 @@ const timeline = [
         <a href="mailto:contact@mountaineer.fi">Email: contact@mountaineer.fi</a>
         <a href="mailto:media@mountaineer.fi">Media: media@mountaineer.fi</a>
       </div>
+      <div class="social-row">
+        <a href="https://www.youtube.com/@mountaineerFI?sub_confirmation=1" target="_blank" rel="noopener" title="YouTube">
+          <Icon name="mdi:youtube" width="24" height="24" />
+        </a>
+        <a href="https://instagram.com/mountaineerbjj" target="_blank" rel="noopener" title="Instagram">
+          <Icon name="mdi:instagram" width="24" height="24" />
+        </a>
+        <a href="https://www.facebook.com/mountaineerfi?sub_confirmation=1" target="_blank" rel="noopener" title="Facebook">
+          <Icon name="mdi:facebook" width="24" height="24" />
+        </a>
+        <a href="https://github.com/FUMFGRP/mountaineerfi-remote-valley-os" target="_blank" rel="noopener" title="GitHub">
+          <Icon name="mdi:github" width="24" height="24" />
+        </a>
+      </div>
     </section>
 
     <CtaCardSection background="var(--theme-surface-2)" color="var(--theme-on-surface-2)">
       <h2>{t.about.ctaTitle}</h2>
       <p>{t.about.ctaText}</p>
       <div class="cta-row">
-        <Button href="/jumla/apply" customIcon>Apply for Residency <Fragment slot="icon"><Icon name="ic:baseline-chevron-right"/></Fragment></Button>
-        <Button href="https://github.com/FUMFGRP/mountaineerfi-remote-valley-os" unelevated>GitHub</Button>
+        <Button href={p('/jumla/apply', locale)} customIcon>{t.common.applyResidency} <Fragment slot="icon"><Icon name="ic:baseline-chevron-right"/></Fragment></Button>
+        <Button href="https://github.com/FUMFGRP/mountaineerfi-remote-valley-os" unelevated>{t.common.github}</Button>
       </div>
     </CtaCardSection>
   </Container>
@@ -138,6 +152,9 @@ const timeline = [
   .contact-links { display: flex; flex-direction: column; gap: 0.35rem; margin-top: 1rem; max-width: 24rem; }
   .contact-links a { padding: 0.5rem 0.75rem; background-color: var(--theme-surface-1); border-radius: 0.25rem; font-size: var(--font-size-sm); color: var(--accent-deep-blue); text-decoration: none; }
   .contact-links a:hover { text-decoration: underline; }
+  .social-row { display: flex; gap: 1rem; margin-top: 1.25rem; }
+  .social-row a { color: var(--theme-on-surface-1); opacity: 0.6; display: inline-flex; transition: opacity 0.2s, transform 0.2s; }
+  .social-row a:hover { opacity: 1; transform: translateY(-2px); }
   .cta-row { display: flex; gap: 1rem; justify-content: center; }
   @media (max-width: 768px) { .philosophy-grid { grid-template-columns: 1fr; } .timeline-item { flex-direction: column; gap: 0.25rem; } .cta-row { flex-direction: column; align-items: center; } .team-meta { flex-direction: column; } }
 </style>

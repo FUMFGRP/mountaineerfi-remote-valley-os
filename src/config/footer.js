@@ -5,14 +5,19 @@ export const footerSocials = [
     icon: "mdi:github",
   },
   {
-    name: 'Youtube',
-    url: 'https://youtube.com/@mountaineerfi',
+    name: 'YouTube',
+    url: 'https://www.youtube.com/@mountaineerFI?sub_confirmation=1',
     icon: "mdi:youtube",
   },
   {
     name: 'Instagram',
-    url: 'https://instagram.com/mountaineer.fi',
+    url: 'https://instagram.com/mountaineerbjj',
     icon: "mdi:instagram",
+  },
+  {
+    name: 'Facebook',
+    url: 'https://www.facebook.com/mountaineerfi?sub_confirmation=1',
+    icon: "mdi:facebook",
   },
 ]
 
