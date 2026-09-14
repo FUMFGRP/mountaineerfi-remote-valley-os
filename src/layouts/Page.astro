@@ -13,9 +13,10 @@ import { localizePath, useTranslations } from '../i18n/utils';
 export interface Props {
 	seo?: BaseHeadProps;
 	locale?: Locale;
+	untranslated?: boolean;
 }
 
-const { seo, locale = defaultLocale } = Astro.props;
+const { seo, locale = defaultLocale, untranslated = false } = Astro.props;
 const t = useTranslations(locale);
 
 const footerLists = footerColumns.map((col) => ({
@@ -28,7 +29,7 @@ const footerLists = footerColumns.map((col) => ({
 ---
 
 <Layout seo={seo} locale={locale}>
-	<Header rightMenu navData={nav} locale={locale} slot="header">
+	<Header rightMenu navData={nav} locale={locale} untranslated={untranslated} slot="header">
 		<span slot="logo">
 			<Logo />
 		</span>

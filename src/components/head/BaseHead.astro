@@ -11,6 +11,7 @@ export interface Props {
 	canonicalURL?: URL | string;
 	image?: string;
 	locale?: Locale;
+	noAlternates?: boolean;
 }
 
 const {
@@ -19,6 +20,7 @@ const {
 	canonicalURL = new URL(Astro.url.pathname, Astro.site),
 	image = new URL(Astro.props.image || './social.png', Astro.site),
 	locale = defaultLocale,
+	noAlternates = false,
 } = Astro.props;
 
 const gaId = import.meta.env.PUBLIC_GA_MEASUREMENT_ID || settings.gaMeasurementId;
@@ -50,10 +52,10 @@ const defaultHref = new URL(switchLocalePath(Astro.url.pathname, defaultLocale),
 <meta name="description" content={description} />
 <link rel="canonical" href={canonicalURL} />
 <!-- Language alternates -->
-{alternates.map((alt) => (
+{!noAlternates && alternates.map((alt) => (
   <link rel="alternate" hreflang={alt.locale} href={alt.href} />
 ))}
-<link rel="alternate" hreflang="x-default" href={defaultHref} />
+{!noAlternates && <link rel="alternate" hreflang="x-default" href={defaultHref} />}
 <!-- Generator -->
 <meta name="generator" content={Astro.generator} />
 <!-- Open Graph / Facebook -->

@@ -1,0 +1,154 @@
+---
+import { Container } from '@components/odyssey-theme';
+import Layout from '../../layouts/Page.astro';
+import { getCollection } from 'astro:content';
+import { defaultLocale, type Locale } from '../../i18n';
+
+interface Props {
+  locale?: Locale;
+}
+const { locale = defaultLocale } = Astro.props;
+
+const CATEGORY_LABELS: Record<string, string> = {
+  blueprint: 'Blueprint',
+  modules: 'Modules',
+  program: 'Program',
+  community: 'Community',
+  strategy: 'Strategy',
+  brand: 'Brand',
+  meta: 'Meta',
+};
+
+const CATEGORY_BLURBS: Record<string, string> = {
+  blueprint:
+    'What Remote Valley OS is, how the five systems fit together, and the field evidence behind it.',
+  modules: 'The infrastructure pillars — design, process, integration, and training.',
+  program: 'Residency, remote contribution, and how to get involved.',
+  community: 'Contribution guide, code of conduct, governance, and security.',
+  strategy: 'Launch plan, media kit, and talent strategy.',
+  brand: 'Visual identity and writing style.',
+  meta: 'Project overview pages.',
+};
+
+const ORDER = ['blueprint', 'modules', 'program', 'community', 'strategy', 'brand', 'meta'];
+
+const all = (await getCollection('docs')).sort(
+  (a, b) =>
+    ORDER.indexOf(a.data.category) - ORDER.indexOf(b.data.category) ||
+    a.data.order - b.data.order
+);
+
+const groups = ORDER.map((key) => ({
+  key,
+  label: CATEGORY_LABELS[key],
+  blurb: CATEGORY_BLURBS[key],
+  docs: all.filter((d) => d.data.category === key),
+})).filter((g) => g.docs.length > 0);
+
+const seo = {
+  title: 'Blueprint — Remote Valley OS',
+  description:
+    'The complete Remote Valley OS blueprint: five infrastructure modules, the integration layer, residency program, governance, and field study — free and open source.',
+  noAlternates: true,
+};
+---
+
+<Layout {seo} {locale}>
+  <Container>
+    <header class="docs-index__hero">
+      <p class="docs-index__eyebrow">Open source · Free to read, fork, and adapt</p>
+      <h1>Blueprint</h1>
+      <p class="docs-index__intro">
+        The complete Remote Valley OS blueprint — every module, the integration layer, the
+        residency program, governance, and the Jumla field study. Written to be read, copied,
+        and deployed by anyone.
+      </p>
+    </header>
+
+    {groups.map((g) => (
+      <section class="docs-index__group">
+        <h2>{g.label}</h2>
+        <p class="docs-index__blurb">{g.blurb}</p>
+        <div class="docs-index__grid">
+          {g.docs.map((d) => (
+            <a class="docs-card" href={`/blueprint/${d.slug}`}>
+              <h3>{d.data.title}</h3>
+              {d.data.description && <p>{d.data.description}</p>}
+            </a>
+          ))}
+        </div>
+      </section>
+    ))}
+  </Container>
+</Layout>
+
+<style>
+  .docs-index__hero {
+    max-width: 44rem;
+    margin: var(--section-margin) auto 1rem;
+  }
+  .docs-index__eyebrow {
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    font-size: var(--font-size-sm);
+    font-weight: 600;
+    color: var(--accent-sunset-orange);
+    margin: 0 0 0.5rem;
+  }
+  .docs-index__intro {
+    font-size: var(--font-size-md, 1.05rem);
+    opacity: 0.85;
+  }
+  .docs-index__group {
+    margin: 3rem 0;
+  }
+  .docs-index__group h2 {
+    margin-bottom: 0.25rem;
+  }
+  .docs-index__blurb {
+    opacity: 0.75;
+    font-size: var(--font-size-sm);
+    margin: 0 0 1.25rem;
+    max-width: 44rem;
+  }
+  .docs-index__grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+  }
+  .docs-card {
+    display: block;
+    padding: 1.25rem;
+    background-color: var(--theme-surface-1);
+    border-radius: var(--theme-shape-radius);
+    text-decoration: none;
+    color: inherit;
+    transition: transform 0.15s, border-color 0.15s;
+    border: 2px solid transparent;
+  }
+  .docs-card:hover {
+    transform: translateY(-3px);
+    border-color: var(--accent-deep-blue);
+  }
+  .docs-card h3 {
+    font-size: var(--font-size-base);
+    margin: 0 0 0.4rem;
+    line-height: 1.3;
+  }
+  .docs-card p {
+    margin: 0;
+    font-size: var(--font-size-xs, 0.8rem);
+    opacity: 0.8;
+    line-height: 1.5;
+  }
+  @media (max-width: 1024px) {
+    .docs-index__grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+  @media (max-width: 640px) {
+    .docs-index__grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

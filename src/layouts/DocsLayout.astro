@@ -1,0 +1,284 @@
+---
+import Layout from './Page.astro';
+import { getCollection } from 'astro:content';
+import { defaultLocale, type Locale } from '../i18n';
+
+interface Props {
+  title: string;
+  description?: string;
+  currentSlug?: string;
+  locale?: Locale;
+}
+
+const { title, description = '', currentSlug, locale = defaultLocale } = Astro.props;
+
+const CATEGORY_LABELS: Record<string, string> = {
+  blueprint: 'Blueprint',
+  modules: 'Modules',
+  program: 'Program',
+  community: 'Community',
+  strategy: 'Strategy',
+  brand: 'Brand',
+  meta: 'Meta',
+};
+const ORDER = ['blueprint', 'modules', 'program', 'community', 'strategy', 'brand', 'meta'];
+
+const all = (await getCollection('docs')).sort(
+  (a, b) =>
+    ORDER.indexOf(a.data.category) - ORDER.indexOf(b.data.category) ||
+    a.data.order - b.data.order
+);
+
+const groups = ORDER.map((key) => ({
+  key,
+  label: CATEGORY_LABELS[key],
+  docs: all.filter((d) => d.data.category === key),
+})).filter((g) => g.docs.length > 0);
+
+const idx = all.findIndex((d) => d.slug === currentSlug);
+const prev = idx > 0 ? all[idx - 1] : null;
+const next = idx >= 0 && idx < all.length - 1 ? all[idx + 1] : null;
+
+const href = (slug: string) => `/blueprint/${slug}`;
+
+const seo = {
+  title: `${title} | Blueprint | Remote Valley OS`,
+  description: description || 'Remote Valley OS blueprint documentation.',
+  noAlternates: true,
+};
+---
+
+<Layout {seo} {locale} untranslated={true}>
+  <div class="docs">
+    <aside class="docs__sidebar">
+      <a class="docs__home" href="/blueprint">Blueprint</a>
+      {groups.map((g) => (
+        <div class="docs__group">
+          <p class="docs__group-title">{g.label}</p>
+          <ul>
+            {g.docs.map((d) => (
+              <li>
+                <a
+                  href={href(d.slug)}
+                  class:list={['docs__link', { 'is-active': d.slug === currentSlug }]}
+                >
+                  {d.data.title}
+                </a>
+              </li>
+            ))}
+          </ul>
+        </div>
+      ))}
+    </aside>
+
+    <article class="docs__content prose">
+      <slot />
+      <nav class="docs__pager">
+        {prev ? <a class="docs__pager-link" href={href(prev.slug)}>← {prev.data.title}</a> : <span />}
+        {next ? <a class="docs__pager-link docs__pager-link--next" href={href(next.slug)}>{next.data.title} →</a> : <span />}
+      </nav>
+    </article>
+  </div>
+</Layout>
+
+<style>
+  .docs {
+    display: grid;
+    grid-template-columns: 16rem 1fr;
+    gap: 3rem;
+    align-items: start;
+    max-width: 72rem;
+    margin: 0 auto;
+    padding: 2rem 1rem;
+  }
+  .docs__sidebar {
+    position: sticky;
+    top: calc(var(--navbar-height, 4rem) + 1rem);
+    max-height: calc(100vh - var(--navbar-height, 4rem) - 2rem);
+    overflow-y: auto;
+    font-size: var(--font-size-sm, 0.875rem);
+  }
+  .docs__home {
+    display: inline-block;
+    font-family: var(--theme-font-family-display);
+    font-size: var(--font-size-lg, 1.25rem);
+    text-decoration: none;
+    color: inherit;
+    margin-bottom: 1rem;
+  }
+  .docs__group {
+    margin-bottom: 1.25rem;
+  }
+  .docs__group-title {
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    font-size: 0.7rem;
+    font-weight: 700;
+    opacity: 0.5;
+    margin: 0 0 0.4rem;
+  }
+  .docs__sidebar ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  .docs__link {
+    display: block;
+    padding: 0.3rem 0.5rem;
+    border-radius: 0.25rem;
+    text-decoration: none;
+    color: inherit;
+    opacity: 0.78;
+    line-height: 1.3;
+  }
+  .docs__link:hover {
+    opacity: 1;
+    background-color: var(--theme-surface-1);
+  }
+  .docs__link.is-active {
+    opacity: 1;
+    font-weight: 600;
+    background-color: var(--theme-surface-1);
+    border-left: 3px solid var(--accent-sunset-orange, #e17055);
+  }
+  .docs__content {
+    min-width: 0;
+  }
+  .docs__pager {
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+    margin-top: 3rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--theme-surface-1);
+    font-size: var(--font-size-sm, 0.875rem);
+  }
+  .docs__pager-link {
+    color: var(--accent-deep-blue, #74b9ff);
+    text-decoration: none;
+    max-width: 45%;
+  }
+  .docs__pager-link--next {
+    text-align: right;
+    margin-left: auto;
+  }
+  @media (max-width: 900px) {
+    .docs {
+      grid-template-columns: 1fr;
+      gap: 2rem;
+    }
+    .docs__sidebar {
+      position: static;
+      max-height: none;
+    }
+  }
+</style>
+
+<style is:global>
+  /* Prose styles for rendered blueprint markdown */
+  .prose {
+    line-height: 1.7;
+    font-size: 1rem;
+  }
+  .prose > :first-child {
+    margin-top: 0;
+  }
+  .prose h1 {
+    font-size: 2rem;
+    line-height: 1.2;
+    margin: 0 0 1rem;
+  }
+  .prose h2 {
+    font-size: 1.5rem;
+    line-height: 1.25;
+    margin: 2.5rem 0 0.75rem;
+    padding-bottom: 0.35rem;
+    border-bottom: 1px solid var(--theme-surface-1);
+  }
+  .prose h3 {
+    font-size: 1.15rem;
+    margin: 2rem 0 0.5rem;
+  }
+  .prose h4 {
+    font-size: 1rem;
+    margin: 1.5rem 0 0.5rem;
+  }
+  .prose p {
+    margin: 0 0 1rem;
+  }
+  .prose ul,
+  .prose ol {
+    margin: 0 0 1rem;
+    padding-left: 1.4rem;
+  }
+  .prose li {
+    margin-bottom: 0.35rem;
+  }
+  .prose a {
+    color: var(--accent-deep-blue, #74b9ff);
+  }
+  .prose strong {
+    font-weight: 700;
+  }
+  .prose hr {
+    border: none;
+    border-top: 1px solid var(--theme-surface-1);
+    margin: 2rem 0;
+  }
+  .prose blockquote {
+    margin: 1.5rem 0;
+    padding: 0.5rem 1rem;
+    border-left: 3px solid var(--accent-glacial-blue, #a5d8ff);
+    background-color: var(--theme-surface-1);
+    border-radius: 0 0.25rem 0.25rem 0;
+  }
+  .prose blockquote p:last-child {
+    margin-bottom: 0;
+  }
+  .prose code {
+    font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+    font-size: 0.875em;
+    background-color: var(--theme-surface-1);
+    padding: 0.12em 0.35em;
+    border-radius: 0.2rem;
+  }
+  .prose pre {
+    background-color: var(--theme-surface-2, #2d3436);
+    color: var(--theme-on-surface-2, #fff);
+    padding: 1rem;
+    border-radius: 0.5rem;
+    overflow-x: auto;
+    margin: 0 0 1.25rem;
+    line-height: 1.4;
+  }
+  .prose pre code {
+    background: none;
+    padding: 0;
+    color: inherit;
+    font-size: 0.8rem;
+    white-space: pre;
+  }
+  .prose table {
+    display: block;
+    width: 100%;
+    overflow-x: auto;
+    border-collapse: collapse;
+    margin: 0 0 1.25rem;
+    font-size: 0.9rem;
+  }
+  .prose th,
+  .prose td {
+    border: 1px solid var(--theme-surface-1);
+    padding: 0.5rem 0.75rem;
+    text-align: left;
+    vertical-align: top;
+  }
+  .prose th {
+    background-color: var(--theme-surface-1);
+    font-weight: 600;
+  }
+  .prose img {
+    max-width: 100%;
+    height: auto;
+  }
+</style>

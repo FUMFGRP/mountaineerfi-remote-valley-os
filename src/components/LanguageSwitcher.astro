@@ -1,14 +1,19 @@
 ---
 import { Icon } from 'astro-icon/components';
 import { locales, localeNames, localeLabels, type Locale } from '../i18n';
-import { switchLocalePath, useTranslations } from '../i18n/utils';
+import { localizePath, switchLocalePath, useTranslations } from '../i18n/utils';
 
 interface Props {
   locale: Locale;
+  /** True when the current page has no localized equivalent (e.g. English-only docs) */
+  untranslated?: boolean;
 }
-const { locale } = Astro.props;
+const { locale, untranslated = false } = Astro.props;
 const t = useTranslations(locale);
 const pathname = Astro.url.pathname;
+
+const hrefFor = (target: Locale) =>
+  untranslated ? localizePath('/', target) : switchLocalePath(pathname, target);
 ---
 
 <div class="lang-switcher">
@@ -20,7 +25,7 @@ const pathname = Astro.url.pathname;
     {locales.map((l) => (
       <li>
         <a
-          href={switchLocalePath(pathname, l)}
+          href={hrefFor(l)}
           class:list={['lang-switcher__link', { 'is-active': l === locale }]}
           hreflang={l}
           lang={l}

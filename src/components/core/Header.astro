@@ -5,7 +5,7 @@ import LanguageSwitcher from '../LanguageSwitcher.astro';
 import { localizePath, useTranslations } from '../../i18n/utils';
 import { type Locale } from '../../i18n';
 
-const { navData, rightMenu, locale = 'en' as Locale } = Astro.props;
+const { navData, rightMenu, locale = 'en' as Locale, untranslated = false } = Astro.props;
 const t = useTranslations(locale);
 ---
 
@@ -97,7 +97,7 @@ const t = useTranslations(locale);
     </slot>
   </div>
   <div class="header-action-item__container">
-    <LanguageSwitcher locale={locale} />
+    <LanguageSwitcher locale={locale} untranslated={untranslated} />
     <slot name="action-item">
     </slot>
   </div>

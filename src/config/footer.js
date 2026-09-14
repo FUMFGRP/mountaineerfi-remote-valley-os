@@ -28,6 +28,7 @@ export const footerColumns = [
     titleKey: 'colProject',
     items: [
       { key: 'board', path: '/board' },
+      { key: 'blueprint', path: '/blueprint' },
       { key: 'jumlaResidency', path: '/jumla' },
       { key: 'applyNow', path: '/jumla/apply' },
       { key: 'technicalBlueprint', path: '/remote-valley-os' },
