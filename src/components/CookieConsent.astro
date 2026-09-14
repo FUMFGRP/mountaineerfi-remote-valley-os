@@ -48,9 +48,14 @@ const gaId = import.meta.env.PUBLIC_GA_MEASUREMENT_ID || settings.gaMeasurementI
         stored = localStorage.getItem(KEY);
       } catch (e) {}
 
-      if (!stored) {
-        banner.hidden = false;
-      }
+      // Already decided: nothing to show
+      if (stored) return;
+
+      // Only visitors in consent-required regions (EU/EEA/UK/CH) see the banner.
+      // Everyone else has analytics enabled immediately, so there is nothing to gate.
+      if (typeof window.__RVO_EU !== 'undefined' && !window.__RVO_EU) return;
+
+      banner.hidden = false;
 
       function decide(value) {
         try {

@@ -89,9 +89,26 @@ const defaultHref = new URL(switchLocalePath(Astro.url.pathname, defaultLocale),
 }
 </script>
 
-<!-- Google Analytics 4: defined here, loaded only after cookie consent (see CookieConsent) -->
+<!-- Google Analytics 4: loads immediately outside the EU/EEA/UK/CH; consent-gated inside -->
 {gaId && (
   <script define:vars={{ gaId }}>
+    // Countries requiring prior consent (EU/EEA + UK + Switzerland)
+    window.__RVO_EU = (function () {
+      var EU = ['AT','BE','BG','HR','CY','CZ','DK','EE','FI','FR','DE','GR','HU','IE','IT','LV','LT','LU','MT','NL','PL','PT','RO','SK','SI','ES','SE','IS','LI','NO','GB','CH'];
+      var country = '';
+      try {
+        var m = document.cookie.match(/(?:^|;\s*)rvo-country=([^;]+)/);
+        if (m) country = decodeURIComponent(m[1]).toUpperCase();
+      } catch (e) {}
+      if (country) return EU.indexOf(country) !== -1;
+      // First visit, no geo cookie yet: approximate from timezone
+      try {
+        var tz = Intl.DateTimeFormat().resolvedOptions().timeZone || '';
+        if (/^Europe\//.test(tz)) return true;
+      } catch (e) {}
+      return false;
+    })();
+
     window.__GA_MEASUREMENT_ID = gaId;
     window.__loadGA = function () {
       if (window.__gaLoaded) return;
@@ -108,6 +125,9 @@ const defaultHref = new URL(switchLocalePath(Astro.url.pathname, defaultLocale),
     };
     try {
       if (localStorage.getItem('rvo-cookie-consent') === 'granted') {
+        window.__loadGA();
+      } else if (!window.__RVO_EU) {
+        // Non-EU traffic: no prior consent required
         window.__loadGA();
       }
     } catch (e) {}
