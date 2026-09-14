@@ -1,23 +1,23 @@
 ---
 import { Container } from '@components/odyssey-theme';
 import Layout from '../../layouts/Page.astro';
-import { getCollection } from 'astro:content';
 import { defaultLocale, type Locale } from '../../i18n';
+import {
+  CATEGORY_LABELS,
+  CATEGORY_ORDER,
+  docsBasePath,
+  getDocItems,
+  type DocsLocale,
+} from '../../i18n/docs';
 
 interface Props {
   locale?: Locale;
+  docsLocale?: DocsLocale;
 }
-const { locale = defaultLocale } = Astro.props;
+const { locale = defaultLocale, docsLocale = 'en' } = Astro.props;
 
-const CATEGORY_LABELS: Record<string, string> = {
-  blueprint: 'Blueprint',
-  modules: 'Modules',
-  program: 'Program',
-  community: 'Community',
-  strategy: 'Strategy',
-  brand: 'Brand',
-  meta: 'Meta',
-};
+const items = await getDocItems(docsLocale);
+const basePath = docsBasePath(docsLocale);
 
 const CATEGORY_BLURBS: Record<string, string> = {
   blueprint:
@@ -30,19 +30,11 @@ const CATEGORY_BLURBS: Record<string, string> = {
   meta: 'Project overview pages.',
 };
 
-const ORDER = ['blueprint', 'modules', 'program', 'community', 'strategy', 'brand', 'meta'];
-
-const all = (await getCollection('docs')).sort(
-  (a, b) =>
-    ORDER.indexOf(a.data.category) - ORDER.indexOf(b.data.category) ||
-    a.data.order - b.data.order
-);
-
-const groups = ORDER.map((key) => ({
+const groups = CATEGORY_ORDER.map((key) => ({
   key,
   label: CATEGORY_LABELS[key],
   blurb: CATEGORY_BLURBS[key],
-  docs: all.filter((d) => d.data.category === key),
+  docs: items.filter((d) => d.category === key),
 })).filter((g) => g.docs.length > 0);
 
 const seo = {
@@ -71,9 +63,9 @@ const seo = {
         <p class="docs-index__blurb">{g.blurb}</p>
         <div class="docs-index__grid">
           {g.docs.map((d) => (
-            <a class="docs-card" href={`/blueprint/${d.slug}`}>
-              <h3>{d.data.title}</h3>
-              {d.data.description && <p>{d.data.description}</p>}
+            <a class="docs-card" href={`${basePath}/${d.slug}`}>
+              <h3>{d.title}</h3>
+              {d.description && <p>{d.description}</p>}
             </a>
           ))}
         </div>

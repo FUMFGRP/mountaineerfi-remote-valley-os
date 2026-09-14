@@ -1,45 +1,38 @@
 ---
 import Layout from './Page.astro';
-import { getCollection } from 'astro:content';
 import { defaultLocale, type Locale } from '../i18n';
+import { CATEGORY_LABELS, CATEGORY_ORDER, type DocItem } from '../i18n/docs';
 
 interface Props {
   title: string;
   description?: string;
+  items: DocItem[];
+  basePath: string;
   currentSlug?: string;
   locale?: Locale;
+  /** False when the page falls back to English content */
+  translated?: boolean;
 }
 
-const { title, description = '', currentSlug, locale = defaultLocale } = Astro.props;
+const {
+  title,
+  description = '',
+  items,
+  basePath,
+  currentSlug,
+  locale = defaultLocale,
+  translated = true,
+} = Astro.props;
 
-const CATEGORY_LABELS: Record<string, string> = {
-  blueprint: 'Blueprint',
-  modules: 'Modules',
-  program: 'Program',
-  community: 'Community',
-  strategy: 'Strategy',
-  brand: 'Brand',
-  meta: 'Meta',
-};
-const ORDER = ['blueprint', 'modules', 'program', 'community', 'strategy', 'brand', 'meta'];
-
-const all = (await getCollection('docs')).sort(
-  (a, b) =>
-    ORDER.indexOf(a.data.category) - ORDER.indexOf(b.data.category) ||
-    a.data.order - b.data.order
-);
-
-const groups = ORDER.map((key) => ({
+const groups = CATEGORY_ORDER.map((key) => ({
   key,
   label: CATEGORY_LABELS[key],
-  docs: all.filter((d) => d.data.category === key),
+  docs: items.filter((d) => d.category === key),
 })).filter((g) => g.docs.length > 0);
 
-const idx = all.findIndex((d) => d.slug === currentSlug);
-const prev = idx > 0 ? all[idx - 1] : null;
-const next = idx >= 0 && idx < all.length - 1 ? all[idx + 1] : null;
-
-const href = (slug: string) => `/blueprint/${slug}`;
+const idx = items.findIndex((d) => d.slug === currentSlug);
+const prev = idx > 0 ? items[idx - 1] : null;
+const next = idx >= 0 && idx < items.length - 1 ? items[idx + 1] : null;
 
 const seo = {
   title: `${title} | Blueprint | Remote Valley OS`,
@@ -48,10 +41,10 @@ const seo = {
 };
 ---
 
-<Layout {seo} {locale} untranslated={true}>
+<Layout {seo} {locale} untranslated={!translated} availableLocales={['en', 'ne']}>
   <div class="docs">
     <aside class="docs__sidebar">
-      <a class="docs__home" href="/blueprint">Blueprint</a>
+      <a class="docs__home" href={basePath}>Blueprint</a>
       {groups.map((g) => (
         <div class="docs__group">
           <p class="docs__group-title">{g.label}</p>
@@ -59,10 +52,10 @@ const seo = {
             {g.docs.map((d) => (
               <li>
                 <a
-                  href={href(d.slug)}
+                  href={d.href}
                   class:list={['docs__link', { 'is-active': d.slug === currentSlug }]}
                 >
-                  {d.data.title}
+                  {d.title}
                 </a>
               </li>
             ))}
@@ -72,10 +65,15 @@ const seo = {
     </aside>
 
     <article class="docs__content prose">
+      {!translated && locale !== 'en' && (
+        <p class="docs__fallback">
+          This page has not been translated into your language yet — showing the English original.
+        </p>
+      )}
       <slot />
       <nav class="docs__pager">
-        {prev ? <a class="docs__pager-link" href={href(prev.slug)}>← {prev.data.title}</a> : <span />}
-        {next ? <a class="docs__pager-link docs__pager-link--next" href={href(next.slug)}>{next.data.title} →</a> : <span />}
+        {prev ? <a class="docs__pager-link" href={prev.href}>← {prev.title}</a> : <span />}
+        {next ? <a class="docs__pager-link docs__pager-link--next" href={next.href}>{next.title} →</a> : <span />}
       </nav>
     </article>
   </div>
@@ -143,6 +141,14 @@ const seo = {
   }
   .docs__content {
     min-width: 0;
+  }
+  .docs__fallback {
+    background-color: var(--theme-surface-1);
+    border-left: 3px solid var(--accent-sunset-orange, #e17055);
+    border-radius: 0.25rem;
+    padding: 0.5rem 0.75rem;
+    font-size: var(--font-size-xs, 0.75rem);
+    margin-bottom: 1.5rem;
   }
   .docs__pager {
     display: flex;

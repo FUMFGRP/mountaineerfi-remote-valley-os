@@ -1,6 +1,7 @@
 ---
 import { getCollection, render, type CollectionEntry } from 'astro:content';
 import DocsLayout from '../../layouts/DocsLayout.astro';
+import { docsBasePath, getDocItems } from '../../i18n/docs';
 
 export async function getStaticPaths() {
   const docs = await getCollection('docs');
@@ -15,12 +16,17 @@ interface Props {
 }
 const { entry } = Astro.props;
 const { Content } = await render(entry);
+const items = await getDocItems('en');
 ---
 
 <DocsLayout
   title={entry.data.title}
   description={entry.data.description}
+  items={items}
+  basePath={docsBasePath('en')}
   currentSlug={entry.slug}
+  locale="en"
+  translated={true}
 >
   <Content />
 </DocsLayout>

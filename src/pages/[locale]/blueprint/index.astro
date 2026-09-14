@@ -1,0 +1,13 @@
+---
+import DocsIndexPage from '../../../components/pages/DocsIndexPage.astro';
+import { type Locale } from '../../../i18n';
+
+// Localized docs index — currently Nepali only.
+export function getStaticPaths() {
+  return [{ params: { locale: 'ne' } }];
+}
+
+const { locale } = Astro.params as { locale: Locale };
+---
+
+<DocsIndexPage {locale} docsLocale="ne" />

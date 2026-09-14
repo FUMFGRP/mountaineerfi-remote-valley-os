@@ -14,9 +14,10 @@ export interface Props {
 	seo?: BaseHeadProps;
 	locale?: Locale;
 	untranslated?: boolean;
+	availableLocales?: Locale[];
 }
 
-const { seo, locale = defaultLocale, untranslated = false } = Astro.props;
+const { seo, locale = defaultLocale, untranslated = false, availableLocales } = Astro.props;
 const t = useTranslations(locale);
 
 const footerLists = footerColumns.map((col) => ({
@@ -29,7 +30,7 @@ const footerLists = footerColumns.map((col) => ({
 ---
 
 <Layout seo={seo} locale={locale}>
-	<Header rightMenu navData={nav} locale={locale} untranslated={untranslated} slot="header">
+	<Header rightMenu navData={nav} locale={locale} untranslated={untranslated} availableLocales={availableLocales} slot="header">
 		<span slot="logo">
 			<Logo />
 		</span>
