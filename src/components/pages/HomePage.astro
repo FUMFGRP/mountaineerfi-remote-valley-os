@@ -39,7 +39,23 @@ const features = [
           </div>
         </div>
         <div class="home-hero__image">
-          <img src="/assets/images/home/classic-hero.jpg" alt="Himalayan landscape" />
+          <picture>
+            <source
+              type="image/webp"
+              srcset="/assets/images/home/hero-valley-688.webp 688w, /assets/images/home/hero-valley-1032.webp 1032w, /assets/images/home/hero-valley-1376.webp 1376w"
+              sizes="(max-width: 768px) 100vw, 50vw"
+            />
+            <img
+              src="/assets/images/home/hero-valley-1032.jpg"
+              srcset="/assets/images/home/hero-valley-688.jpg 688w, /assets/images/home/hero-valley-1032.jpg 1032w, /assets/images/home/hero-valley-1376.jpg 1376w"
+              sizes="(max-width: 768px) 100vw, 50vw"
+              width="1376"
+              height="768"
+              alt={t.home.heroAlt}
+              fetchpriority="high"
+              decoding="async"
+            />
+          </picture>
         </div>
       </div>
     </Container>
