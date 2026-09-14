@@ -1,13 +1,29 @@
 ---
-const { url, rounded, loading = 'lazy' } = Astro.props;
+interface Props {
+  url: string;
+  rounded?: boolean;
+  loading?: string;
+  /** UI + preferred caption language (en | ne | hi | ru) */
+  lang?: string;
+}
 
-function getYouTubeId(url) {
+const { url, rounded, loading = 'lazy', lang = 'en' } = Astro.props;
+
+function getYouTubeId(input: string) {
   const regExp =
     /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|\&v=)([^#\&\?]*).*/;
-  const match = url.match(regExp);
-
+  const match = input.match(regExp);
   return match && match[2].length === 11 ? match[2] : null;
 }
+
+const id = getYouTubeId(url);
+const params = new URLSearchParams({
+  rel: '0', // limit related videos to the same channel
+  cc_load_policy: '1', // show captions by default
+  cc_lang_pref: lang, // preferred caption track
+  hl: lang, // player interface language
+});
+const src = `https://www.youtube.com/embed/${id}?${params.toString()}`;
 ---
 
 <style>
@@ -25,6 +41,7 @@ function getYouTubeId(url) {
   .youtube-embed__container iframe {
     width: 100%;
     height: 100%;
+    border: 0;
   }
 
   @supports not (aspect-ratio: 16 / 9) {
@@ -51,10 +68,10 @@ function getYouTubeId(url) {
   }`}
 >
   <iframe
-    src={`https://www.youtube.com/embed/${getYouTubeId(url)}`}
-    title="YouTube video player"
-    frameborder="0"
-    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+    src={src}
+    title="Remote Valley OS"
+    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+    referrerpolicy="strict-origin-when-cross-origin"
     allowfullscreen
     loading={loading}
   >

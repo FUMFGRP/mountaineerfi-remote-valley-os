@@ -2,6 +2,7 @@
 import { Container, Button, CtaCardSection } from '@components/odyssey-theme';
 import Layout from '../../layouts/Page.astro';
 import { Icon } from 'astro-icon/components';
+import YouTubeEmbed from '../core/YouTubeEmbed.astro';
 import { defaultLocale, type Locale } from '../../i18n';
 import { localizePath, useTranslations } from '../../i18n/utils';
 
@@ -43,6 +44,16 @@ const features = [
       </div>
     </Container>
   </section>
+
+  <Container>
+    <section class="home-video">
+      <h2 class="home-video__title">{t.home.videoTitle}</h2>
+      <p class="home-video__text">{t.home.videoText}</p>
+      <div class="home-video__embed">
+        <YouTubeEmbed url="https://www.youtube.com/watch?v=R2aw8q4eaLc" lang={locale} rounded />
+      </div>
+    </section>
+  </Container>
 
   <Container>
     <section style="margin: var(--section-margin) auto;">
@@ -110,6 +121,10 @@ const features = [
 
 <style>
   .home-hero { margin: var(--section-margin) auto; }
+  .home-video { margin: var(--section-margin) auto; }
+  .home-video__title { text-align: center; }
+  .home-video__text { text-align: center; max-width: 40rem; margin: 0 auto 2rem; }
+  .home-video__embed { max-width: 56rem; margin: 0 auto; }
   .home-hero__grid { display: grid; grid-template-columns: 1fr 1fr; align-items: center; gap: 2rem; min-height: 70vh; }
   .home-hero__label { text-transform: uppercase; letter-spacing: 0.1em; font-size: var(--font-size-sm); color: var(--accent-glacial-blue); font-weight: 600; margin-bottom: 0.5rem; }
   .home-hero__text { max-width: 28rem; }
