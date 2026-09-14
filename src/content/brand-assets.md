@@ -101,12 +101,36 @@ Never bring in a third family. The restraint is the point.
 
 ## Imagery
 
+Imagery policy differs by lane. The visual system (colour, type, composition) is shared; the **source** of imagery is not.
+
+### Mountaineer.fi (Expeditions & Content Archive)
 - **Authentic:** Real expeditions, named photographers. No stock libraries, no AI peaks.
 - **Cinematic:** Wide frames showing scale — tiny humans against vast geography.
 - **Natural:** Full colour, natural contrast, subtle vignettes. No heavy filters or presets.
 - **Reverent:** Action over pose. Hands and gear over headshots. The mountain leads the composition.
 
 Every frame should look like it was taken with a numb finger.
+
+### Remote Valley OS (Open Source)
+RV-OS uses **AI-generated imagery and content** so the blueprint can scale to new regions, modules, and languages faster than photography allows.
+- **Depict the system, not just the scenery:** the five pillars and their connections are the subject.
+- **Brand palette is mandatory:** glacial blue `#A5D8FF`, ice white `#FFFFFF`, charcoal `#2D3436`, sunset orange `#E17055` accent.
+- **Documentary realism, not sci-fi:** hopeful, dignified, self-reliant. Never cyberpunk, neon, or megastructure.
+- **Consistent world:** keep terrain, light, and architecture coherent across the whole image set.
+- **No text baked into images** — headlines and labels are overlaid in HTML, never rendered in the picture.
+- **Label honestly:** AI imagery is generated illustration, not a photograph of a real deployment. Do not present it as documentary evidence.
+
+### Hero image prompt (Remote Valley OS)
+
+Used for the home page hero. Composition keeps the **left third clean** for the headline.
+
+> Cinematic wide editorial photograph of a remote Himalayan village nestled in a terraced valley at golden hour, altitude ~3,000m. In the foreground, a small community workshop with a 3D-printer and a stack of recycled filament spools; nearby, a stainless water tank with filtration pipes, apple crates bound for a cold-storage shed, and a compact EV cargo trike at a charging point. On the hillside, a modest solar array and a run-of-river micro-hydro intake; on the far ridge, a slim mesh-network antenna with a small solar panel. Thin, elegant glacial-blue (#A5D8FF) light filaments arc between the systems, tracing the flow of energy, water, materials, and data — subtle, like a circuit diagram drawn in light. Warm sunset light, deep charcoal shadows (#2D3436), snow-capped peaks in the distance, thin cold air, drifting woodsmoke. Shot on a full-frame camera, 35mm lens, f/8, natural colour, high dynamic range, documentary realism, no text. Composition leaves clean negative space in the left third for a headline.
+
+**Specs:** 16:9 (plus a 3:2 crop for the half-width hero), 2560×1440+, documentary realism, brand palette.
+
+**Negative prompt:** text, watermark, logo, signature, distorted faces, extra limbs, sci-fi megastructure, neon cyberpunk, futuristic city, satellite dish farm, cartoon, illustration, 3d render, plastic look, oversaturated, HDR halo, lens flare spam, stock-photo handshake, tourists, corporate imagery, clutter, busy composition
+
+**Variants:** ground-level dusk (village lights on, 24/7 power); aerial valley (five nodes as connected points); human-centred (operator + resident at the 3D printer).
 
 ---
 
